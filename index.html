@@ -166,9 +166,19 @@
           <div class="featured-card-stack">
             <span>PyTorch</span><span>3D-CNN</span><span>C++</span><span>Flutter</span><span>Grafana</span>
           </div>
-          <div class="featured-card-stat">
-            <span class="featured-card-stat-value">88%</span>
-            <span class="featured-card-stat-label">detection accuracy</span>
+          <div class="featured-card-stats">
+            <span class="featured-card-stat-header">Accuracy</span>
+            <div class="featured-card-stats-row">
+              <div class="featured-card-stat">
+                <span class="featured-card-stat-value">99%</span>
+                <span class="featured-card-stat-label">in-distribution</span>
+              </div>
+              <div class="featured-card-stat-sep"></div>
+              <div class="featured-card-stat">
+                <span class="featured-card-stat-value">88%</span>
+                <span class="featured-card-stat-label">unseen families</span>
+              </div>
+            </div>
           </div>
           <span class="featured-card-cta">Open Dossier <span aria-hidden="true">&#8250;</span></span>
         </div>
@@ -197,9 +207,14 @@
           <div class="featured-card-stack">
             <span>RSA Blind Sigs</span><span>ONNX</span><span>Node.js</span><span>Chaum Scheme</span>
           </div>
-          <div class="featured-card-stat">
-            <span class="featured-card-stat-value">Zero PII</span>
-            <span class="featured-card-stat-label">stored or transmitted</span>
+          <div class="featured-card-stats">
+            <span class="featured-card-stat-header">Absolute Privacy</span>
+            <div class="featured-card-stats-row">
+              <div class="featured-card-stat">
+                <span class="featured-card-stat-value">Zero PII</span>
+                <span class="featured-card-stat-label">stored or transmitted</span>
+              </div>
+            </div>
           </div>
           <span class="featured-card-cta">Open Dossier <span aria-hidden="true">&#8250;</span></span>
         </div>
@@ -327,23 +342,24 @@
 
         <div class="declass-card cat-sys dossier-trigger reveal"
           role="button" tabindex="0"
-          aria-label="Tic-Tac-Toe Minimax AI — Unbeatable AI with alpha-beta pruning. Press Enter to view details."
+          aria-label="Tic-Tac-Toe Minimax AI — Unbeatable AI via plain Minimax. Press Enter to view details."
           data-dossier-clearance="DECLASSIFIED"
           data-dossier-name="Tic-Tac-Toe — Minimax AI"
           data-dossier-badge="AI — Web"
           data-dossier-role="Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Browser-based Tic-Tac-Toe game with an unbeatable AI opponent powered by the Minimax algorithm with alpha-beta pruning, optimal play guaranteed at every depth."
-          data-dossier-architecture="Flask API exposes a /move endpoint. Python backend runs Minimax with alpha-beta pruning — exhausts the full 9-ply game tree to guarantee optimal play. Vanilla JS frontend handles board state and communicates with the API."
-          data-dossier-contribution="Implemented the Minimax algorithm with alpha-beta pruning from scratch. Built the Flask API and the interactive JS board."
-          data-dossier-outcome="Provably unbeatable AI. Evaluates 255,168 nodes per opening move. Zero losses recorded in testing."
+          data-dossier-overview="Browser-based Tic-Tac-Toe with an unbeatable AI opponent powered by plain Minimax. Personal project built to explore Flask and game-tree search."
+          data-dossier-architecture="Flask API exposes a /getmethod/ endpoint that receives board state, runs plain Minimax over the full 9-ply game tree, and returns the optimal move as JSON. Vanilla JS + jQuery frontend manages board state and communicates with the API."
+          data-dossier-contribution="Implemented the Minimax algorithm from scratch. Built all Flask routes, the board encoding/decoding logic, and the interactive JS frontend."
+          data-dossier-outcome="Personal project. Provably unbeatable — evaluates 255,168 nodes per opening move."
+          data-dossier-github="https://github.com/zParik/Python-Project-Red/tree/main/Maasive%20website%20prj"
         >
           <div class="declass-card-top">
             <span class="declass-card-domain">AI · Web</span>
             <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
           </div>
           <h3 class="declass-card-name">Minimax AI</h3>
-          <p class="declass-card-desc">Unbeatable Tic-Tac-Toe via alpha-beta pruning. 255k nodes per move.</p>
+          <p class="declass-card-desc">Unbeatable Tic-Tac-Toe via plain Minimax. 255k nodes per move.</p>
         </div>
 
         <div class="declass-card cat-sys dossier-trigger reveal"
@@ -357,7 +373,7 @@
           data-dossier-overview="Full-featured management portal for an ashram, handling resident records, scheduling, donations, and administration through a web interface."
           data-dossier-architecture="PHP backend with a MySQL database. Session-based auth for staff roles. Features include resident registry, event scheduling with conflict detection, donation tracking, and printable report generation."
           data-dossier-contribution="Sole developer. Designed the database schema, built all PHP endpoints, and implemented the HTML/CSS/JS frontend from scratch."
-          data-dossier-outcome="Deployed and actively used by the ashram. Replaced a manual paper-based system for ~200 residents."
+          data-dossier-outcome="Submitted as a university web development course project."
           data-dossier-github="https://github.com/zParik/refactored-fortnight"
         >
           <div class="declass-card-top">
@@ -365,28 +381,28 @@
             <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
           </div>
           <h3 class="declass-card-name">Ashram Management</h3>
-          <p class="declass-card-desc">PHP/MySQL portal for ~200 residents. Replaced a paper-based system.</p>
+          <p class="declass-card-desc">PHP/MySQL portal for ~200 residents. University web dev course project.</p>
         </div>
 
         <div class="declass-card cat-hack dossier-trigger reveal"
           role="button" tabindex="0"
-          aria-label="Vim-mode Text Editor — C terminal editor with modal key bindings. Press Enter to view details."
+          aria-label="Vim-mode Text Editor — C terminal gap-buffer editor. Press Enter to view details."
           data-dossier-clearance="DECLASSIFIED"
           data-dossier-name="Vim-mode Text Editor"
           data-dossier-badge="Hackathon — Systems"
           data-dossier-role="Systems Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Terminal text editor with Vim-like modal key-bindings written in C, showcasing low-level systems programming and data structures."
-          data-dossier-architecture="Piece table data structure for efficient insert/delete on large files. Raw terminal I/O via termios. Modal state machine (NORMAL / INSERT / COMMAND) handles key dispatch. Syntax highlighting via a simple lexer."
-          data-dossier-contribution="Sole author. Implemented piece table, modal key handling, terminal rendering, and the command parser (:w, :q, :wq etc.)."
-          data-dossier-outcome="Hackathon submission. Handles files of arbitrary size with O(log n) edits. A personal favourite — the project that cemented my love for systems programming."
+          data-dossier-overview="Gap-buffer text editor written in C. Handles cursor movement, insert, and delete operations via a two-stack structure."
+          data-dossier-architecture="Gap buffer implemented as two character stacks (left/right of cursor). Supports text insertion, deletion, and cursor movement in both directions."
+          data-dossier-contribution="Sole author. Implemented the gap buffer, cursor operations, and a menu-driven CLI interface."
+          data-dossier-outcome="Built at a codeathon in ~8 hours. Reviewer recognized it as a functional CLI editor and suggested polishing it further."
         >
           <div class="declass-card-top">
             <span class="declass-card-domain">Systems · C</span>
             <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
           </div>
           <h3 class="declass-card-name">Vim-mode Editor</h3>
-          <p class="declass-card-desc">Terminal text editor in C — piece table, modal keys, syntax highlighting.</p>
+          <p class="declass-card-desc">Terminal text editor in C — gap buffer, cursor movement, insert/delete.</p>
         </div>
 
         <div class="declass-card cat-hack dossier-trigger reveal"
