@@ -2,38 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Parikshieth Harish</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Parikshieth Harish</a>
+  <a href="#" class="nav-logo">PH</a>
   <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#certs">Certs</a></li>
+    <li><a href="#projects">01 Work</a></li>
+    <li><a href="#skills">02 Capabilities</a></li>
+    <li><a href="#background">03 Background</a></li>
+    <li><a href="#off-clock">04 Off-Clock</a></li>
   </ul>
-  <a href="mailto:parikshieth@gmail.com" class="nav-cta">Get in touch</a>
+  <a href="mailto:parikshieth@gmail.com" class="nav-contact">Contact</a>
+  <button id="hamburger" class="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<div id="mobile-drawer" class="mobile-drawer">
+  <nav class="drawer-nav">
+    <a href="#projects">01 Work</a>
+    <a href="#skills">02 Capabilities</a>
+    <a href="#background">03 Background</a>
+    <a href="#off-clock">04 Off-Clock</a>
+    <a href="mailto:parikshieth@gmail.com" class="drawer-cta">Contact</a>
+  </nav>
+</div>
+
+<!-- ─── MAIN CONTENT ─── -->
+<main>
+
+<!-- ─── HERO ─── -->
 <section class="hero">
-  <p class="hero-eyebrow">Computer Vision &amp; Cybersecurity Researcher</p>
-  <h1 class="hero-name">Parikshieth<br>Harish</h1>
-  <p class="hero-title">Building intelligent systems that solve real-world problems.</p>
-  <p class="hero-summary">
-    Innovative researcher with hands-on experience in computer vision, deep learning, and cybersecurity.
-    Developed assistive AI systems for accessibility and authored a 3D vision framework for advanced malware threat analysis.
-    Passionate about applying AI at the intersection of security and human impact.
-  </p>
-  <!-- TERMINAL -->
+  <div class="hero-voxel-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+
+    <p class="hero-eyebrow">Computer Vision &amp; Cybersecurity Researcher</p>
+
+    <h1 class="hero-name">Parikshieth Harish</h1>
+
+    <div class="hero-abstract">
+      <span class="abstract-marker">Executive Summary</span>
+      <p class="abstract-body">
+        Sole architect of PaleGuard, a 3D-CNN EDR that maps binary executables into volumetric spatial representations for malware classification.
+        Also building NotBigBrother, a zero-knowledge age verifier using Chaum RSA blind signatures.
+        Work spans endpoint security, assistive CV systems, and applied cryptography.
+      </p>
+    </div>
+
+    <div class="hero-manifest">
+      <div class="manifest-rule"></div>
+      <div class="manifest-grid">
+        <div class="manifest-col">
+          <span class="manifest-key">Domain</span>
+          <span class="manifest-val">Computer Vision<br>Cybersecurity</span>
+        </div>
+        <div class="manifest-col">
+          <span class="manifest-key">Affiliation</span>
+          <span class="manifest-val"><strong>VIT</strong> Vellore<br>BCA (Hons) · 2027</span>
+        </div>
+        <div class="manifest-col">
+          <span class="manifest-key">Status</span>
+          <span class="manifest-val">
+            <span class="manifest-status-live">
+              <span class="manifest-status-dot"></span>
+              Open for<br>Collaboration
+            </span>
+          </span>
+        </div>
+        <div class="manifest-col">
+          <span class="manifest-key">Classification</span>
+          <span class="manifest-val"><span class="manifest-classify">Open Research</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-socials">
+      <a href="tel:+919962595200" class="hero-social" aria-label="Call +91 99625 95200">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.01 1.21 2 2 0 012 .01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+      </a>
+      <a href="mailto:parikshieth@gmail.com" class="hero-social" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/parikshieth-harish-10481528b/" class="hero-social" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/zParik" class="hero-social" aria-label="GitHub" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+      <span class="hero-social hero-social-location" aria-label="Based in Vellore, Tamil Nadu, India" title="Vellore, Tamil Nadu, India">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        View Research
+      </a>
+      <a href="mailto:parikshieth@gmail.com" class="btn-secondary">Get in Touch</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TERMINAL STRIP ─── -->
+<section class="terminal-section reveal" aria-label="Active terminal sessions">
+  <p class="terminal-section-label">Active Sessions</p>
   <div class="terminal" id="terminal">
     <div class="terminal-bar">
       <span class="terminal-dot red"></span>
@@ -45,414 +126,700 @@
       <span class="t-cursor"></span>
     </div>
   </div>
-  <div class="hero-actions">
-    <a href="#projects" class="btn-primary">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      View Work
-    </a>
-    <a href="mailto:parikshieth@gmail.com" class="btn-secondary">Contact Me</a>
-  </div>
 </section>
 
-<!-- CONTACT STRIP -->
-<div class="contact-strip">
-  <a href="tel:+919962595200" class="contact-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.01 1.21 2 2 0 012 .01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-    +91 99625 95200
-  </a>
-  <a href="mailto:parikshieth@gmail.com" class="contact-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    parikshieth@gmail.com
-  </a>
-  <span class="contact-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    Vellore, TN, India
-  </span>
-  <a href="https://www.linkedin.com/in/parikshieth-harish-10481528b/" class="contact-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-    LinkedIn
-  </a>
-  <a href="https://github.com/zParik" class="contact-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-    GitHub
-  </a>
+<!-- ─── PROJECTS ─── -->
+<div id="projects">
+  <div class="section-shell">
+    <div class="section-rule reveal"></div>
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Research &amp; Projects</h2>
+    </div>
+
+    <div class="projects-index">
+
+      <!-- ─── FEATURED: Active Research Cards ─── -->
+      <div class="featured-projects">
+
+        <div class="featured-card featured-card--security dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="PaleGuard — Vision-based EDR, active research. Press Enter to view details."
+          data-dossier-id="paleguard"
+          data-dossier-unredacted="true"
+          data-dossier-clearance="ACTIVE RESEARCH"
+          data-dossier-name="PaleGuard"
+          data-dossier-badge="Active — Present | CyberSecurity — Computer Vision"
+          data-dossier-role="Sole Architect &amp; Researcher"
+          data-dossier-status="ONGOING"
+          data-dossier-overview="Proactive malware detection system that maps PE binaries into 6-channel 3D volumetric tensors using Morton Z-order curves and classifies them with a 3D ResNet-18. Trained on ~58,000 samples (VirusShare + clean Windows PEs). Paper under review at Scientific Reports."
+          data-dossier-architecture="PE sections (.text, .code, .rdata, .idata, .data, .edata) are mapped into a 64³ voxel grid via Morton Z-order curve for locality preservation. Each voxel carries 6 channels: raw byte value, local entropy, code mask, import density, string density, and data-presence mask. A 3D ResNet-18 with Squeeze-and-Excitation attention and masked global average pooling classifies the volume. Inference: 3.3ms per sample."
+          data-dossier-contribution="Conceived the research hypothesis, developed the Morton-curve volumetric encoding and multi-channel feature scheme, identified and resolved density shortcut-learning via masking + SE attention, ran all experiments, and drafted the manuscript."
+          data-dossier-outcome="88% accuracy on family-disjoint held-out evaluation (TheZoo vs VirusShare) with 11% FNR — designed to test generalization to unseen malware families. 99% accuracy / 0.9971 ROC-AUC on random split for comparison."
+        >
+          <div class="featured-card-header">
+            <span class="featured-card-eyebrow">Active Research</span>
+            <span class="featured-card-status"><span class="status-dot active"></span> Ongoing</span>
+          </div>
+          <h3 class="featured-card-name">PaleGuard</h3>
+          <p class="featured-card-desc">Vision-based Endpoint Detection &amp; Response — transforms binary executables into 3D volumetric representations for deep-learning malware analysis.</p>
+          <div class="featured-card-stack">
+            <span>PyTorch</span><span>3D-CNN</span><span>C++</span><span>Flutter</span><span>Grafana</span>
+          </div>
+          <div class="featured-card-stat">
+            <span class="featured-card-stat-value">88%</span>
+            <span class="featured-card-stat-label">detection accuracy</span>
+          </div>
+          <span class="featured-card-cta">Open Dossier <span aria-hidden="true">&#8250;</span></span>
+        </div>
+
+        <div class="featured-card featured-card--privacy dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="NotBigBrother — Privacy-preserving age verification, active research. Press Enter to view details."
+          data-dossier-unredacted="true"
+          data-dossier-clearance="ACTIVE RESEARCH"
+          data-dossier-name="NotBigBrother"
+          data-dossier-badge="Active — Present | Privacy — Cryptography"
+          data-dossier-role="Sole Designer &amp; Implementer"
+          data-dossier-status="ONGOING"
+          data-dossier-overview="Proof-of-concept privacy-preserving age verification provider. Uses RSA blind signatures (Chaum scheme) so the verifier never knows where a token is used and the website never learns who the user is."
+          data-dossier-architecture="Three-party system: Issuer runs SCRFD face analysis (ONNX) and issues RSA-blinded tokens. User blinds the token before submission — issuer signs without seeing the final form. Website verifies locally against issuer public key. Zero server callbacks, zero PII stored."
+          data-dossier-contribution="Designed the full cryptographic protocol, implemented the blind signature flow, integrated InsightFace/ONNX for age estimation, and built the Node/Express issuer service."
+          data-dossier-outcome="Working PoC demonstrating unlinkable, zero-knowledge age verification. Novel application of Chaum blind signatures to identity verification."
+          data-dossier-github="https://github.com/zParik/NotBigBrother"
+        >
+          <div class="featured-card-header">
+            <span class="featured-card-eyebrow">Active Research</span>
+            <span class="featured-card-status"><span class="status-dot active"></span> Ongoing</span>
+          </div>
+          <h3 class="featured-card-name">NotBigBrother</h3>
+          <p class="featured-card-desc">Privacy-preserving age verification via RSA blind signatures — the verifier never learns user identity, the website never learns who you are.</p>
+          <div class="featured-card-stack">
+            <span>RSA Blind Sigs</span><span>ONNX</span><span>Node.js</span><span>Chaum Scheme</span>
+          </div>
+          <div class="featured-card-stat">
+            <span class="featured-card-stat-value">Zero PII</span>
+            <span class="featured-card-stat-label">stored or transmitted</span>
+          </div>
+          <span class="featured-card-cta">Open Dossier <span aria-hidden="true">&#8250;</span></span>
+        </div>
+
+      </div>
+
+      <!-- ─── Declassified separator ─── -->
+      <div class="index-separator">
+        <span class="index-separator-label">Declassified</span>
+      </div>
+
+      <!-- ─── DECLASSIFIED: 2-column compact grid ─── -->
+      <div class="declass-grid">
+
+        <div class="declass-card cat-security dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="ARCHON — End-to-end encrypted chat. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="ARCHON"
+          data-dossier-badge="Privacy"
+          data-dossier-role="Full-Stack Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Privacy-focused end-to-end encrypted chat application built with modern cryptographic standards and real-time messaging."
+          data-dossier-architecture="ReactJS SPA frontend communicates over WebSockets via ExpressJS. Messages are encrypted client-side using AES-GCM with ECDH key exchange before transmission. MongoDB stores only ciphertext — server never sees plaintext."
+          data-dossier-contribution="Designed and implemented the full encryption protocol, frontend UI, and backend API. Authored the key exchange handshake flow."
+          data-dossier-outcome="Functional E2EE messaging system. Used as a reference implementation for cryptographic primitives in a course project."
+          data-dossier-github="https://github.com/zParik/ARCHON"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Privacy</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">ARCHON</h3>
+          <p class="declass-card-desc">E2E encrypted chat — AES-GCM + ECDH key exchange, server never sees plaintext.</p>
+        </div>
+
+        <div class="declass-card cat-access dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Indoor Nav — Visual Assist — YOLOv8x + Depth Anything V2 indoor navigation for visually impaired users. Press Enter to view details."
+          data-dossier-unredacted="true"
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Indoor Nav — Visual Assist"
+          data-dossier-badge="Accessibility · Computer Vision"
+          data-dossier-role="Lead Developer &amp; Team Lead"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Deep learning-powered real-time indoor navigation assistance system for blind and visually impaired individuals. Built for UCSC316L Computer Vision (Fall 2025–26). YOLOv8x detects 600+ object classes from Open Images V7 while Depth Anything V2 Small (ByteDance) estimates monocular depth. DeepSORT + MobileNetV2 tracks objects across frames. Reactive navigation engine issues directional audio cues via Web Speech API every 500ms. Voice command recognition enables hands-free control. Gyroscope-based image rotation correction compensates for phone orientation."
+          data-dossier-architecture="Distributed client-server architecture: mobile browser captures live video and streams JPEG frames to a GPU-accelerated Flask backend. YOLOv8x (Open Images V7, 600+ classes) runs object detection; Depth Anything V2 Small runs an async depth pipeline (14ms GPU) decoupled from detection. DeepSORT with MobileNetV2 re-ID handles multi-object tracking. Reactive navigation engine replaces classical A* — generates directional instructions (move forward / turn left / turn right / stop) via perspective-aware movement analysis and a 500+ object heights DB for motion-based depth calibration (no fixed height assumptions). Request ID tracking eliminates stale response race conditions. TensorRT optimization on NVIDIA RTX GPUs. Vanilla JS frontend with Web Speech API for audio output and voice command input."
+          data-dossier-contribution="Led a 3-person team (23BCA0127, 23BCA0092, 23BCA0105) under Dr. Shunmuga Perumal. Architected and built the full CV pipeline: YOLOv8x inference, Depth Anything V2 integration, DeepSORT tracking, async depth pipeline, reactive navigation engine, and JSON-safe serialization layer. Designed spatial reasoning heuristics including perspective-aware movement analysis and motion-based depth calibration. Built the Flask API and the vanilla JS frontend including Web Speech API integration, gyroscope rotation correction, and voice command recognition."
+          data-dossier-outcome="25–40× speedup over the initial CPU prototype (1–3 FPS CPU → 10–16 FPS GPU with TensorRT). 60–100ms total end-to-end latency on GPU. Manually collected and annotated dataset of 4,226 images expanded to 21,126 via augmentation with YOLO OBB annotations. 43 bugs resolved (13 critical, 17 high, 13 medium) across coordinate systems, threading, CUDA/TensorRT, stale data, and navigation logic. Demonstrated live as assistive AI research at VIT with all three demo scenarios."
+          data-dossier-demo="https://youtu.be/nBjYTFXBpWY,https://youtu.be/QXU4xU__s2Y,https://youtu.be/PZpLDPnhvVg"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Accessibility · CV</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Indoor Nav — Visual Assist</h3>
+          <p class="declass-card-desc">YOLOv8x + Depth Anything V2 + DeepSORT — real-time indoor navigation for the visually impaired. 10–16 FPS on GPU.</p>
+        </div>
+
+        <div class="declass-card cat-access dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="ASL Transcription System — Real-time sign language recognition. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="ASL Transcription System"
+          data-dossier-badge="Accessibility — Deep Learning — Computer Vision"
+          data-dossier-role="Lead Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Real-time ASL fingerspelling recognition system using YOLOv11x for single-stage hand detection and gesture classification. Deployed as a browser-native web app with WebRTC camera input and Flask API backend. Recognizes 26 letters plus SPACE and DELETE commands for live text composition."
+          data-dossier-architecture="YOLOv11x (56.8M params, 190 layers, 194.6 GFLOPs) fine-tuned on 2,614 augmented ASL images. WebRTC captures frames at 500ms intervals, sends base64-encoded JPEG to a Flask API. Model runs inference at 640×640 with conf=0.25 and IoU=0.45. Dual-mode async pipeline decouples frame submission (500ms) from prediction polling (200ms). Intelligent letter accumulation with 2s debounce and 40% confidence gating prevents duplicate characters."
+          data-dossier-contribution="Trained and compared YOLOv8L, YOLOv8X, and YOLOv11x models (ablation study showed YOLOv8X overfitting while YOLOv11x achieved best real-time performance due to fewer FLOPs/param). Built the full-stack inference pipeline: WebRTC frontend, Flask API, and state-based word/sentence building logic."
+          data-dossier-outcome="96% mAP@0.5, 95% precision, 97% recall on ASL letter detection. Converges in ~50 epochs vs 200 for CNN-LSTM approaches. Matches YOLOv8 accuracy with a more efficient architecture."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Accessibility · CV</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">ASL Transcription</h3>
+          <p class="declass-card-desc">YOLOv11x for real-time ASL fingerspelling recognition. 96% mAP, 97% recall.</p>
+        </div>
+
+        <div class="declass-card cat-hack dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Plant Disease and Pest Detection — YOLOv8-seg and YOLO11n with TabNet fusion for sugarcane pest identification. Press Enter to view details."
+          data-dossier-unredacted="true"
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Plant Disease &amp; Pest Detection"
+          data-dossier-badge="Hackathon"
+          data-dossier-role="Fullstack &amp; CV Dev"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Built for a hackathon targeting Indian agricultural challenges, specifically sugarcane farming. Multimodal AI system fusing computer vision with structured questionnaire data. YOLOv8s-seg for dead heart disease segmentation (99.5% mAP@0.5) and YOLO11n for tiller damage pest detection (99.4% mAP@0.5). TabNet processes farmer questionnaires, and a fusion layer combines both modalities for 99.97% accuracy — 67% error reduction over questionnaire-only. Field-validated across 500 farmers in 5 Indian states."
+          data-dossier-architecture="YOLOv8s-seg for dead heart instance segmentation (0.942 mean IoU, 0.968 Dice score). YOLO11n (3M params, 6.2MB) for real-time tiller damage detection at 12.3ms GPU inference. TabNet attention-based models for structured questionnaire input (~96% accuracy). Multimodal fusion layer combines vision and questionnaire confidence scores. Flask serves inference via a mobile-friendly JS frontend."
+          data-dossier-contribution="Trained YOLOv8s-seg and YOLO11n detection models and the TabNet questionnaire models. Built the frontend UI and assisted with backend development. 5-person team."
+          data-dossier-outcome="Hackathon submission. 99.97% fused model accuracy. 89.3% early detection rate before visible symptoms. Validated by 500 farmers across 5 states with 94.2% farmer agreement and 97.8% expert verification."
+          data-dossier-github="https://github.com/zParik/CodeCultivators---Agrithon"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Hackathon · CV</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Plant Disease Detection</h3>
+          <p class="declass-card-desc">Multimodal YOLOv8-seg + YOLO11n + TabNet fusion — 99.97% fused accuracy for sugarcane pest &amp; disease detection.</p>
+        </div>
+
+        <div class="declass-card cat-hack dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Uni P2P Rental Marketplace — Next.js rental platform, awarded Best UI/UX. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Uni P2P Rental Marketplace"
+          data-dossier-badge="Hackathon — Best UI/UX"
+          data-dossier-role="Frontend Lead &amp; UI Designer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="University peer-to-peer rental marketplace enabling students to list and borrow items, built with a modern fullstack architecture. Awarded Best UI/UX at the event."
+          data-dossier-architecture="Next.js App Router frontend with React Server Components. Supabase handles auth (magic link), Postgres database, and real-time listing updates. Image storage via Supabase Storage."
+          data-dossier-contribution="Led frontend architecture and all UI/UX design decisions. Built the listing flow, search, and real-time update components. Responsible for the design language that won Best UI/UX."
+          data-dossier-outcome="Awarded Best UI/UX at the hackathon. Judges cited the clean information hierarchy and fluid interaction patterns."
+          data-dossier-github="https://github.com/zParik/Devjams"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Hackathon</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">P2P Rental Marketplace</h3>
+          <p class="declass-card-desc">Next.js + Supabase student rental platform. Awarded Best UI/UX.</p>
+        </div>
+
+        <div class="declass-card cat-sys dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Tic-Tac-Toe Minimax AI — Unbeatable AI with alpha-beta pruning. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Tic-Tac-Toe — Minimax AI"
+          data-dossier-badge="AI — Web"
+          data-dossier-role="Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Browser-based Tic-Tac-Toe game with an unbeatable AI opponent powered by the Minimax algorithm with alpha-beta pruning, optimal play guaranteed at every depth."
+          data-dossier-architecture="Flask API exposes a /move endpoint. Python backend runs Minimax with alpha-beta pruning — exhausts the full 9-ply game tree to guarantee optimal play. Vanilla JS frontend handles board state and communicates with the API."
+          data-dossier-contribution="Implemented the Minimax algorithm with alpha-beta pruning from scratch. Built the Flask API and the interactive JS board."
+          data-dossier-outcome="Provably unbeatable AI. Evaluates 255,168 nodes per opening move. Zero losses recorded in testing."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">AI · Web</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Minimax AI</h3>
+          <p class="declass-card-desc">Unbeatable Tic-Tac-Toe via alpha-beta pruning. 255k nodes per move.</p>
+        </div>
+
+        <div class="declass-card cat-sys dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Ashram Management Portal — Deployed PHP/MySQL system for 200 residents. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Ashram Management Portal"
+          data-dossier-badge="Web"
+          data-dossier-role="Full-Stack Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Full-featured management portal for an ashram, handling resident records, scheduling, donations, and administration through a web interface."
+          data-dossier-architecture="PHP backend with a MySQL database. Session-based auth for staff roles. Features include resident registry, event scheduling with conflict detection, donation tracking, and printable report generation."
+          data-dossier-contribution="Sole developer. Designed the database schema, built all PHP endpoints, and implemented the HTML/CSS/JS frontend from scratch."
+          data-dossier-outcome="Deployed and actively used by the ashram. Replaced a manual paper-based system for ~200 residents."
+          data-dossier-github="https://github.com/zParik/refactored-fortnight"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Web</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Ashram Management</h3>
+          <p class="declass-card-desc">PHP/MySQL portal for ~200 residents. Replaced a paper-based system.</p>
+        </div>
+
+        <div class="declass-card cat-hack dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Vim-mode Text Editor — C terminal editor with modal key bindings. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Vim-mode Text Editor"
+          data-dossier-badge="Hackathon — Systems"
+          data-dossier-role="Systems Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Terminal text editor with Vim-like modal key-bindings written in C, showcasing low-level systems programming and data structures."
+          data-dossier-architecture="Piece table data structure for efficient insert/delete on large files. Raw terminal I/O via termios. Modal state machine (NORMAL / INSERT / COMMAND) handles key dispatch. Syntax highlighting via a simple lexer."
+          data-dossier-contribution="Sole author. Implemented piece table, modal key handling, terminal rendering, and the command parser (:w, :q, :wq etc.)."
+          data-dossier-outcome="Hackathon submission. Handles files of arbitrary size with O(log n) edits. A personal favourite — the project that cemented my love for systems programming."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Systems · C</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Vim-mode Editor</h3>
+          <p class="declass-card-desc">Terminal text editor in C — piece table, modal keys, syntax highlighting.</p>
+        </div>
+
+        <div class="declass-card cat-hack dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Distributed Network and IPC — Cisco topology with Java inter-process communication. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Distributed Network &amp; IPC"
+          data-dossier-badge="Hackathon — Networking"
+          data-dossier-role="Network Architect &amp; Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Modelled a network architecture for an organization with distributed resources, including an internal inter-process communication application."
+          data-dossier-architecture="Full Cisco Packet Tracer topology with VLANs, inter-VLAN routing, DHCP, DNS, and redundant WAN links. Java IPC app uses sockets for cross-department messaging, simulating real organisational comms."
+          data-dossier-contribution="Designed the full network topology, configured all Cisco devices, and built the Java IPC application."
+          data-dossier-outcome="Hackathon submission. Demonstrated end-to-end connectivity across 4 simulated departments with sub-10ms simulated latency."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Networking</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Distributed Network</h3>
+          <p class="declass-card-desc">Cisco Packet Tracer topology + Java IPC across 4 departments.</p>
+        </div>
+
+        <div class="declass-card cat-sys dossier-trigger reveal"
+          role="button" tabindex="0"
+          aria-label="Linux Tutorial Blog — AI-assisted technical blog on Linux fundamentals. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Linux Tutorial Blog"
+          data-dossier-badge="Technical Writing"
+          data-dossier-role="Author"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="AI-assisted technical blog covering Linux fundamentals, built as an educational resource for a club event introducing students to the Linux ecosystem."
+          data-dossier-architecture="Static blog site generated with AI tooling. Content covers core Linux concepts — terminal basics, file system navigation, package management, and shell scripting — structured as progressive tutorials."
+          data-dossier-contribution="Authored all tutorial content and structured the learning progression. Used AI tooling to accelerate site generation while curating the technical material."
+          data-dossier-outcome="Delivered as part of a club event. Served as a hands-on reference for attendees learning Linux for the first time."
+          data-dossier-github="https://github.com/zParik/Scribble-AI-blog"
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">Technical Writing</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Linux Tutorial Blog</h3>
+          <p class="declass-card-desc">AI-assisted Linux fundamentals blog — built for a club event introducing students to the ecosystem.</p>
+        </div>
+
+      </div><!-- /declass-grid -->
+
+      <button class="earlier-work-toggle" id="earlier-work-toggle" aria-expanded="false" aria-controls="earlier-work-rows">
+        <span class="earlier-work-toggle-line"></span>
+        <span class="earlier-work-toggle-label">
+          <!-- Static label (shown when idle / expanded) -->
+          <span class="ewt-static">
+            <svg class="earlier-work-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="earlier-work-toggle-text">Show Earlier Work</span>
+            <span class="earlier-work-toggle-count">2 projects</span>
+          </span>
+          <!-- Retro declassify progress (shown while loading) -->
+          <span class="ewt-progress-wrap" aria-hidden="true">
+            <span class="ewt-status" id="ewt-status">INITIALISING...</span>
+            <span class="ewt-bar-row">
+              <span class="ewt-bar-label-l">ACCESS [</span>
+              <span class="ewt-bar" id="ewt-bar"></span>
+              <span class="ewt-bar-label-r">]</span>
+              <span class="ewt-pct" id="ewt-pct">0%</span>
+            </span>
+          </span>
+        </span>
+        <span class="earlier-work-toggle-line"></span>
+      </button>
+
+      <div id="earlier-work-rows" class="earlier-work-rows" hidden>
+      <div class="declass-grid declass-grid--muted">
+
+        <div class="declass-card declass-card--muted cat-sys dossier-trigger"
+          role="button" tabindex="0"
+          aria-label="Programming Practice Launcher — Tkinter app used by 15 classmates. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Programming Practice Launcher"
+          data-dossier-badge="High School"
+          data-dossier-role="Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Tkinter desktop app that displayed code samples and ran them at the click of a button, built to help friends get hands-on with programming exercises."
+          data-dossier-architecture="Python Tkinter GUI with a code browser panel and embedded output console. Uses subprocess to execute selected snippets and capture stdout/stderr in the UI in real time."
+          data-dossier-contribution="Sole developer. Built as a learning tool during high school to help classmates practice Python without needing an IDE setup."
+          data-dossier-outcome="Used informally by a group of ~15 students. The origin story of this portfolio — the first project that felt genuinely useful."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">High School</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Practice Launcher</h3>
+          <p class="declass-card-desc">Tkinter app for running code samples — used by 15 classmates.</p>
+        </div>
+
+        <div class="declass-card declass-card--muted cat-sys dossier-trigger"
+          role="button" tabindex="0"
+          aria-label="Faculty Schedule Management — Django scheduling system for 40+ faculty. Press Enter to view details."
+          data-dossier-clearance="DECLASSIFIED"
+          data-dossier-name="Faculty Schedule Management"
+          data-dossier-badge="High School"
+          data-dossier-role="Full-Stack Developer"
+          data-dossier-status="COMPLETE"
+          data-dossier-overview="Built a full school faculty scheduling system as a high schooler, handling timetables, conflict detection, and staff assignments through a Django web app."
+          data-dossier-architecture="Django MVC. SQLite database with models for teachers, subjects, rooms, and time slots. Constraint-based conflict detection prevents double-booking. HTML/CSS frontend with printable timetable views."
+          data-dossier-contribution="Sole developer. Designed the constraint model and conflict detection logic. Built as a practical replacement for a spreadsheet-based system at school."
+          data-dossier-outcome="Deployed and used by school administration. Managed schedules for 40+ faculty members. Built during high school — a formative project."
+        >
+          <div class="declass-card-top">
+            <span class="declass-card-domain">High School</span>
+            <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
+          </div>
+          <h3 class="declass-card-name">Faculty Scheduler</h3>
+          <p class="declass-card-desc">Django scheduling for 40+ faculty. Deployed at school.</p>
+        </div>
+
+      </div>
+      </div><!-- /earlier-work-rows -->
+
+    </div>
+  </div>
 </div>
 
-<div class="divider"></div>
+<!-- ─── CAPABILITIES ─── -->
+<div id="skills">
+  <div class="section-shell">
+    <div class="section-rule reveal"></div>
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Technical Capabilities</h2>
+    </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label reveal">Work</p>
-  <h2 class="section-title reveal">Projects</h2>
+    <div class="spec-grid reveal">
 
-  <div class="projects-grid">
-
-    <!-- Featured: PaleGuard -->
-    <div class="project-card featured reveal">
-      <span class="project-badge">Active &mdash; Present | CyberSecurity &mdash; Computer Vision </span>
-      <p class="project-name">PaleGuard</p>
-      <p class="project-desc">
-        Experimental vision-based Endpoint Detection &amp; Response (EDR) system.
-        Transforms binary data into 3D volumetric spatial representations for advanced
-        malware threat analysis using deep learning. A research-grade approach to
-        next-generation threat detection.
-      </p>
-      <div class="project-tags">
-        <span class="tag">C++</span>
-        <span class="tag">Dart</span>
-        <span class="tag">Flutter</span>
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Computer Vision</span>
-        <span class="tag">Cybersecurity</span>
-        <span class="tag">InfluxDB</span>
-        <span class="tag">Grafana</span>
+      <div class="spec-cell spec-cell--primary">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Computer Vision</span>
+          <span class="spec-cell-depth primary">Primary</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">PyTorch</span><span class="spec-tag">YOLOv8</span><span class="spec-tag">MediaPipe</span><span class="spec-tag">3D-CNN</span><span class="spec-tag">OpenCV</span>
+        </div>
       </div>
-    </div>
 
-    <!-- ARCHON -->
-    <div class="project-card reveal">
-      <span class="project-badge">Privacy</span>
-      <p class="project-name">ARCHON</p>
-      <p class="project-desc">
-        Privacy-focused end-to-end encrypted chat application built with
-        modern cryptographic standards and real-time messaging.
-      </p>
-      <div class="project-tags">
-        <span class="tag">ReactJS</span>
-        <span class="tag">ExpressJS</span>
-        <span class="tag">Cryptography</span>
-        <span class="tag">MongoDB</span>
+      <div class="spec-cell spec-cell--primary">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Security &amp; Cryptography</span>
+          <span class="spec-cell-depth primary">Primary</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">RSA Blind Signatures</span><span class="spec-tag">AES-GCM</span><span class="spec-tag">ECDH</span><span class="spec-tag">EDR</span><span class="spec-tag">ONNX</span>
+        </div>
       </div>
-    </div>
 
-    <!-- NotBigBrother -->
-    <div class="project-card featured nbb reveal">
-      <span class="project-badge">Active &mdash; Present | Privacy &mdash; Cryptography</span>
-      <p class="project-name">NotBigBrother</p>
-      <p class="project-desc">
-        Proof-of-concept privacy-preserving age verification provider. Uses RSA blind signatures
-        (Chaum scheme) so the verifier never knows where a token is used, and the website never
-        learns who the user is. Tokens carry zero personal data; verification is fully local via
-        the issuer's public key, no server callback required.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Node.js</span>
-        <span class="tag">Express</span>
-        <span class="tag">RSA Blind Signatures</span>
-        <span class="tag">SCRFD / InsightFace</span>
-        <span class="tag">ONNX</span>
-        <span class="tag">Cryptography</span>
+      <div class="spec-cell spec-cell--proficient">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Systems</span>
+          <span class="spec-cell-depth proficient">Proficient</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">C / C++</span><span class="spec-tag arch-span" title="I use Arch btw">Linux</span><span class="spec-tag">Networking</span><span class="spec-tag">Cisco</span><span class="spec-tag">IPC</span><span class="spec-tag">DSA</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Indoor Nav -->
-    <div class="project-card reveal">
-      <span class="project-badge">Accessibility</span>
-      <p class="project-name">Indoor Nav &mdash; Visual Assist</p>
-      <p class="project-desc">
-        Computer vision indoor navigation assistance system for visually impaired individuals.
-        Identifies objects and supports real-time indoor mobility guidance.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">Flask</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">CV</span>
+      <div class="spec-cell spec-cell--proficient">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Backend &amp; Data</span>
+          <span class="spec-cell-depth proficient">Proficient</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">Python</span><span class="spec-tag">Flask</span><span class="spec-tag">Node.js</span><span class="spec-tag">Express</span><span class="spec-tag">Django</span><span class="spec-tag">PHP</span><span class="spec-tag">Grafana</span>
+        </div>
       </div>
-    </div>
 
-    <!-- ASL Transcription -->
-    <div class="project-card reveal">
-      <span class="project-badge">Accessibility &mdash; CV</span>
-      <p class="project-name">ASL Transcription System</p>
-      <p class="project-desc">
-        Real-time American Sign Language recognition and transcription using
-        computer vision to bridge communication gaps for the deaf and hard-of-hearing community.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">Computer Vision</span>
-        <span class="tag">MediaPipe</span>
+      <div class="spec-cell spec-cell--applied">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Frontend</span>
+          <span class="spec-cell-depth applied">Applied</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">ReactJS</span><span class="spec-tag">Next.js</span><span class="spec-tag">Flutter</span><span class="spec-tag">Dart</span><span class="spec-tag">Vanilla JS</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Plant Disease -->
-    <div class="project-card reveal">
-      <span class="project-badge">Hackathon</span>
-      <p class="project-name">Plant Disease and Pest Detection</p>
-      <p class="project-desc">
-        Built for a hackathon targeting Indian agricultural challenges, specifically sugarcane farming.
-        Vision-powered disease and pest identification using YOLO, enabling fast field diagnosis for farmers.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">YOLO</span>
-        <span class="tag">Flask</span>
-        <span class="tag">JavaScript</span>
+      <div class="spec-cell spec-cell--applied">
+        <div class="spec-cell-header">
+          <span class="spec-cell-domain">Databases</span>
+          <span class="spec-cell-depth applied">Applied</span>
+        </div>
+        <div class="spec-cell-tools">
+          <span class="spec-tag">PostgreSQL</span><span class="spec-tag">MySQL</span><span class="spec-tag">MongoDB</span><span class="spec-tag">InfluxDB</span><span class="spec-tag">SQLite</span><span class="spec-tag">Supabase</span>
+        </div>
       </div>
+
     </div>
 
-    <!-- P2P Rental -->
-    <div class="project-card reveal">
-      <span class="project-badge">Hackathon &mdash; 🏆 Best UI/UX</span>
-      <p class="project-name">Uni P2P Rental Marketplace</p>
-      <p class="project-desc">
-        University peer-to-peer rental marketplace enabling students to list and
-        borrow items, built with a modern fullstack architecture.
-        <strong style="color:var(--accent-bright);font-weight:600;"> Awarded Best UI/UX at the event.</strong>
-      </p>
-      <div class="project-tags">
-        <span class="tag">Next.js</span>
-        <span class="tag">ReactJS</span>
-        <span class="tag">Supabase</span>
+    <!-- HUMINT: Soft skills + Languages as dossier attributes -->
+    <div class="humint-block reveal">
+      <div class="humint-header">
+        <span class="humint-label">HUMINT</span>
+        <span class="humint-sub">Human Intelligence Profile</span>
       </div>
-    </div>
-
-    <!-- Tic-Tac-Toe AI -->
-    <div class="project-card reveal">
-      <span class="project-badge">AI &mdash; Web</span>
-      <p class="project-name">Tic-Tac-Toe &mdash; Minimax AI</p>
-      <p class="project-desc">
-        Browser-based Tic-Tac-Toe game with an unbeatable AI opponent powered by the
-        Minimax algorithm, with optimal play guaranteed at every depth.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Flask</span>
-        <span class="tag">Minimax</span>
-        <span class="tag">JavaScript</span>
-      </div>
-    </div>
-
-    <!-- Ashram Portal -->
-    <div class="project-card reveal">
-      <span class="project-badge">Web</span>
-      <p class="project-name">Ashram Management Portal</p>
-      <p class="project-desc">
-        Full-featured management portal for an ashram, handling records,
-        scheduling, and administration through a web interface.
-      </p>
-      <div class="project-tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">PHP</span>
-        <span class="tag">MySQL</span>
-      </div>
-    </div>
-
-    <!-- Text Editor -->
-    <div class="project-card reveal">
-      <span class="project-badge">Hackathon &mdash; Systems</span>
-      <p class="project-name">Vim-mode Text Editor</p>
-      <p class="project-desc">
-        Terminal text editor with Vim-like modal key-bindings written in C,
-        showcasing low-level systems programming and DSA.
-      </p>
-      <div class="project-tags">
-        <span class="tag">C</span>
-        <span class="tag">DSA</span>
-        <span class="tag">Systems</span>
-      </div>
-    </div>
-
-    <!-- Network Architecture -->
-    <div class="project-card reveal">
-      <span class="project-badge">Hackathon &mdash; Networking</span>
-      <p class="project-name">Distributed Network &amp; IPC</p>
-      <p class="project-desc">
-        Modelled a network architecture for an organization with distributed
-        resources, including an internal inter-process communication application.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Cisco Packet Tracer</span>
-        <span class="tag">Java</span>
-        <span class="tag">Networking</span>
-        <span class="tag">IPC</span>
-      </div>
-    </div>
-
-    <!-- Faculty Schedule -->
-    <div class="project-card reveal">
-      <span class="project-badge">High School</span>
-      <p class="project-name">Programming Practice Launcher</p>
-      <p class="project-desc">
-        Tkinter desktop app that displayed code samples and ran them at the click of a button,
-        built to help friends get hands-on with programming exercises.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Tkinter</span>
-        <span class="tag">Desktop GUI</span>
-      </div>
-    </div>
-
-    <!-- Faculty Schedule -->
-    <div class="project-card reveal">
-      <span class="project-badge">High School</span>
-      <p class="project-name">Faculty Schedule Management</p>
-      <p class="project-desc">
-        Built a full school faculty scheduling system as a high schooler,
-        handling timetables, conflict detection, and staff assignments through a Django web app.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Django</span>
-        <span class="tag">Python</span>
-        <span class="tag">HTML/CSS</span>
-        <span class="tag">SQLite</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label reveal">Capabilities</p>
-  <h2 class="section-title reveal">Skills</h2>
-
-  <div style="margin-bottom: 32px;">
-    <p style="font-size: 13px; color: var(--text-tertiary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;" class="reveal">Technical</p>
-    <div class="skills-grid">
-      <div class="skill-pill reveal">Computer Vision</div>
-      <div class="skill-pill reveal">Deep Learning</div>
-      <div class="skill-pill reveal">Cybersecurity</div>
-      <div class="skill-pill reveal">Software Engineering</div>
-      <div class="skill-pill reveal">Python</div>
-      <div class="skill-pill reveal">PyTorch</div>
-      <div class="skill-pill reveal">C / C++</div>
-      <div class="skill-pill reveal">ReactJS / Next.js</div>
-      <div class="skill-pill reveal">Flutter / Dart</div>
-      <div class="skill-pill reveal">Node.js / Express</div>
-      <div class="skill-pill reveal">PostgreSQL / MySQL</div>
-      <div class="skill-pill reveal">InfluxDB / Grafana</div>
-      <div class="skill-pill reveal">MongoDB</div>
-      <div class="skill-pill reveal">Django / Flask</div>
-      <div class="skill-pill reveal">Cryptography</div>
-      <div class="skill-pill reveal">MediaPipe / YOLO</div>
-      <div class="skill-pill reveal">Supabase</div>
-      <div class="skill-pill reveal">Networking</div>
-      <div class="skill-pill reveal arch-pill" title="I use Arch btw">Linux</div>
-    </div>
-  </div>
-
-  <div>
-    <p style="font-size: 13px; color: var(--text-tertiary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;" class="reveal">Professional</p>
-    <div class="skills-grid">
-      <div class="skill-pill reveal">Communication</div>
-      <div class="skill-pill reveal">Teamwork</div>
-      <div class="skill-pill reveal">Critical Thinking</div>
-      <div class="skill-pill reveal">Time Management</div>
-      <div class="skill-pill reveal">Adaptability</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EDUCATION -->
-<section id="education">
-  <p class="section-label reveal">Background</p>
-  <h2 class="section-title reveal">Education</h2>
-
-  <div class="edu-card reveal">
-    <div class="edu-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-    </div>
-    <div style="flex:1;">
-      <p class="edu-degree">BCA (Hons), Bachelor of Computer Applications</p>
-      <p class="edu-institution">Vellore Institute of Technology</p>
-      <p class="edu-year">Expected 2027</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent-bright);background:var(--accent-dim);border:1px solid rgba(167,139,250,0.25);border-radius:6px;padding:4px 10px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Top 10 CGPA, Year 1
-        </span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent-bright);background:var(--accent-dim);border:1px solid rgba(167,139,250,0.25);border-radius:6px;padding:4px 10px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Top 10 CGPA, Year 2
-        </span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent-bright);background:var(--accent-dim);border:1px solid rgba(167,139,250,0.25);border-radius:6px;padding:4px 10px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          9.3 CGPA, Year 3
-        </span>
+      <div class="humint-body">
+        <div class="humint-col">
+          <span class="humint-col-key">Operational Traits</span>
+          <div class="humint-traits">
+            <span class="humint-trait">Communication</span>
+            <span class="humint-trait">Critical Thinking</span>
+            <span class="humint-trait">Teamwork</span>
+            <span class="humint-trait">Leadership</span>
+            <span class="humint-trait">Problem Solving</span>
+            <span class="humint-trait">Adaptability</span>
+          </div>
+        </div>
+        <div class="humint-divider" aria-hidden="true"></div>
+        <div class="humint-col humint-col--langs">
+          <span class="humint-col-key">Linguistic Clearance</span>
+          <div class="humint-langs">
+            <span class="humint-lang"><span class="humint-lang-dot"></span>Tamil<span class="humint-lang-level">Native</span></span>
+            <span class="humint-lang"><span class="humint-lang-dot"></span>English<span class="humint-lang-level">Fluent</span></span>
+            <span class="humint-lang"><span class="humint-lang-dot"></span>German<span class="humint-lang-level">B2</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="divider"></div>
+<!-- ─── BACKGROUND ─── -->
+<div id="background">
+  <div class="section-shell">
+    <div class="section-rule reveal"></div>
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Background</h2>
+    </div>
 
-<!-- CERTIFICATIONS -->
-<section id="certs">
-  <p class="section-label reveal">Credentials</p>
-  <h2 class="section-title reveal">Certifications</h2>
+    <div class="bg-layout">
 
-  <div class="certs-grid">
-
-    <a class="cert-card reveal" href="https://coursera.org/share/7b024f7bf9574fab1fecc731b259591c" target="_blank" rel="noopener">
-      <div class="cert-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="edu-row reveal">
+        <div class="edu-abbr" aria-hidden="true">VIT</div>
+        <div>
+          <p class="edu-degree">BCA (Hons), Bachelor of Computer Applications</p>
+          <p class="edu-institution">Vellore Institute of Technology</p>
+          <p class="edu-year">Expected 2027</p>
+          <div class="edu-badges">
+            <span class="edu-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="edu-badge-label">CGPA</span><span class="edu-badge-sep">·</span><span class="edu-badge-val">Top 10 &middot; Y1</span>
+            </span>
+            <span class="edu-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="edu-badge-label">CGPA</span><span class="edu-badge-sep">·</span><span class="edu-badge-val">Top 10 &middot; Y2</span>
+            </span>
+            <span class="edu-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="edu-badge-label">CGPA</span><span class="edu-badge-sep">·</span><span class="edu-badge-val">9.3 &middot; Y3</span>
+            </span>
+          </div>
+        </div>
       </div>
-      <p class="cert-name">IBM Cybersecurity Analyst</p>
-      <p class="cert-issuer">Coursera &mdash; IBM</p>
-    </a>
 
-    <a class="cert-card reveal" href="https://coursera.org/share/37feb7ab579c73ec4240aa38eb3e34eb" target="_blank" rel="noopener">
-      <div class="cert-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+      <div class="reveal">
+        <p class="certs-sub-label">Certifications</p>
+        <div class="certs-list">
+          <a class="cert-item" href="https://coursera.org/share/7b024f7bf9574fab1fecc731b259591c" target="_blank" rel="noopener">
+            <span class="cert-item-name">IBM Cybersecurity Analyst</span>
+            <span class="cert-item-meta">9-course · IBM</span>
+          </a>
+          <a class="cert-item" href="https://coursera.org/share/37feb7ab579c73ec4240aa38eb3e34eb" target="_blank" rel="noopener">
+            <span class="cert-item-name">AWS Cloud Technical Essentials</span>
+            <span class="cert-item-meta">AWS</span>
+          </a>
+        </div>
       </div>
-      <p class="cert-name">AWS Cloud Technical Essentials</p>
-      <p class="cert-issuer">Coursera &mdash; Amazon Web Services</p>
-    </a>
 
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- LANGUAGES -->
-<section id="languages">
-  <p class="section-label reveal">Languages</p>
-  <h2 class="section-title reveal">Spoken</h2>
-
-  <div class="lang-grid">
-    <div class="lang-card reveal">
-      <p class="lang-name">English</p>
-      <p class="lang-level">Fluent</p>
-    </div>
-    <div class="lang-card reveal">
-      <p class="lang-name">Tamil</p>
-      <p class="lang-level">Native</p>
-    </div>
-    <div class="lang-card reveal">
-      <p class="lang-name">German</p>
-      <p class="lang-level">Working</p>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
+<!-- ─── OFF-CLOCK ─── -->
+<div id="off-clock">
+  <div class="section-shell">
+    <div class="section-rule reveal"></div>
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Off-Clock</h2>
+    </div>
+
+    <div class="offclock-wrap reveal">
+      <div class="offclock-stamp-row" aria-hidden="true">
+        <span class="offclock-stamp">UNCLASSIFIED</span>
+      </div>
+      <div class="offclock-grid">
+
+        <div class="offclock-item">
+          <span class="offclock-key">ARCHIVES</span>
+          <span class="offclock-val">
+            Sci-Fi, conspiracy thrillers, and deep lore. Star Wars &amp; Dan Brown.
+            <span class="offclock-sub">currently: re-reading Angels &amp; Demons</span>
+          </span>
+        </div>
+
+        <div class="offclock-item">
+          <span class="offclock-key">GAMES</span>
+          <span class="offclock-val">
+            Age of Empires &middot; Retro NES &middot; Hollow Knight &middot; Apex &middot; Ultrakill
+            <span class="offclock-sub">currently: dying repeatedly in Ultrakill</span>
+          </span>
+        </div>
+
+        <div class="offclock-item">
+          <span class="offclock-key">LINUX</span>
+          <span class="offclock-val">
+            Custom kernels, window managers, dotfiles that will never be finished.
+            <span class="offclock-sub">yes, Arch btw</span>
+          </span>
+        </div>
+
+        <div class="offclock-item">
+          <span class="offclock-key">WRITING</span>
+          <span class="offclock-val">
+            Short fiction. Usually dark. Rarely finished.
+            <span class="offclock-sub">SCP-style is a personal favourite</span>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
 <footer>
-  <p style="margin-bottom: 8px;">
+  <span class="footer-classified" aria-hidden="true">CLASSIFIED</span>
+  <div class="footer-left">
     <a href="mailto:parikshieth@gmail.com">parikshieth@gmail.com</a>
     &nbsp;&mdash;&nbsp;
     <a href="tel:+919962595200">+91 99625 95200</a>
-    &nbsp;&mdash;&nbsp;
-    Vellore, TN, India
-  </p>
-  <p>&copy; 2025 Parikshieth Harish</p>
+  </div>
+
+  <div class="footer-right">&copy; <span id="footer-year"></span> Parikshieth Harish</div>
 </footer>
 
-<div id="cursor-dot"></div>
-<canvas id="cursor-trail"></canvas>
+<!-- ─── DOSSIER OVERLAY ─── -->
+<div id="dossier-overlay" class="dossier-overlay" role="dialog" aria-modal="true" aria-labelledby="dossier-name">
+  <div id="dossier-panel" class="dossier-panel">
+    <div class="dossier-drag-handle" aria-hidden="true"></div>
+    <div class="dossier-folder-tab">
+      <span class="dossier-folder-label">CLASSIFIED FILE</span>
+      <span id="dossier-tab-name" class="dossier-folder-name"></span>
+    </div>
+    <div class="dossier-inner">
+      <div class="dossier-header">
+        <div class="dossier-stamps">
+          <span id="dossier-stamp" class="dossier-stamp">CLEARANCE: ACTIVE</span>
+          <span id="dossier-status-badge" class="dossier-status-badge"></span>
+        </div>
+        <button id="dossier-close" class="dossier-close" aria-label="Close dossier">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          CLOSE FILE
+        </button>
+      </div>
+      <div class="dossier-title-block">
+        <p id="dossier-badge" class="dossier-badge-label"></p>
+        <h2 id="dossier-name" class="dossier-name"></h2>
+        <div class="dossier-meta-row">
+          <span class="dossier-meta-key">OPERATOR</span>
+          <span id="dossier-role" class="dossier-meta-val"></span>
+          <span class="dossier-separator">|</span>
+          <span class="dossier-meta-key">STATUS</span>
+          <span id="dossier-status-text" class="dossier-meta-val"></span>
+        </div>
+      </div>
+      <div class="dossier-redact-bar"></div>
+      <div class="dossier-section">
+        <p class="dossier-section-label">// Overview</p>
+        <p id="dossier-overview" class="dossier-section-body redacted"></p>
+      </div>
+      <div class="dossier-section">
+        <p class="dossier-section-label">// Architecture</p>
+        <p id="dossier-architecture" class="dossier-section-body redacted"></p>
+      </div>
+      <div class="dossier-section">
+        <p class="dossier-section-label">// Operator Contribution</p>
+        <p id="dossier-contribution" class="dossier-section-body redacted"></p>
+      </div>
+      <div class="dossier-section">
+        <p class="dossier-section-label">// Outcome</p>
+        <p id="dossier-outcome" class="dossier-section-body redacted"></p>
+      </div>
+      <div id="dossier-links" class="dossier-links"></div>
+      <div class="dossier-footer">
+        <span class="dossier-footer-text">Parikshieth Harish — Security Clearance Granted</span>
+        <span class="dossier-footer-text" id="dossier-file-id"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── AMBIENT BACKGROUND CANVAS ─── -->
+<canvas id="ambient-bg" aria-hidden="true"></canvas>
+
+<!-- ─── SIDE RAILS ─── -->
+<div class="side-rail side-rail--left" aria-hidden="true">
+  <div class="rail-scan-line"></div>
+  <span class="rail-stamp">TOP SECRET // SCI // NOFORN</span>
+  <div class="rail-data">
+    <span class="rail-data-item" id="rail-coords-l">LAT 12.9716°N</span>
+    <span class="rail-data-item" id="rail-lon-l">LON 79.1588°E</span>
+    <span class="rail-data-item rail-data-item--dim">VIT · VELLORE</span>
+    <span class="rail-data-item" id="rail-time-l">--:--:--</span>
+    <span class="rail-data-item rail-data-item--dim">IST UTC+5:30</span>
+  </div>
+  <span class="rail-stamp rail-stamp--bottom">CLASSIFICATION: RESTRICTED</span>
+</div>
+
+<div class="side-rail side-rail--right" aria-hidden="true">
+  <div class="rail-scan-line"></div>
+  <span class="rail-stamp">PARIKSHIETH HARISH // PROFILE</span>
+  <div class="rail-data">
+    <span class="rail-data-item rail-data-item--dim">SUBJECT-ID</span>
+    <span class="rail-data-item" id="rail-id-r">PH-2027-VIT</span>
+    <span class="rail-data-item rail-data-item--dim">CLEARANCE</span>
+    <span class="rail-data-item" id="rail-status-r">OPEN RESEARCH</span>
+    <span class="rail-data-item rail-data-item--blink" id="rail-uptime-r">SYS ONLINE</span>
+  </div>
+  <span class="rail-stamp rail-stamp--bottom">REF: CV-SEC-2027 // UNCLASSIFIED</span>
+</div>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+<canvas id="cursor-trail" aria-hidden="true"></canvas>
 <script src="main.js"></script>
 </body>
 </html>
