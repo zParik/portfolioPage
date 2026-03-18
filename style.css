@@ -1190,6 +1190,13 @@ body.hackerman .t-cmd {
   color: var(--accent);
 }
 
+.featured-card-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
 .featured-card-status {
   display: flex;
   align-items: center;
