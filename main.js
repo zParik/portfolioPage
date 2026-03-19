@@ -103,6 +103,7 @@ async function runSession(lines, gen) {
       line.appendChild(prompt);
       line.appendChild(cmd);
       termBody.appendChild(line);
+      termBody.scrollTop = termBody.scrollHeight;
       await typeText(cmd, item.text, 42);
       await sleep(180);
     } else {
@@ -111,6 +112,7 @@ async function runSession(lines, gen) {
       out.textContent = item.text;
       line.appendChild(out);
       termBody.appendChild(line);
+      termBody.scrollTop = termBody.scrollHeight;
       await sleep(60);
     }
   }
@@ -126,6 +128,7 @@ async function runSession(lines, gen) {
   cursorLine.appendChild(prompt);
   cursorLine.appendChild(cur);
   termBody.appendChild(cursorLine);
+  termBody.scrollTop = termBody.scrollHeight;
 }
 
 async function loop() {
@@ -359,7 +362,11 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   function closeDossier() {
     if (!isOpen) return;
 
+    // Mark closed immediately so a rapid re-open isn't blocked mid-animation
+    isOpen = false;
+
     const card = currentCard;
+    currentCard = null;
     const cardRect = card ? card.getBoundingClientRect() : null;
     const panelRect = panel.getBoundingClientRect();
 
@@ -394,8 +401,6 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
       // Reset stagger state for next open
       const inner = panel.querySelector('.dossier-inner');
       inner.classList.remove('dossier-scanning', 'dossier-revealed');
-      isOpen = false;
-      currentCard = null;
     }, 340);
   }
 
@@ -553,18 +558,20 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
 /* ─── MOBILE DRAWER TOGGLE ─── */
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('mobile-drawer');
-hamburger.addEventListener('click', () => {
-  const open = drawer.classList.toggle('open');
-  hamburger.classList.toggle('open');
+function setDrawerOpen(open) {
+  drawer.classList.toggle('open', open);
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   document.body.style.overflow = open ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', () => {
+  setDrawerOpen(!drawer.classList.contains('open'));
 });
 // Close drawer when a link inside it is clicked
 drawer.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    drawer.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  a.addEventListener('click', () => setDrawerOpen(false));
 });
 
 /* ─── NAV SCROLL STATE ─── */
@@ -643,6 +650,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 (function () {
   const toast = document.createElement('div');
   toast.id = 'copy-toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
   toast.textContent = '[✓] Copied to clipboard';
   document.body.appendChild(toast);
 
@@ -665,7 +674,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
           // Still open the mail client after a brief delay
           setTimeout(() => { window.location.href = a.href; }, 600);
         }).catch(() => {
-          // clipboard denied — let normal mailto: proceed silently
+          // Clipboard denied — fall through to normal mailto: behaviour
+          window.location.href = a.href;
         });
       }
     });
@@ -848,9 +858,9 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       toggle.classList.remove('is-loading');
       if (labelText) labelText.textContent = 'Hide Earlier Work';
 
-      // Reveal any un-observed elements
-      rows.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
-        el.classList.add('revealed');
+      // Reveal any un-observed elements (IntersectionObserver won't fire on hidden content)
+      rows.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        el.classList.add('visible');
       });
     });
   });

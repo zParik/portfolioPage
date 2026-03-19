@@ -44,6 +44,38 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb, rgba(255,255,255,0.10)) transparent;
+  --scrollbar-thumb: rgba(255,255,255,0.10);
+  --scrollbar-thumb-hover: rgba(255,255,255,0.22);
+}
+
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-hover);
+  filter: brightness(1.3);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* ─── NOISE TEXTURE ─── */
@@ -136,12 +168,22 @@ nav.scrolled {
 }
 
 .nav-logo {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0;
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
+  border: 1px solid var(--border-bright);
+  padding: 4px 10px;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.nav-logo:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  color: var(--accent-bright);
 }
 
 .nav-links {
@@ -492,19 +534,50 @@ nav.scrolled {
   display: inline-block;
 }
 
+/* ─── HERO IMPACT LINE ─── */
+.hero-impact {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 640px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  letter-spacing: -0.2px;
+}
+
+/* ─── HERO BOTTOM ROW (socials + actions side by side) ─── */
+.hero-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.hero-bottom-row .hero-socials {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero-bottom-row .hero-actions {
+  margin-top: 0;
+}
+
 /* ─── METADATA MANIFEST ─── */
 .hero-manifest {
-  margin-top: 32px;
+  margin-top: 36px;
   margin-bottom: 0;
 }
 
 .manifest-rule {
   height: 1px;
   background: linear-gradient(90deg,
-      rgba(167, 139, 250, 0.35),
-      rgba(45, 212, 191, 0.1) 60%,
+      rgba(167, 139, 250, 0.2),
+      rgba(45, 212, 191, 0.07) 60%,
       transparent);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .manifest-grid {
@@ -512,7 +585,7 @@ nav.scrolled {
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   align-items: start;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -527,20 +600,20 @@ nav.scrolled {
 
 .manifest-key {
   font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
+  color: var(--text-tertiary);
+  margin-bottom: 5px;
   display: block;
 }
 
 .manifest-val {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .manifest-val strong {
@@ -621,8 +694,7 @@ nav.scrolled {
   line-height: 1.8;
   max-width: 680px;
   min-width: 0;
-  text-align: justify;
-  text-align-last: left;
+  text-align: left;
   overflow-wrap: break-word;
 }
 
@@ -664,6 +736,42 @@ nav.scrolled {
 
 .hero-social-location {
   cursor: default;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.09);
+  color: var(--text-tertiary);
+  opacity: 0.7;
+  position: relative;
+}
+
+.hero-social-location:hover {
+  border-color: rgba(255, 255, 255, 0.09);
+  color: var(--text-tertiary);
+  background: transparent;
+}
+
+/* Tooltip on location icon */
+.hero-social-location::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface3);
+  border: 1px solid var(--border-bright);
+  color: var(--text-secondary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.hero-social-location:hover::after {
+  opacity: 1;
 }
 
 .hero-actions {
@@ -801,9 +909,14 @@ nav.scrolled {
   font-size: 12.5px;
   line-height: 1.7;
   height: 300px;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
   word-break: break-all;
+  scrollbar-width: none; /* Firefox — hide scrollbar, keep scroll */
+}
+
+.terminal-body::-webkit-scrollbar {
+  display: none; /* Chrome/Safari — hide scrollbar, keep scroll */
 }
 
 /* terminal-body small-mobile overrides handled in the 480px block below */
@@ -1013,20 +1126,26 @@ body.hackerman .t-cmd {
 .featured-projects {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  /* 6 tracks: header | name | desc | stack | stats | cta */
+  grid-template-rows: auto auto auto auto auto auto;
+  column-gap: 16px;
+  row-gap: 0;
   margin-bottom: 8px;
 }
 
 .featured-card {
   position: relative;
-  padding: 28px 28px 24px;
+  padding: 0 28px;
   background: var(--surface);
   border: 1px solid var(--border-bright);
   cursor: pointer;
   transition: border-color 0.25s;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  /* span all 6 row tracks and subgrid children into them */
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
 }
 
 .featured-card::before {
@@ -1176,7 +1295,8 @@ body.hackerman .t-cmd {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  padding-top: 28px;
+  padding-bottom: 16px;
   position: relative;
   z-index: 1;
 }
@@ -1216,7 +1336,8 @@ body.hackerman .t-cmd {
   letter-spacing: -0.5px;
   color: var(--text);
   line-height: 1.2;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  align-self: end;
   position: relative;
   z-index: 1;
   transition: color 0.2s;
@@ -1232,7 +1353,7 @@ body.hackerman .t-cmd {
   font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   position: relative;
   z-index: 1;
 }
@@ -1241,7 +1362,8 @@ body.hackerman .t-cmd {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 20px;
+  align-content: start;
+  padding-bottom: 20px;
   position: relative;
   z-index: 1;
 }
@@ -1265,18 +1387,19 @@ body.hackerman .t-cmd {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
+  align-self: end;
   position: relative;
   z-index: 1;
 }
 
 .featured-card-stat-header {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: var(--text-tertiary);
-
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .featured-card-stats-row {
@@ -1316,6 +1439,26 @@ body.hackerman .t-cmd {
   color: var(--text-tertiary);
 }
 
+/* Primary stat (the impressive result) — larger */
+.featured-card-stat--primary .featured-card-stat-value {
+  font-size: 36px;
+}
+
+/* Secondary stat (the context) — smaller, subordinate */
+.featured-card-stat--secondary .featured-card-stat-value {
+  font-size: 20px;
+  opacity: 0.65;
+}
+
+.featured-card-stat--secondary .featured-card-stat-label {
+  opacity: 0.7;
+}
+
+/* Privacy card — use pink for stat values instead of purple */
+.featured-card--privacy .featured-card-stat-value {
+  color: rgba(212, 106, 146, 0.9);
+}
+
 .featured-card-cta {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
@@ -1323,10 +1466,10 @@ body.hackerman .t-cmd {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-tertiary);
+  padding-bottom: 24px;
   position: relative;
   z-index: 1;
   transition: color 0.2s;
-  margin-top: auto;
 }
 
 .featured-card:hover .featured-card-cta {
@@ -2396,11 +2539,11 @@ footer::before {
   overflow-y: auto;
   flex: 1;
   scrollbar-width: thin;
-  scrollbar-color: rgba(167, 139, 250, 0.3) transparent;
+  scrollbar-color: rgba(124, 58, 237, 0.45) transparent;
 }
 
 .dossier-inner::-webkit-scrollbar {
-  width: 3px;
+  width: 2px;
 }
 
 .dossier-inner::-webkit-scrollbar-track {
@@ -2408,8 +2551,12 @@ footer::before {
 }
 
 .dossier-inner::-webkit-scrollbar-thumb {
-  background: rgba(167, 139, 250, 0.3);
-  border-radius: 2px;
+  background: rgba(124, 58, 237, 0.45);
+  border-radius: 0;
+}
+
+.dossier-inner::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.7);
 }
 
 .dossier-header {
@@ -2767,8 +2914,10 @@ footer::before {
   /* Featured cards: stay 2-col on tablet */
 
   .featured-card {
-    padding: 22px 22px 20px;
+    padding: 0 22px;
   }
+
+  .featured-card-header { padding-top: 22px; padding-bottom: 14px; }
 
   .featured-card-name {
     font-size: 19px;
@@ -2778,7 +2927,10 @@ footer::before {
     font-size: 24px;
   }
 
-  /* Spec grid: 2-col on tablet */
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 30px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 18px; }
+
+/* Spec grid: 2-col on tablet */
   .spec-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2872,6 +3024,19 @@ footer::before {
     gap: 8px;
   }
 
+  /* Hero impact — tighten on mobile */
+  .hero-impact {
+    font-size: 17px;
+    margin-top: 16px;
+  }
+
+  /* Hero bottom row — stack vertically on mobile */
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
   /* Hero abstract — collapse label above text for readability */
   .hero-abstract {
     grid-template-columns: 1fr;
@@ -2882,15 +3047,26 @@ footer::before {
     padding-top: 0;
   }
 
-  /* Featured cards: stack on mobile */
+  /* Featured cards: stack on mobile — revert to flex since subgrid needs 2 cols */
   .featured-projects {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 12px;
   }
 
   .featured-card {
-    padding: 22px 20px 20px;
+    grid-row: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 20px;
   }
+
+  .featured-card-header { padding-top: 0; padding-bottom: 14px; }
+  .featured-card-name   { padding-bottom: 8px; align-self: auto; }
+  .featured-card-desc   { padding-bottom: 16px; }
+  .featured-card-stack  { padding-bottom: 16px; }
+  .featured-card-stats  { padding-bottom: 20px; align-self: auto; margin-top: auto; }
+  .featured-card-cta    { padding-bottom: 0; }
 
   .featured-card-name {
     font-size: 18px;
@@ -2903,6 +3079,9 @@ footer::before {
   .featured-card-stat-value {
     font-size: 22px;
   }
+
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 28px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 16px; }
 
   /* Declass grid: single column on mobile */
   .declass-grid {
@@ -3142,7 +3321,7 @@ footer::before {
 
   /* Featured cards tighter on small screens */
   .featured-card {
-    padding: 18px 16px 16px;
+    padding: 18px 16px;
   }
 
   .featured-card-name {
@@ -3157,6 +3336,9 @@ footer::before {
   .featured-card-stat-value {
     font-size: 20px;
   }
+
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 26px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 15px; }
 
   /* Declass cards tighter */
   .declass-card {
@@ -3239,47 +3421,62 @@ button:focus-visible,
 .offclock-wrap {
   margin-top: 40px;
   position: relative;
+  /* breathable container — let the stamp breathe */
+  padding: 48px 0 8px;
 }
 
-.offclock-stamp-row {
-  margin-bottom: 28px;
-}
-
-.offclock-stamp {
+/* Large ambient UNCLASSIFIED watermark */
+.offclock-bg-stamp {
+  position: absolute;
+  top: 0;
+  left: -8px;
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
+  font-size: clamp(52px, 8vw, 88px);
+  font-weight: 900;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #34d399;
-  border: 2px solid #34d399;
-  padding: 3px 10px;
-  border-radius: 2px;
-  display: inline-block;
-  transform: rotate(-0.8deg);
-  text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
-  box-shadow: 0 0 12px rgba(52, 211, 153, 0.06);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(52, 211, 153, 0.22);
+  transform: rotate(-2.5deg);
+  transform-origin: left top;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+  /* double-rule stamp border: inner border + gap via padding + outer outline */
+  padding: 0.08em 0.22em 0.1em;
+  border: 2px solid rgba(52, 211, 153, 0.2);
+  outline: 5px solid rgba(52, 211, 153, 0.2);
+  outline-offset: 4px;
 }
 
 .offclock-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  align-items: start;
   gap: 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-bright);
   border-radius: 2px;
-  overflow: hidden;
   max-width: 680px;
+  position: relative;
+  z-index: 1;
 }
 
 .offclock-item {
-  display: grid;
-  grid-template-columns: 88px 1fr;
-  align-items: baseline;
-  gap: 0;
-  padding: 18px 20px;
+  padding: 0;
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
-  transition: background 0.2s;
+  transition: background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.offclock-item-inner {
+  padding: 22px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .offclock-item:nth-child(2n) {
@@ -3290,19 +3487,35 @@ button:focus-visible,
   border-bottom: none;
 }
 
+/* Left accent bar revealed on hover */
+.offclock-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #34d399;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.offclock-item:hover::before {
+  transform: scaleY(1);
+}
+
 .offclock-item:hover {
-  background: var(--accent-dim);
+  background: rgba(52, 211, 153, 0.04);
 }
 
 .offclock-key {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--accent);
-  padding-top: 2px;
-  flex-shrink: 0;
+  color: #34d399;
 }
 
 .offclock-val {
@@ -3310,34 +3523,31 @@ button:focus-visible,
   font-size: 14px;
   font-weight: 400;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
+/* The good stuff — always visible, styled as terminal comment */
 .offclock-sub {
   display: block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   color: var(--text-tertiary);
-  margin-top: 4px;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .offclock-item:hover .offclock-sub {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .offclock-sub {
-    transform: none;
-  }
+  color: #34d399;
+  opacity: 0.8;
 }
 
 @media (max-width: 600px) {
+  .offclock-bg-stamp {
+    font-size: 40px;
+    left: -4px;
+  }
+
   .offclock-grid {
     grid-template-columns: 1fr;
   }
