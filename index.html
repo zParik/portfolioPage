@@ -424,23 +424,25 @@
 
         <div class="declass-card cat-hack dossier-trigger reveal"
           role="button" tabindex="0"
-          aria-label="Distributed Network and IPC — Cisco topology with Java inter-process communication. Press Enter to view details."
+          aria-label="SWITCHBOARD — Networking hackathon: Cisco Packet Tracer topology and concurrent Java socket server for a simulated bank. Press Enter to view details."
           data-dossier-clearance="DECLASSIFIED"
-          data-dossier-name="Distributed Network &amp; IPC"
-          data-dossier-badge="Hackathon — Networking"
-          data-dossier-role="Network Architect &amp; Developer"
+          data-dossier-unredacted="true"
+          data-dossier-name="SWITCHBOARD"
+          data-dossier-badge="Hackathon — Networking &amp; IPC"
+          data-dossier-role="Team Lead &amp; Sole Socket Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Modelled a network architecture for an organization with distributed resources, including an internal inter-process communication application."
-          data-dossier-architecture="Full Cisco Packet Tracer topology with VLANs, inter-VLAN routing, DHCP, DNS, and redundant WAN links. Java IPC app uses sockets for cross-department messaging, simulating real organisational comms."
-          data-dossier-contribution="Designed the full network topology, configured all Cisco devices, and built the Java IPC application."
-          data-dossier-outcome="Hackathon submission. Demonstrated end-to-end connectivity across 4 simulated departments with sub-10ms simulated latency."
+          data-dossier-overview="Networking hackathon submission (Nov 2024) combining a Cisco Packet Tracer enterprise network and a concurrent Java socket server simulating a bank transaction system. The Packet Tracer half models 'Quizlet' — a real-world-style online education org with an AWS cluster, MongoDB servers, and a segmented HQ network. The socket half is a live multi-client bank where clients can credit and debit each other in real time. Selected as one of three teams to present to the external evaluator."
+          data-dossier-architecture="Packet Tracer: 4 ACL-segmented departments (R&amp;D, IT Support, HR/Admin, Dev) with 64 IPs each via subnetting, an AWS cluster zone, a Core Server &amp; DB zone, a dev repository node, and an internet-facing zone — all connected through a core router backbone. Access control enforces strict per-department resource policies. Socket server: dual HashMaps — one mapping usernames to PrintWriter streams for message routing, one mapping usernames to integer balances for shared state. Each client connection spawns a dedicated ClientHandler thread. Clients run an async MessageReceiver thread to receive server pushes without blocking input. The server broadcasts the active client list to all connected peers after every transaction."
+          data-dossier-contribution="Team lead across both tracks. Architected and built the entire Java socket server from scratch — concurrent client handling, hashmap-based routing, balance state management, and async client-side receiver. Provided architectural direction and ideas for the Packet Tracer topology while Megha and Chetak handled the Cisco configuration."
+          data-dossier-outcome="Top 3 out of all competing teams, selected to present to the external evaluator. Demonstrated 4 simultaneous clients performing concurrent transactions with consistent shared state — no race conditions, no dropped messages."
+          data-dossier-github="https://github.com/zParik/College-Code-Stuff"
         >
           <div class="declass-card-top">
-            <span class="declass-card-domain">Networking</span>
+            <span class="declass-card-domain">Hackathon</span>
             <span class="declass-card-arrow" aria-hidden="true">&#8250;</span>
           </div>
-          <h3 class="declass-card-name">Distributed Network</h3>
-          <p class="declass-card-desc">Cisco Packet Tracer topology + Java IPC across 4 departments.</p>
+          <h3 class="declass-card-name">SWITCHBOARD</h3>
+          <p class="declass-card-desc">Concurrent Java socket bank + Cisco enterprise topology. Top 3 at networking hackathon.</p>
         </div>
 
         <div class="declass-card cat-sys dossier-trigger reveal"
@@ -694,6 +696,10 @@
           <a class="cert-item" href="https://coursera.org/share/37feb7ab579c73ec4240aa38eb3e34eb" target="_blank" rel="noopener">
             <span class="cert-item-name">AWS Cloud Technical Essentials</span>
             <span class="cert-item-meta">AWS</span>
+          </a>
+          <a class="cert-item" href="https://www.udemy.com/certificate/UC-5e650896-ec1e-4ee8-bb94-787b11165c5e/" target="_blank" rel="noopener">
+            <span class="cert-item-name">The Complete JavaScript Course 2023</span>
+            <span class="cert-item-meta">Jonas Schmedtmann · Udemy</span>
           </a>
         </div>
       </div>
