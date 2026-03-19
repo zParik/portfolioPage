@@ -365,7 +365,7 @@ nav.scrolled {
 
 
 /* ─── HERO DOSSIER FRAME ─── */
-/* Corner registration marks — L-shaped arms drawn as background gradients */
+/* Corner registration marks: L-shaped arms drawn as background gradients */
 .hero::before {
   content: '';
   position: absolute;
@@ -456,7 +456,7 @@ nav.scrolled {
   width: 100%;
 }
 
-/* Left document margin rule — fades top and bottom */
+/* Left document margin rule: fades top and bottom */
 .hero-inner::before {
   content: '';
   position: absolute;
@@ -912,11 +912,11 @@ nav.scrolled {
   overflow-y: auto;
   overflow-x: hidden;
   word-break: break-all;
-  scrollbar-width: none; /* Firefox — hide scrollbar, keep scroll */
+  scrollbar-width: none; /* Firefox: hide scrollbar, keep scroll */
 }
 
 .terminal-body::-webkit-scrollbar {
-  display: none; /* Chrome/Safari — hide scrollbar, keep scroll */
+  display: none; /* Chrome/Safari: hide scrollbar, keep scroll */
 }
 
 /* terminal-body small-mobile overrides handled in the 480px block below */
@@ -1117,7 +1117,7 @@ body.hackerman .t-cmd {
 
 .index-separator-label::before,
 .index-separator-label::after {
-  content: '—';
+  content: '-';
   opacity: 0.4;
   margin: 0 4px;
 }
@@ -1439,12 +1439,12 @@ body.hackerman .t-cmd {
   color: var(--text-tertiary);
 }
 
-/* Primary stat (the impressive result) — larger */
+/* Primary stat (the impressive result): larger */
 .featured-card-stat--primary .featured-card-stat-value {
   font-size: 36px;
 }
 
-/* Secondary stat (the context) — smaller, subordinate */
+/* Secondary stat (the context): smaller, subordinate */
 .featured-card-stat--secondary .featured-card-stat-value {
   font-size: 20px;
   opacity: 0.65;
@@ -1454,7 +1454,7 @@ body.hackerman .t-cmd {
   opacity: 0.7;
 }
 
-/* Privacy card — use pink for stat values instead of purple */
+/* Privacy card: use pink for stat values instead of purple */
 .featured-card--privacy .featured-card-stat-value {
   color: rgba(212, 106, 146, 0.9);
 }
@@ -1623,7 +1623,7 @@ body.hackerman .t-cmd {
 .featured-card:hover .source-indicator,
 .featured-card:hover .demo-indicator               { color: var(--accent); }
 
-/* Earlier / high-school — visually subordinate */
+/* Earlier / high-school: visually subordinate */
 .declass-grid--muted {
   background: var(--border);
   border: 1px solid var(--border);
@@ -1672,7 +1672,7 @@ body.hackerman .t-cmd {
   background: var(--accent) !important;
 }
 
-/* Status dot — shared */
+/* Status dot: shared */
 .status-dot {
   width: 6px;
   height: 6px;
@@ -2202,7 +2202,7 @@ body.hackerman .t-cmd {
   padding-left: 10px;
 }
 
-/* Soft skills footer note — DEPRECATED, kept for safety */
+/* Soft skills footer note - DEPRECATED, kept for safety */
 .spec-footnote {
   font-family: 'DM Sans', system-ui, sans-serif;
   margin-top: 28px;
@@ -3018,26 +3018,26 @@ footer::before {
     margin: 24px 0 16px;
   }
 
-  /* Hero eyebrow — allow wrapping, hide cursor on wrap to prevent orphaned _ */
+  /* Hero eyebrow: allow wrapping, hide cursor on wrap to prevent orphaned _ */
   .hero-eyebrow {
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  /* Hero impact — tighten on mobile */
+  /* Hero impact: tighten on mobile */
   .hero-impact {
     font-size: 17px;
     margin-top: 16px;
   }
 
-  /* Hero bottom row — stack vertically on mobile */
+  /* Hero bottom row: stack vertically on mobile */
   .hero-bottom-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
 
-  /* Hero abstract — collapse label above text for readability */
+  /* Hero abstract: collapse label above text for readability */
   .hero-abstract {
     grid-template-columns: 1fr;
     gap: 4px;
@@ -3047,7 +3047,7 @@ footer::before {
     padding-top: 0;
   }
 
-  /* Featured cards: stack on mobile — revert to flex since subgrid needs 2 cols */
+  /* Featured cards: stack on mobile, revert to flex since subgrid needs 2 cols */
   .featured-projects {
     grid-template-columns: 1fr;
     grid-template-rows: none;
@@ -3088,13 +3088,13 @@ footer::before {
     grid-template-columns: 1fr;
   }
 
-  /* Hero social icons — 44px touch targets */
+  /* Hero social icons: 44px touch targets */
   .hero-social {
     width: 44px;
     height: 44px;
   }
 
-  /* Buttons — comfortable touch height */
+  /* Buttons: comfortable touch height */
   .btn-primary,
   .btn-secondary {
     min-height: 44px;
@@ -3116,7 +3116,7 @@ footer::before {
     gap: 8px;
   }
 
-  /* Ghost "CLASSIFIED" watermark — scale down on mobile */
+  /* Ghost "CLASSIFIED" watermark: scale down on mobile */
   .footer-classified {
     font-size: 28px;
     letter-spacing: 6px;
@@ -3141,7 +3141,7 @@ footer::before {
     padding: 18px 18px calc(22px + env(safe-area-inset-bottom));
   }
 
-  /* Dossier close button — larger touch area */
+  /* Dossier close button: larger touch area */
   .dossier-close {
     padding: 10px 14px;
   }
@@ -3259,7 +3259,7 @@ footer::before {
   transition: filter 0.15s, transform 0.15s;
 }
 
-/* Only the red dot is interactive — amber/green are decorative */
+/* Only the red dot is interactive: amber/green are decorative */
 .terminal-dot.red {
   cursor: pointer;
 }
@@ -3307,7 +3307,7 @@ footer::before {
     border-bottom: none;
   }
 
-  /* abstract already collapsed at 768px — just tune sizes */
+  /* abstract already collapsed at 768px, just tune sizes */
   .abstract-marker {
     font-size: 10px;
   }
@@ -3376,7 +3376,7 @@ footer::before {
   }
 }
 
-/* Dossier drag handle — hidden on desktop, shown as pill on mobile bottom sheet */
+/* Dossier drag handle: hidden on desktop, shown as pill on mobile bottom sheet */
 .dossier-drag-handle {
   display: none;
 }
@@ -3421,7 +3421,7 @@ button:focus-visible,
 .offclock-wrap {
   margin-top: 40px;
   position: relative;
-  /* breathable container — let the stamp breathe */
+  /* breathable container: let the stamp breathe */
   padding: 48px 0 8px;
 }
 
@@ -3526,7 +3526,7 @@ button:focus-visible,
   line-height: 1.55;
 }
 
-/* The good stuff — always visible, styled as terminal comment */
+/* The good stuff: always visible, styled as terminal comment */
 .offclock-sub {
   display: block;
   font-family: var(--font-mono);
@@ -3777,7 +3777,7 @@ button:focus-visible,
     transition-duration: 0.01ms !important;
   }
 
-  /* Keep scroll reveal visible — don't leave content hidden */
+  /* Keep scroll reveal visible: don't leave content hidden */
   .reveal {
     opacity: 1;
     transform: none;

@@ -12,7 +12,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   observer.observe(el);
 });
 
-// Hero content is always above fold — make visible immediately
+// Hero content is always above fold, make visible immediately
 document.querySelectorAll('.hero .reveal, .hero-inner, .hero-name, .hero-eyebrow, .hero-manifest, .hero-abstract, .hero-socials, .hero-actions').forEach(el => el.classList.add('visible'));
 
 /* ─── TERMINAL ENGINE ─── */
@@ -35,7 +35,7 @@ const SESSIONS = [
     { type: 'cmd', text: 'python indoor_nav.py --camera 0 --mode assist' },
     { type: 'out', cls: 'warn', text: '[*] Loading YOLOv8-seg model...' },
     { type: 'out', cls: 'ok',   text: '[✓] Objects in frame: door(0.97), chair(0.91)' },
-    { type: 'out', cls: 'ok',   text: '[✓] Path clear — proceed 2.1 m forward' },
+    { type: 'out', cls: 'ok',   text: '[✓] Path clear, proceed 2.1 m forward' },
   ],
   [
     { type: 'cmd', text: 'nmap -sV --script vuln 192.168.1.0/24' },
@@ -47,7 +47,7 @@ const SESSIONS = [
     { type: 'cmd', text: 'vim resume.c' },
     { type: 'out', cls: '',     text: '-- INSERT --   [vim-mode text editor]' },
     { type: 'cmd', text: 'gcc -O2 -o editor editor.c && ./editor' },
-    { type: 'out', cls: 'ok',   text: "Parik's editor v0.1  —  Ctrl-Q to quit" },
+    { type: 'out', cls: 'ok',   text: "Parik's editor v0.1  |  Ctrl-Q to quit" },
   ],
   [
     { type: 'cmd', text: 'python asl_transcribe.py --source webcam' },
@@ -58,7 +58,7 @@ const SESSIONS = [
   [
     { type: 'cmd', text: 'python tictactoe.py --mode minimax --depth 9' },
     { type: 'out', cls: 'warn', text: '[*] Minimax tree: 255168 nodes evaluated' },
-    { type: 'out', cls: 'ok',   text: '[✓] Optimal move: (1,1) — centre' },
+    { type: 'out', cls: 'ok',   text: '[✓] Optimal move: (1,1) - centre' },
     { type: 'out', cls: 'ok',   text: 'Result: Draw  (perfect play enforced)' },
   ],
   [
@@ -143,7 +143,7 @@ async function loop() {
 
 setTimeout(loop, 800);
 
-/* ─── CUSTOM CURSOR — comet trail (fine pointer / desktop only) ─── */
+/* ─── CUSTOM CURSOR - comet trail (fine pointer / desktop only) ─── */
 if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   const dot    = document.getElementById('cursor-dot');
   const canvas = document.getElementById('cursor-trail');
@@ -304,7 +304,7 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     isOpen = true;
     currentCard = card;
 
-    // FIRST — capture card position before anything changes
+    // FIRST: capture card position before anything changes
     const cardRect = card.getBoundingClientRect();
 
     // Populate content
@@ -322,7 +322,7 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     panel.getBoundingClientRect(); // trigger reflow
     const panelRect = panel.getBoundingClientRect();
 
-    // INVERT — transform that makes the panel sit exactly over the card
+    // INVERT: transform that makes the panel sit exactly over the card
     const dx = cardRect.left + cardRect.width  / 2 - (panelRect.left + panelRect.width  / 2);
     const dy = cardRect.top  + cardRect.height / 2 - (panelRect.top  + panelRect.height / 2);
     const sx = cardRect.width  / panelRect.width;
@@ -342,7 +342,7 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     inner.classList.remove('dossier-revealed');
     inner.classList.add('dossier-scanning');
 
-    // PLAY — one rAF is enough now that the transform is already applied
+    // PLAY: one rAF is enough now that the transform is already applied
     requestAnimationFrame(() => {
       panel.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease';
       panel.style.transform  = 'translate(0,0) scale(1,1)';
@@ -404,7 +404,7 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     }, 340);
   }
 
-  // Wire up triggers — click and keyboard (Enter/Space)
+  // Wire up triggers: click and keyboard (Enter/Space)
   document.querySelectorAll('.dossier-trigger').forEach(card => {
     card.addEventListener('click', () => openDossier(card));
     card.addEventListener('keydown', e => {
@@ -473,7 +473,7 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   }, { passive: true });
 }());
 
-/* ─── KONAMI CODE — HACKERMAN MODE ─── */
+/* ─── KONAMI CODE - HACKERMAN MODE ─── */
 (function () {
   const SEQ = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let pos = 0;
@@ -503,8 +503,8 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     { type: 'cmd', text: 'cat /etc/shadow | hashcat --mode 1800' },
     { type: 'out', text: '[+] Hash cracked: hunter2' },
     { type: 'out', text: '[+] All your base are belong to us.' },
-    { type: 'cmd', text: 'echo "jk lol — Parik was here 😈"' },
-    { type: 'out', text: 'jk lol — Parik was here 😈' },
+    { type: 'cmd', text: 'echo "jk lol - Parik was here 😈"' },
+    { type: 'out', text: 'jk lol - Parik was here 😈' },
   ];
 
   async function triggerHackerman() {
@@ -674,7 +674,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
           // Still open the mail client after a brief delay
           setTimeout(() => { window.location.href = a.href; }, 600);
         }).catch(() => {
-          // Clipboard denied — fall through to normal mailto: behaviour
+          // Clipboard denied, fall through to normal mailto: behaviour
           window.location.href = a.href;
         });
       }
@@ -790,7 +790,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     function fillNext() {
       if (currentBlock >= TOTAL_BLOCKS) {
-        // All filled — pulse to green
+        // All filled: pulse to green
         blockEls.forEach(b => {
           b.className = 'ewt-block filled-full';
           b.textContent = BLOCK_FILLED;
@@ -918,14 +918,14 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       baseOpacity: 0.04 + Math.random() * 0.08,
       pingTimer: 400 + Math.random() * 1200,  // frames until first ping (staggered start)
       pingAge: -1,                              // -1 = no ping active
-      PING_DURATION: 240,                       // ~4s at 60fps — very slow fade
+      PING_DURATION: 240,                       // ~4s at 60fps, very slow fade
       color: Math.random() < 0.7 ? ACCENT_V : ACCENT_T,
     };
   }
 
   let nodes = Array.from({ length: NODE_COUNT }, makeNode);
 
-  // Connection edges — pairs of nearby nodes get a faint line
+  // Connection edges: pairs of nearby nodes get a faint line
   function getEdges() {
     const MAX_DIST = 160;
     const edges = [];
