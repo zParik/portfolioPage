@@ -2937,6 +2937,34 @@ footer::before {
   padding-left: 14px;
 }
 
+/* ─── DOSSIER FIELD STRUCTURE ─── */
+.df-label {
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.df-bullet {
+  display: block;
+  padding-left: 14px;
+  position: relative;
+  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.df-bullet::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: rgba(167, 139, 250, 0.5);
+}
+.dossier-section-body.redacted .df-bullet::before,
+.dossier-section-body.redacted .df-label {
+  color: transparent;
+}
+
 /* ─── REDACTED STATE ─── */
 .dossier-section-body.redacted {
   color: transparent;

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Parikshieth Harish</title>
+  <meta name="google-site-verification" content="6oEq_tf1xUqrzgPqAeHx71kW3eQKscvp-yzKYCR2a14" />
   <meta name="description" content="Computer Vision &amp; Cybersecurity Researcher. Built a 3D-CNN EDR achieving 88% accuracy on unseen malware families. Research spans endpoint security, assistive AI, and applied deep learning." />
   <meta property="og:title" content="Parikshieth Harish" />
   <meta property="og:description" content="Computer Vision &amp; Cybersecurity Researcher. Built a 3D-CNN EDR achieving 88% accuracy on unseen malware families." />
@@ -172,9 +173,9 @@
           data-dossier-badge="Active — Present | CyberSecurity — Computer Vision"
           data-dossier-role="Sole Architect &amp; Researcher"
           data-dossier-status="ONGOING"
-          data-dossier-overview="Proactive malware detection system that maps PE binaries into 6-channel 3D volumetric tensors using Morton Z-order curves and classifies them with a 3D ResNet-18. Trained on ~58,000 samples (VirusShare + clean Windows PEs). Paper under review at Scientific Reports."
-          data-dossier-architecture="PE sections (.text, .code, .rdata, .idata, .data, .edata) are mapped into a 64³ voxel grid via Morton Z-order curve for locality preservation. Each voxel carries 6 channels: raw byte value, local entropy, code mask, import density, string density, and data-presence mask. A 3D ResNet-18 with Squeeze-and-Excitation attention and masked global average pooling classifies the volume. Inference: 3.3ms per sample."
-          data-dossier-contribution="Conceived the research hypothesis, developed the Morton-curve volumetric encoding and multi-channel feature scheme, identified and resolved density shortcut-learning via masking + SE attention, ran all experiments, and drafted the manuscript."
+          data-dossier-overview="Proactive malware detection: PE binaries mapped into 6-channel 3D volumetric tensors, classified by a 3D ResNet-18.||Trained on ~58,000 samples (VirusShare + clean Windows PEs). Paper under review at Scientific Reports.||Inference: 3.3ms per sample."
+          data-dossier-architecture="Stack: 3D ResNet-18 + SE attention + Morton Z-order encoding||6 PE sections (.text, .code, .rdata, .idata, .data, .edata) mapped into a 64³ voxel grid via Morton Z-curve for locality preservation.||Each voxel: 6 channels — raw byte value, local entropy, code mask, import density, string density, data-presence mask.||Masked global average pooling + SE attention resolves density shortcut-learning."
+          data-dossier-contribution="Conceived the research hypothesis and designed the Morton-curve volumetric encoding scheme.||Identified and resolved density shortcut-learning via masking + SE attention — the key technical insight.||Ran all experiments and drafted the manuscript."
           data-dossier-outcome="88% accuracy on family-disjoint held-out evaluation (TheZoo vs VirusShare) with 11% FNR — designed to test generalization to unseen malware families. 99% accuracy / 0.9971 ROC-AUC on random split for comparison."
         >
           <div class="featured-card-header">
@@ -212,9 +213,9 @@
           data-dossier-badge="Active — Present | Privacy — Cryptography"
           data-dossier-role="Sole Designer &amp; Implementer"
           data-dossier-status="ONGOING"
-          data-dossier-overview="Proof-of-concept privacy-preserving age verification provider. Uses RSA blind signatures (Chaum scheme) so the verifier never knows where a token is used and the website never learns who the user is."
-          data-dossier-architecture="Three-party system: Issuer runs SCRFD face analysis (ONNX) and issues RSA-blinded tokens. User blinds the token before submission; issuer signs without seeing the final form. Website verifies locally against issuer public key. Zero server callbacks, zero PII stored."
-          data-dossier-contribution="Designed the full cryptographic protocol, implemented the blind signature flow, integrated InsightFace/ONNX for age estimation, and built the Node/Express issuer service."
+          data-dossier-overview="PoC: privacy-preserving age verification using RSA blind signatures (Chaum scheme).||The verifier never knows where a token is used; the website never learns who the user is.||Zero server callbacks. Zero PII stored."
+          data-dossier-architecture="Stack: Node/Express + InsightFace (SCRFD, ONNX) + RSA blind signatures||Three-party flow: Issuer analyzes face and issues blinded token -> User blinds token before submission -> Issuer signs without seeing final form.||Website verifies locally against issuer public key — no round-trip required."
+          data-dossier-contribution="Designed the full cryptographic protocol (blind signature flow end-to-end).||Integrated InsightFace/SCRFD via ONNX for age estimation.||Built the Node/Express issuer service."
           data-dossier-outcome="Working PoC demonstrating unlinkable, zero-knowledge age verification. Novel application of Chaum blind signatures to identity verification."
           data-dossier-github="https://github.com/zParik/NotBigBrother"
         >
@@ -263,9 +264,9 @@
           data-dossier-badge="Privacy"
           data-dossier-role="Full-Stack Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Built a Tor-inspired anonymous distributed messaging system with a relay network. Users are identified solely by cryptographic hash-derived codenames; no email, no real name. Messages are AES-256 encrypted client-side before the relay ever touches them; the relay stores only ciphertext. Full contact system with bidirectional friend requests, encrypted profiles, read receipts, and message TTL."
-          data-dossier-architecture="Three-tier Node.js/Express architecture: main server (MongoDB, JWT auth, relay registry + heartbeat monitoring), independently deployable relay nodes (store messages locally, main server never sees content), and a React 19 + TailwindCSS 4 + Tanstack Router frontend. Conversation keys derived via SHA256 of both user hashes; message content, sender, and receiver hashes all AES-encrypted client-side. Profile fields (username, bio, status) also encrypted. 7-day message TTL via MongoDB TTL index. Multi-hop relay routing infrastructure stubbed for future phases."
-          data-dossier-contribution="Sole developer. Designed the full distributed architecture from scratch: relay registration/heartbeat system, anonymous identity generation, JWT auth flow, bidirectional contact system, client-side encryption scheme, and the entire React frontend."
+          data-dossier-overview="Tor-inspired anonymous distributed messaging. Users identified by cryptographic hash-derived codenames — no email, no real name.||Messages AES-256 encrypted client-side; the relay stores only ciphertext, never plaintext.||Full contact system: bidirectional friend requests, encrypted profiles, read receipts, 7-day message TTL."
+          data-dossier-architecture="Stack: Node.js/Express + MongoDB + React 19 + TailwindCSS 4 + Tanstack Router||Three-tier: main server (relay registry + heartbeat) -> independently deployable relay nodes -> React frontend.||Conversation keys via SHA256 of both user hashes; message content, sender hash, receiver hash all AES-encrypted client-side.||Profile fields (username, bio, status) also encrypted. Multi-hop onion routing stubbed for next phase."
+          data-dossier-contribution="Sole developer — designed the full distributed architecture from scratch.||Built: relay registration/heartbeat system, anonymous identity generation, JWT auth flow, bidirectional contact system, client-side encryption, entire React frontend."
           data-dossier-outcome="Fully functional 1-to-1 anonymous messaging system. Relay network, encrypted auth, contact management, profile privacy, and end-to-end encrypted messaging all operational. Multi-hop onion routing and perfect forward secrecy are planned next phases."
           data-dossier-github="https://github.com/zParik/ARCHON"
         >
@@ -286,10 +287,10 @@
           data-dossier-badge="Accessibility · Computer Vision"
           data-dossier-role="Lead Developer &amp; Team Lead"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Deep learning-powered real-time indoor navigation assistance system for blind and visually impaired individuals. Built for UCSC316L Computer Vision (Fall 2025–26). YOLOv8x detects 600+ object classes from Open Images V7 while Depth Anything V2 Small (ByteDance) estimates monocular depth. DeepSORT + MobileNetV2 tracks objects across frames. Reactive navigation engine issues directional audio cues via Web Speech API every 500ms. Voice command recognition enables hands-free control. Gyroscope-based image rotation correction compensates for phone orientation."
-          data-dossier-architecture="Distributed client-server architecture: mobile browser captures live video and streams JPEG frames to a GPU-accelerated Flask backend. YOLOv8x (Open Images V7, 600+ classes) runs object detection; Depth Anything V2 Small runs an async depth pipeline (14ms GPU) decoupled from detection. DeepSORT with MobileNetV2 re-ID handles multi-object tracking. Reactive navigation engine replaces classical A*: generates directional instructions (move forward / turn left / turn right / stop) via perspective-aware movement analysis and a 500+ object heights DB for motion-based depth calibration (no fixed height assumptions). Request ID tracking eliminates stale response race conditions. TensorRT optimization on NVIDIA RTX GPUs. Vanilla JS frontend with Web Speech API for audio output and voice command input."
-          data-dossier-contribution="Led a 3-person team (23BCA0127, 23BCA0092, 23BCA0105) under Dr. Shunmuga Perumal. Architected and built the full CV pipeline: YOLOv8x inference, Depth Anything V2 integration, DeepSORT tracking, async depth pipeline, reactive navigation engine, and JSON-safe serialization layer. Designed spatial reasoning heuristics including perspective-aware movement analysis and motion-based depth calibration. Built the Flask API and the vanilla JS frontend including Web Speech API integration, gyroscope rotation correction, and voice command recognition."
-          data-dossier-outcome="25–40× speedup over the initial CPU prototype (1–3 FPS CPU → 10–16 FPS GPU with TensorRT). 60–100ms total end-to-end latency on GPU. Manually collected and annotated dataset of 4,226 images expanded to 21,126 via augmentation with YOLO OBB annotations. 43 bugs resolved (13 critical, 17 high, 13 medium) across coordinate systems, threading, CUDA/TensorRT, stale data, and navigation logic. Demonstrated live as assistive AI research at VIT with all three demo scenarios."
+          data-dossier-overview="Real-time indoor navigation assistant for the visually impaired. Built for UCSC316L Computer Vision (Fall 2025–26).||Detects 600+ object classes (Open Images V7) via YOLOv8x; monocular depth via Depth Anything V2 Small (14ms GPU).||DeepSORT + MobileNetV2 re-ID tracks objects across frames.||Reactive navigation engine issues directional audio cues (Web Speech API) every 500ms — no fixed depth assumptions.||Hands-free voice command input; gyroscope-based frame rotation correction for phone orientation."
+          data-dossier-architecture="Stack: Flask + YOLOv8x + Depth Anything V2 + DeepSORT + TensorRT (NVIDIA RTX)||Mobile browser streams JPEG frames to GPU-accelerated Flask backend. Detection and depth pipelines run async and decoupled.||Reactive navigation engine (replaces classical A*): perspective-aware movement analysis + 500+ object heights DB for motion-based depth calibration.||Request ID tracking eliminates stale-response race conditions. Vanilla JS frontend with Web Speech API for audio I/O."
+          data-dossier-contribution="Role: Lead developer in a 3-person team (under Dr. Shunmuga Perumal).||Architected the full CV pipeline: YOLOv8x inference, Depth Anything V2 integration, DeepSORT tracking, async depth pipeline, reactive navigation engine, JSON-safe serialization.||Designed spatial reasoning heuristics: perspective-aware movement analysis and motion-based depth calibration.||Built the Flask API and the entire vanilla JS frontend — Web Speech API, gyroscope correction, voice commands."
+          data-dossier-outcome="25–40× speedup over the initial CPU prototype (1–3 FPS CPU -> 10–16 FPS GPU with TensorRT). 60–100ms total end-to-end latency on GPU. Manually collected and annotated dataset of 4,226 images expanded to 21,126 via augmentation with YOLO OBB annotations. 43 bugs resolved (13 critical, 17 high, 13 medium) across coordinate systems, threading, CUDA/TensorRT, stale data, and navigation logic. Demonstrated live as assistive AI research at VIT with all three demo scenarios."
           data-dossier-demo="https://youtu.be/nBjYTFXBpWY,https://youtu.be/QXU4xU__s2Y,https://youtu.be/PZpLDPnhvVg"
         >
           <div class="declass-card-top">
@@ -309,9 +310,9 @@
           data-dossier-badge="Accessibility - Deep Learning - Computer Vision"
           data-dossier-role="Lead Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Real-time ASL fingerspelling recognition system using YOLOv11x for single-stage hand detection and gesture classification. Deployed as a browser-native web app with WebRTC camera input and Flask API backend. Recognizes 26 letters plus SPACE and DELETE commands for live text composition."
-          data-dossier-architecture="YOLOv11x (56.8M params, 190 layers, 194.6 GFLOPs) fine-tuned on 2,614 augmented ASL images. WebRTC captures frames at 500ms intervals, sends base64-encoded JPEG to a Flask API. Model runs inference at 640×640 with conf=0.25 and IoU=0.45. Dual-mode async pipeline decouples frame submission (500ms) from prediction polling (200ms). Intelligent letter accumulation with 2s debounce and 40% confidence gating prevents duplicate characters."
-          data-dossier-contribution="Trained and compared YOLOv8L, YOLOv8X, and YOLOv11x models (ablation study showed YOLOv8X overfitting while YOLOv11x achieved best real-time performance due to fewer FLOPs/param). Built the full-stack inference pipeline: WebRTC frontend, Flask API, and state-based word/sentence building logic."
+          data-dossier-overview="Real-time ASL fingerspelling recognition — single-stage detection and classification via YOLOv11x.||Browser-native: WebRTC camera input -> Flask API backend.||Recognizes 26 letters + SPACE and DELETE for live text composition."
+          data-dossier-architecture="Stack: YOLOv11x (56.8M params, 194.6 GFLOPs) + Flask + WebRTC||Fine-tuned on 2,614 augmented ASL images. Inference at 640×640, conf=0.25, IoU=0.45.||Dual-mode async pipeline: frame submission at 500ms, prediction polling at 200ms — decoupled to prevent blocking.||2s debounce + 40% confidence gating prevents duplicate character accumulation."
+          data-dossier-contribution="Ablation study across YOLOv8L, YOLOv8X, and YOLOv11x — YOLOv11x won (better FLOPs/param ratio, no overfitting).||Built the full-stack pipeline: WebRTC frontend, Flask inference API, and state-based word/sentence logic."
           data-dossier-outcome="96% mAP@0.5, 95% precision, 97% recall on ASL letter detection. Converges in ~50 epochs vs 200 for CNN-LSTM approaches. Matches YOLOv8 accuracy with a more efficient architecture."
         >
           <div class="declass-card-top">
@@ -331,9 +332,9 @@
           data-dossier-badge="Hackathon"
           data-dossier-role="Fullstack &amp; CV Dev"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Built for a hackathon targeting Indian agricultural challenges, specifically sugarcane farming. Multimodal AI system fusing computer vision with structured questionnaire data. YOLOv8s-seg for dead heart disease segmentation (99.5% mAP@0.5) and YOLO11n for tiller damage pest detection (99.4% mAP@0.5). TabNet processes farmer questionnaires, and a fusion layer combines both modalities for 99.97% accuracy, 67% error reduction over questionnaire-only. Field-validated across 500 farmers in 5 Indian states."
-          data-dossier-architecture="YOLOv8s-seg for dead heart instance segmentation (0.942 mean IoU, 0.968 Dice score). YOLO11n (3M params, 6.2MB) for real-time tiller damage detection at 12.3ms GPU inference. TabNet attention-based models for structured questionnaire input (~96% accuracy). Multimodal fusion layer combines vision and questionnaire confidence scores. Flask serves inference via a mobile-friendly JS frontend."
-          data-dossier-contribution="Trained YOLOv8s-seg and YOLO11n detection models and the TabNet questionnaire models. Built the frontend UI and assisted with backend development. 5-person team."
+          data-dossier-overview="Multimodal AI for Indian sugarcane farming — fuses computer vision with structured questionnaire data.||YOLOv8s-seg for dead heart disease (99.5% mAP@0.5); YOLO11n for tiller damage pest detection (99.4% mAP@0.5).||Fusion layer: 99.97% accuracy, 67% error reduction over questionnaire-only baseline.||Field-validated across 500 farmers in 5 Indian states."
+          data-dossier-architecture="Stack: YOLOv8s-seg + YOLO11n + TabNet + Flask + mobile JS frontend||YOLOv8s-seg: 0.942 mean IoU, 0.968 Dice score for dead heart instance segmentation.||YOLO11n: 3M params, 6.2MB, 12.3ms GPU inference for tiller damage detection.||TabNet: attention-based model on structured farmer questionnaires (~96% accuracy). Fusion layer combines vision + questionnaire confidence scores."
+          data-dossier-contribution="Trained YOLOv8s-seg, YOLO11n, and TabNet models.||Built the frontend UI and assisted with backend development. 5-person team."
           data-dossier-outcome="Hackathon submission. 99.97% fused model accuracy. 89.3% early detection rate before visible symptoms. Validated by 500 farmers across 5 states with 94.2% farmer agreement and 97.8% expert verification."
           data-dossier-github="https://github.com/zParik/CodeCultivators---Agrithon"
         >
@@ -355,7 +356,7 @@
           data-dossier-role="Team Lead &amp; Full-Stack Developer"
           data-dossier-status="COMPLETE"
           data-dossier-overview="University peer-to-peer rental marketplace where students list and rent items from each other. Built pre-AI at a hackathon. Led a 3-person team: two full-stack devs (me and Chetak) and a dedicated UI/UX designer (Aayush, Figma). Awarded Best UI/UX."
-          data-dossier-architecture="React 18 + Vite frontend with Redux Toolkit for state (auth + product slices). Supabase for authentication, Postgres database, and storage. Pages: landing, listings, product detail, cart, rentals, KYC, account management, and create listing. CSS Modules throughout."
+          data-dossier-architecture="Stack: React 18 + Vite + Redux Toolkit + Supabase (Postgres + auth + storage) + CSS Modules||Redux slices: auth and product state. Supabase handles auth, DB, and file storage.||Pages: landing, listings, product detail, cart, rentals, KYC, account management, create listing."
           data-dossier-contribution="Team lead and full-stack developer alongside Chetak. Owned the frontend architecture, Redux store design, Supabase integration, and core pages. Aayush handled Figma design; we implemented it."
           data-dossier-outcome="Awarded Best UI/UX at the hackathon. Built entirely without AI assistance."
           data-dossier-github="https://github.com/zParik/Devjams"
@@ -378,7 +379,7 @@
           data-dossier-role="Developer"
           data-dossier-status="COMPLETE"
           data-dossier-overview="Browser-based Tic-Tac-Toe with an unbeatable AI opponent powered by plain Minimax. Personal project built to explore Flask and game-tree search."
-          data-dossier-architecture="Flask API exposes a /getmethod/ endpoint that receives board state, runs plain Minimax over the full 9-ply game tree, and returns the optimal move as JSON. Vanilla JS + jQuery frontend manages board state and communicates with the API."
+          data-dossier-architecture="Stack: Flask + Vanilla JS + jQuery||Flask API: /getmethod/ receives board state, runs Minimax over full 9-ply game tree, returns optimal move as JSON.||Frontend manages board state and renders moves client-side."
           data-dossier-contribution="Implemented the Minimax algorithm from scratch. Built all Flask routes, the board encoding/decoding logic, and the interactive JS frontend."
           data-dossier-outcome="Personal project. Provably unbeatable: evaluates 255,168 nodes per opening move."
           data-dossier-github="https://github.com/zParik/Python-Project-Red/tree/main/Maasive%20website%20prj"
@@ -401,7 +402,7 @@
           data-dossier-role="Full-Stack Developer"
           data-dossier-status="COMPLETE"
           data-dossier-overview="Full-stack web app for a wellness ashram. Public visitors can book rooms and enroll in courses; staff get an internal dashboard with participant management and attendance tracking."
-          data-dossier-architecture="PHP backend with PDO/MySQL. Session-based auth with role system (user/employee/admin). REST-style API endpoints for room bookings (with availability stored procedure), course enrollment, participant CRUD, and attendance. .htaccess routes all protected pages through a central guard. Vanilla JS frontend with no framework."
+          data-dossier-architecture="Stack: PHP + PDO/MySQL + Vanilla JS||Session-based auth with 3 roles: user / employee / admin.||REST-style endpoints: room bookings (availability stored proc), course enrollment, participant CRUD, attendance.||.htaccess routes all protected pages through a central guard."
           data-dossier-contribution="Sole developer. Designed the database schema, built all PHP API endpoints, implemented role-based access control, and built the frontend from scratch."
           data-dossier-outcome="Submitted as a university web development course project."
           data-dossier-github="https://github.com/zParik/refactored-fortnight"
@@ -445,9 +446,9 @@
           data-dossier-badge="Hackathon - Networking &amp; IPC"
           data-dossier-role="Team Lead &amp; Sole Socket Developer"
           data-dossier-status="COMPLETE"
-          data-dossier-overview="Networking hackathon submission (Nov 2024) combining a Cisco Packet Tracer enterprise network and a concurrent Java socket server simulating a bank transaction system. The Packet Tracer half models an online education platform with an AWS cluster, MongoDB servers, and a segmented HQ network. The socket half is a live multi-client bank where clients can credit and debit each other in real time. Selected as one of three teams to present to the external evaluator."
-          data-dossier-architecture="Packet Tracer: 4 ACL-segmented departments (R&amp;D, IT Support, HR/Admin, Dev) with 64 IPs each via subnetting, an AWS cluster zone, a Core Server &amp; DB zone, a dev repository node, and an internet-facing zone, all connected through a core router backbone. Access control enforces strict per-department resource policies. Socket server: dual HashMaps, one mapping usernames to PrintWriter streams for message routing, one mapping usernames to integer balances for shared state. Each client connection spawns a dedicated ClientHandler thread. Clients run an async MessageReceiver thread to receive server pushes without blocking input. The server broadcasts the active client list to all connected peers after every transaction."
-          data-dossier-contribution="Team lead across both tracks. Architected and built the entire Java socket server from scratch: concurrent client handling, hashmap-based routing, balance state management, and async client-side receiver. Provided architectural direction and ideas for the Packet Tracer topology while Megha and Chetak handled the Cisco configuration."
+          data-dossier-overview="Networking hackathon (Nov 2024): Cisco Packet Tracer enterprise network + concurrent Java socket bank — two parallel tracks.||Packet Tracer: online education platform with AWS cluster, MongoDB servers, ACL-segmented HQ network.||Socket track: live multi-client bank — clients credit/debit each other in real time with consistent shared state.||Top 3 teams; selected to present to external evaluator."
+          data-dossier-architecture="Stack: Java sockets + Cisco Packet Tracer (ACL subnetting + core router backbone)||Packet Tracer: 4 ACL-segmented departments (R&amp;D, IT, HR, Dev) — 64 IPs each, strict per-department access policies.||Socket server: dual HashMaps (username -> PrintWriter for routing; username -> balance for state). Each client spawns a ClientHandler thread.||Clients run async MessageReceiver thread — server pushes don't block user input. Active client list broadcast after every transaction."
+          data-dossier-contribution="Team lead across both tracks.||Sole architect and developer of the Java socket server: concurrent client handling, hashmap routing, balance state, async receiver.||Directed the Packet Tracer topology; Megha and Chetak handled Cisco configuration."
           data-dossier-outcome="Top 3 out of all competing teams, selected to present to the external evaluator. Demonstrated 4 simultaneous clients performing concurrent transactions with consistent shared state: no race conditions, no dropped messages."
           data-dossier-github="https://github.com/zParik/College-Code-Stuff"
         >
@@ -520,7 +521,7 @@
           data-dossier-role="Developer"
           data-dossier-status="COMPLETE"
           data-dossier-overview="Built a Tkinter desktop app to help classmates learn Python: a menu-driven launcher with 29 exercises covering sorting, searching, recursion, and data structures. Iterated through 4 versions: plain CLI, refactored with functions, Tkinter GUI, and a Django web port."
-          data-dossier-architecture="Cleanly separated into 3 modules: File1.py (exercise source strings for display), Python.py (29 runnable functions), and KeyIndexAssigner.py (index registry using functools.partial for dispatch). Final version decorated every function with Numba @jit(nopython=True), deeply unnecessary for school exercises, completely intentional."
+          data-dossier-architecture="Stack: Python + Tkinter + Django (web port) + Numba||3 modules: File1.py (exercise source strings), Python.py (29 runnable functions), KeyIndexAssigner.py (functools.partial dispatch registry).||Final version: all 29 functions decorated with Numba @jit(nopython=True). Deeply unnecessary. Completely intentional."
           data-dossier-contribution="Sole developer. Designed the modular architecture and progressively iterated the interface across 4 versions. FastStartup variant auto-launched Google Meet links for online classes."
           data-dossier-outcome="Used informally by ~15 classmates during high school. The origin of this portfolio: the first project that felt genuinely useful."
         >
@@ -542,7 +543,7 @@
           data-dossier-role="Full-Stack Developer"
           data-dossier-status="COMPLETE"
           data-dossier-overview="Built a Django web app during high school to automate faculty absence tracking and substitute assignment. Admin marks absent teachers; the system cross-references timetables for 6 classes across 5 days and auto-assigns available subs with a cap of 2 periods each."
-          data-dossier-architecture="Django + MongoDB (via djongo). Models for teachers (name, subject, attendance, sub count), per-teacher weekly schedules (Teach2), and generated daily reports. Custom greedy algorithm assigns subs by checking availability, existing load, and subject-class conflicts. Reports saved to disk and tracked in DB."
+          data-dossier-architecture="Stack: Django + MongoDB (djongo) + custom greedy scheduler||Models: teachers (name, subject, attendance, sub count), per-teacher weekly schedules (Teach2), daily reports.||Greedy algorithm checks availability, current load cap, and subject-class conflicts before assigning subs.||Reports saved to disk and tracked in DB per session."
           data-dossier-contribution="Sole developer. Designed the data model, the substitution algorithm, and the Django views end-to-end. Also built the timetable config layer (tables.py) for all 6 classes."
           data-dossier-outcome="Deployed and actively used at school. Automated a manual coordination task that previously required admin overhead every morning. Daily reports generated and archived per session."
         >

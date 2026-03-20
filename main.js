@@ -311,6 +311,24 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   let isOpen = false;
   let currentCard = null;
 
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function setDossierField(el, text) {
+    const parts = text.split('||').map(s => s.trim()).filter(Boolean);
+    if (parts.length <= 1) { el.textContent = text; return; }
+    el.innerHTML = parts.map((p, i) => {
+      const colonIdx = p.indexOf(':');
+      if (i === 0 && colonIdx > 0 && colonIdx < 20) {
+        const label = escHtml(p.slice(0, colonIdx + 1));
+        const rest  = escHtml(p.slice(colonIdx + 1).trim());
+        return `<span class="df-label">${label}</span> ${rest}`;
+      }
+      return `<span class="df-bullet">${escHtml(p)}</span>`;
+    }).join('');
+  }
+
   function populateDossier(card) {
     const d = card.dataset;
 
@@ -329,10 +347,10 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
     fields.name.textContent         = d.dossierName || '';
     fields.role.textContent         = d.dossierRole || '';
     fields.statusText.textContent   = status;
-    fields.overview.textContent     = d.dossierOverview || '';
-    fields.architecture.textContent = d.dossierArchitecture || '';
-    fields.contribution.textContent = d.dossierContribution || '';
-    fields.outcome.textContent      = d.dossierOutcome || '';
+    setDossierField(fields.overview,     d.dossierOverview || '');
+    setDossierField(fields.architecture, d.dossierArchitecture || '');
+    setDossierField(fields.contribution, d.dossierContribution || '');
+    setDossierField(fields.outcome,      d.dossierOutcome || '');
 
     const unredacted = d.dossierUnredacted === 'true';
     [fields.overview, fields.architecture, fields.contribution, fields.outcome].forEach(el => {
