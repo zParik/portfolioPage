@@ -2288,6 +2288,17 @@ body.hackerman .t-cmd {
   padding: 3px 8px;
 }
 
+a.edu-badge--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+a.edu-badge--link:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
 .edu-badge-label {
   color: var(--accent-bright);
   letter-spacing: 1.5px;
