@@ -1101,35 +1101,3 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   draw();
 }());
 
-/* ─── THEME TOGGLE ─── */
-(function () {
-  const btn  = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  if (!btn) return;
-
-  const STORAGE_KEY = 'ph-theme';
-  const DARK  = 'dark';
-  const LIGHT = 'light';
-
-  function applyTheme(theme) {
-    if (theme === LIGHT) {
-      html.setAttribute('data-theme', 'light');
-    } else {
-      html.removeAttribute('data-theme');
-    }
-  }
-
-  // Initialise from localStorage (dark is default — no attribute needed)
-  const stored = localStorage.getItem(STORAGE_KEY);
-  applyTheme(stored === LIGHT ? LIGHT : DARK);
-
-  btn.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme') === 'light' ? LIGHT : DARK;
-    const next    = current === DARK ? LIGHT : DARK;
-    // Add transition class, apply theme, then remove it after transition completes
-    html.classList.add('theme-transitioning');
-    applyTheme(next);
-    localStorage.setItem(STORAGE_KEY, next);
-    setTimeout(() => html.classList.remove('theme-transitioning'), 300);
-  });
-}());
