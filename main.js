@@ -143,15 +143,23 @@ async function loop() {
 
 setTimeout(loop, 800);
 
-/* ─── CUSTOM CURSOR - comet trail (fine pointer / desktop only) ─── */
+/* ─── CUSTOM CURSOR - particle trail (fine pointer / desktop only) ─── */
 if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   const dot    = document.getElementById('cursor-dot');
   const canvas = document.getElementById('cursor-trail');
   const ctx    = canvas.getContext('2d');
 
-  const LIFETIME = 420; // ms a point lives before fully fading
-  const pts = [];       // { x, y, time }
   let mx = 0, my = 0, ready = false;
+  let lastSpawn = 0;
+
+  // Particles: { x, y, born, life, r, vx, vy, size }
+  const particles = [];
+  // Click ripples: { x, y, born }
+  const ripples = [];
+
+  const PARTICLE_LIFETIME = 600;  // ms
+  const SPAWN_INTERVAL    = 28;   // ms between spawns (throttle)
+  const RIPPLE_LIFETIME   = 500;
 
   const noNative = document.createElement('style');
   noNative.textContent = '*, *::before, *::after, *:active, *:hover, *:focus, a:active, button:active, [role="button"]:active { cursor: none !important; }';
@@ -164,12 +172,52 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas, { passive: true });
 
+  function isLight() {
+    return document.documentElement.getAttribute('data-theme') === 'light';
+  }
+
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    pts.push({ x: mx, y: my, time: performance.now() });
-    dot.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
     if (!ready) { ready = true; document.body.classList.add('cursor-ready'); }
+
+    const now = performance.now();
+    if (now - lastSpawn > SPAWN_INTERVAL) {
+      lastSpawn = now;
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.2 + Math.random() * 0.5;
+      particles.push({
+        x: mx, y: my,
+        born: now,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 0.3, // slight upward drift
+        size: 1.2 + Math.random() * 1.4,
+      });
+    }
   }, { passive: true });
+
+  document.addEventListener('mousedown', () => {
+    document.body.classList.add('cursor-click');
+    ripples.push({ x: mx, y: my, born: performance.now() });
+    // Burst of particles on click
+    for (let i = 0; i < 10; i++) {
+      const angle = (i / 10) * Math.PI * 2 + Math.random() * 0.4;
+      const speed = 0.8 + Math.random() * 1.6;
+      particles.push({
+        x: mx, y: my,
+        born: performance.now(),
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size: 1.5 + Math.random() * 2,
+        burst: true,
+      });
+    }
+  });
+
+  document.addEventListener('mouseup', () => {
+    document.body.classList.remove('cursor-click');
+  });
 
   const hoverSel = 'a, button, .dossier-trigger, .cert-row, .nav-contact';
   document.addEventListener('mouseover', e => {
@@ -181,29 +229,58 @@ if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
 
   function drawTrail() {
     const now = performance.now();
-    // cull expired points
-    while (pts.length && now - pts[0].time > LIFETIME) pts.shift();
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (pts.length > 1) {
-      for (let i = 1; i < pts.length; i++) {
-        // age: 0 = just added (head), 1 = about to expire (tail)
-        const age  = (now - pts[i].time) / LIFETIME;
-        const life = 1 - age;  // 1 = fresh, 0 = dead
-        // colour: deep violet at tail → bright accent at head
-        const r = Math.round(124 + (196 - 124) * life);   // 7c → c4
-        const g = Math.round(58  + (181 - 58)  * life);   // 3a → b5
-        const b = Math.round(237 + (253 - 237) * life);   // ed → fd
-        ctx.beginPath();
-        ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
-        ctx.lineTo(pts[i].x, pts[i].y);
-        ctx.strokeStyle = `rgba(${r},${g},${b},${life * 0.7})`;
-        ctx.lineWidth   = life * 2.8;
-        ctx.lineCap     = 'round';
-        ctx.lineJoin    = 'round';
-        ctx.stroke();
+
+    const light = isLight();
+
+    // Draw ripples
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const rp = ripples[i];
+      const t  = (now - rp.born) / RIPPLE_LIFETIME;
+      if (t >= 1) { ripples.splice(i, 1); continue; }
+      const ease = 1 - Math.pow(1 - t, 3); // ease-out-cubic
+      const radius = ease * 36;
+      const alpha  = (1 - t) * (light ? 0.25 : 0.3);
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, radius, 0, Math.PI * 2);
+      if (light) {
+        ctx.strokeStyle = `rgba(109,40,217,${alpha})`;
+      } else {
+        ctx.strokeStyle = `rgba(196,181,253,${alpha})`;
       }
+      ctx.lineWidth = 1;
+      ctx.stroke();
     }
+
+    // Draw particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p   = particles[i];
+      const age = (now - p.born) / PARTICLE_LIFETIME;
+      if (age >= 1) { particles.splice(i, 1); continue; }
+
+      const life = 1 - age;
+      const ease = 1 - Math.pow(age, 2); // ease-out-quad
+      // Drift outward
+      const x = p.x + p.vx * age * 40;
+      const y = p.y + p.vy * age * 40;
+      const r = p.size * ease;
+
+      if (light) {
+        // warm purple on light bg
+        ctx.fillStyle = `rgba(109,40,217,${life * (p.burst ? 0.55 : 0.32)})`;
+      } else {
+        // purple → bright accent fade
+        const cr = Math.round(124 + (196 - 124) * life);
+        const cg = Math.round(58  + (181 - 58)  * life);
+        const cb = Math.round(237 + (253 - 237) * life);
+        ctx.fillStyle = `rgba(${cr},${cg},${cb},${life * (p.burst ? 0.7 : 0.42)})`;
+      }
+
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
     requestAnimationFrame(drawTrail);
   }
   drawTrail();
