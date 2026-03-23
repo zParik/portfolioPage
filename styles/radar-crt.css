@@ -81,6 +81,29 @@
   transform: translateY(-2px) scale(1.15);
 }
 
+@media (max-width: 560px) {
+  .radar-reveal-row {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .radar-reveal-btn {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    letter-spacing: 1.2px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+  }
+  .rrb-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 /* ── "← back to boring version" button ── */
 .radar-back-btn {
   display: flex;
