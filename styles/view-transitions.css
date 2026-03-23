@@ -1,0 +1,51 @@
+/* ─── VIEW TRANSITIONS — DOSSIER MORPH ─── */
+
+/* Suppress CSS transitions during VT snapshot so the panel position is captured
+   correctly (translateX(0) for open, translateX(100%) for close). */
+.dossier-overlay.vt-open .dossier-panel,
+.dossier-overlay.vt-open::before {
+  transition: none !important;
+}
+
+@supports (view-transition-name: none) {
+  /* ── Project name: small monospace row text → dossier heading ── */
+  ::view-transition-group(vt-project-name) {
+    animation-duration: 520ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  ::view-transition-old(vt-project-name) {
+    animation: 180ms ease-in both vt-morph-out;
+  }
+  ::view-transition-new(vt-project-name) {
+    animation: 440ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both vt-morph-in;
+  }
+
+  /* ── Status badge: list pill → dossier badge ── */
+  ::view-transition-group(vt-status) {
+    animation-duration: 440ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  ::view-transition-old(vt-status) {
+    animation: 150ms ease-in both vt-morph-out;
+  }
+  ::view-transition-new(vt-status) {
+    animation: 360ms cubic-bezier(0.16, 1, 0.3, 1) 40ms both vt-morph-in;
+  }
+
+  @keyframes vt-morph-out {
+    to { opacity: 0; }
+  }
+  @keyframes vt-morph-in {
+    from { opacity: 0; }
+  }
+}
+.rt-domain { color: var(--text-tertiary); margin-left: 4px; }
+.rt-sep    { color: var(--text-tertiary); margin: 0 3px; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO BOOT SEQUENCE
+   Cinematic entry: all hero elements hidden during [data-boot],
+   revealed step-by-step by bootSequence() in main.js
+   ═══════════════════════════════════════════════════════════════ */
+

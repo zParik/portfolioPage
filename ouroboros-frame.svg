@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wrapper: adds ~22% padding around drawing.svg so the snake
+     appears "zoomed out" while the img element is sized to the
+     radar's outer ring. ring_size = logicalSize in JS. -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 116 130"
+     width="116mm" height="130mm">
+  <image href="drawing.svg"
+         x="10.45" y="12.1"
+         width="95.1" height="105.8"/>
+</svg>

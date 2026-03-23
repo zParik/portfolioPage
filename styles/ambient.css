@@ -1,0 +1,222 @@
+/* ─── AMBIENT BACKGROUND CANVAS ─── */
+#ambient-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* ─── SIDE RAILS ─── */
+.side-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: hidden;
+  /* Only show on very wide screens where there's actual space */
+}
+
+.side-rail--left {
+  left: 0;
+}
+
+.side-rail--right {
+  right: 0;
+}
+
+/* Scanning line that sweeps top→bottom */
+.rail-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(167, 139, 250, 0.015) 40%,
+      rgba(167, 139, 250, 0.032) 50%,
+      rgba(167, 139, 250, 0.015) 60%,
+      transparent 100%);
+  animation: rail-scan 18s linear infinite;
+  pointer-events: none;
+}
+
+.side-rail--right .rail-scan-line {
+  animation-delay: -9s;
+  /* offset by half so they're never in sync */
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(45, 212, 191, 0.01) 40%,
+      rgba(45, 212, 191, 0.022) 50%,
+      rgba(45, 212, 191, 0.01) 60%,
+      transparent 100%);
+}
+
+@keyframes rail-scan {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Vertical stamp text */
+.rail-stamp {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0.35;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  white-space: nowrap;
+  user-select: none;
+  padding: 16px 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.side-rail--right .rail-stamp {
+  transform: rotate(180deg);
+}
+
+.rail-stamp--bottom {
+  margin-top: auto;
+  opacity: 0.22;
+}
+
+/* Live data section in the middle of rails */
+.rail-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.rail-data-item {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.45;
+  writing-mode: vertical-lr;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.side-rail--right .rail-data-item {
+  transform: rotate(180deg);
+}
+
+.rail-data-item--dim {
+  color: var(--text-tertiary);
+  opacity: 0.25;
+}
+
+.rail-data-item--blink {
+  color: var(--cat-security);
+  animation: rail-blink 2.8s step-end infinite;
+}
+
+@keyframes rail-blink {
+
+  0%,
+  80%,
+  100% {
+    opacity: 0.5;
+  }
+
+  90% {
+    opacity: 0.1;
+  }
+}
+
+/* Thin inner edge lines on the rails */
+.side-rail--left::after,
+.side-rail--right::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(167, 139, 250, 0.12) 20%,
+      rgba(167, 139, 250, 0.12) 80%,
+      transparent);
+}
+
+.side-rail--left::after {
+  right: 0;
+}
+
+.side-rail--right::after {
+  left: 0;
+}
+
+/* Only show rails when viewport is wide enough for them not to overlap content */
+@media (max-width: 1400px) {
+  .side-rail {
+    display: none;
+  }
+}
+
+/* ─── PREFERS-REDUCED-MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Disable all keyframe animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Keep scroll reveal visible: don't leave content hidden */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hide cursor trail canvas entirely */
+  #cursor-trail {
+    display: none;
+  }
+
+  /* Hide ambient background canvas */
+  #ambient-bg {
+    display: none;
+  }
+
+  /* Freeze rail scan lines */
+  .rail-scan-line {
+    animation: none;
+  }
+
+  /* Freeze threat-map blink dot */
+  .threat-blink {
+    animation: none;
+    opacity: 1;
+  }
+
+}
+

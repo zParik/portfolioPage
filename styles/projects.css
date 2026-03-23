@@ -1,0 +1,1173 @@
+/* ─── SECTION SHELL ─── */
+.section-shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.section-rule {
+  height: 1px;
+  background: var(--border);
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-bottom: 56px;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0;
+  align-items: baseline;
+  margin-bottom: 48px;
+}
+
+.section-num {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--accent);
+  padding-top: 6px;
+}
+
+.section-title {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+/* ─── PROJECTS INDEX ─── */
+.projects-index {
+  width: 100%;
+}
+
+/* Category separator */
+.index-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 20px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.index-separator::before,
+.index-separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.index-separator-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding: 0;
+  position: relative;
+}
+
+.index-separator-label::before,
+.index-separator-label::after {
+  content: '-';
+  opacity: 0.4;
+  margin: 0 4px;
+}
+
+/* ─── FEATURED CARDS (Active Research) ─── */
+.featured-projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 6 tracks: header | name | desc | stack | stats | cta */
+  grid-template-rows: auto auto auto auto auto auto;
+  column-gap: 16px;
+  row-gap: 0;
+  margin-bottom: 8px;
+}
+
+.featured-card {
+  position: relative;
+  padding: 0 28px;
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  overflow: hidden;
+  /* span all 6 row tracks and subgrid children into them */
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+
+.featured-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 2;
+  transition: height 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featured-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+.featured-card:hover {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.featured-card:hover::before {
+  height: 3px;
+}
+
+/* ── PaleGuard: black-purple (security/CV) ── */
+.featured-card--security {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+    linear-gradient(170deg, rgba(124, 58, 237, 0.07) 0%, rgba(124, 58, 237, 0.02) 35%, var(--surface) 70%);
+  border-color: rgba(124, 58, 237, 0.18);
+}
+
+.featured-card--security::before {
+  background: var(--accent);
+}
+
+.featured-card--security::after {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(124, 58, 237, 0.16) 0%, transparent 55%),
+    linear-gradient(170deg, rgba(124, 58, 237, 0.10) 0%, rgba(124, 58, 237, 0.03) 35%, transparent 70%);
+  opacity: 0;
+}
+
+.featured-card--security:hover {
+  border-color: rgba(167, 139, 250, 0.30);
+}
+
+.featured-card--security:hover::after {
+  opacity: 1;
+}
+
+.featured-card--security:hover::before {
+  background: var(--accent-bright);
+}
+
+.featured-card--security .featured-card-eyebrow {
+  color: var(--accent);
+}
+
+.featured-card--security:hover .featured-card-name {
+  color: var(--accent-bright);
+}
+
+.featured-card--security .featured-card-stack span {
+  border-color: rgba(124, 58, 237, 0.15);
+  color: var(--text-secondary);
+}
+
+.featured-card--security:hover .featured-card-stack span {
+  border-color: rgba(167, 139, 250, 0.25);
+  color: rgba(167, 139, 250, 0.85);
+}
+
+.featured-card--security .featured-card-stat-value {
+  color: var(--accent);
+}
+
+.featured-card--security:hover .featured-card-cta {
+  color: var(--accent);
+}
+
+/* ── NotBigBrother: crimson-purple (privacy/cryptography) ── */
+.featured-card--privacy {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(212, 106, 146, 0.10) 0%, transparent 60%),
+    linear-gradient(170deg, rgba(212, 106, 146, 0.06) 0%, rgba(212, 106, 146, 0.02) 35%, var(--surface) 70%);
+  border-color: rgba(212, 106, 146, 0.14);
+}
+
+.featured-card--privacy::before {
+  background: #d46a92;
+}
+
+.featured-card--privacy::after {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(212, 106, 146, 0.14) 0%, transparent 55%),
+    linear-gradient(170deg, rgba(212, 106, 146, 0.09) 0%, rgba(212, 106, 146, 0.03) 35%, transparent 70%);
+  opacity: 0;
+}
+
+.featured-card--privacy:hover {
+  border-color: rgba(212, 106, 146, 0.28);
+}
+
+.featured-card--privacy:hover::after {
+  opacity: 1;
+}
+
+.featured-card--privacy:hover::before {
+  background: #d46a92;
+}
+
+.featured-card--privacy .featured-card-eyebrow {
+  color: #d46a92;
+}
+
+.featured-card--privacy:hover .featured-card-name {
+  color: #eda5c0;
+}
+
+.featured-card--privacy .featured-card-stack span {
+  border-color: rgba(212, 106, 146, 0.12);
+  color: var(--text-secondary);
+}
+
+.featured-card--privacy:hover .featured-card-stack span {
+  border-color: rgba(212, 106, 146, 0.25);
+  color: rgba(212, 106, 146, 0.85);
+}
+
+.featured-card--privacy .featured-card-stat-value {
+  color: #d46a92;
+}
+
+.featured-card--privacy:hover .featured-card-cta {
+  color: #d46a92;
+}
+
+.featured-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  padding-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-card-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.featured-card-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.featured-card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.featured-card-name {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  line-height: 1.2;
+  padding-bottom: 10px;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s;
+}
+
+.featured-card:hover .featured-card-name {
+  color: var(--accent-bright);
+}
+
+.featured-card-desc {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-content: start;
+  padding-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-card-stack span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+}
+
+.featured-card:hover .featured-card-stack span {
+  border-color: rgba(167, 139, 250, 0.15);
+}
+
+.featured-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 24px;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-card-stat-header {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.featured-card-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.featured-card-stat-sep {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.featured-card-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+
+.featured-card-stat-value {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--accent-bright);
+  line-height: 1;
+}
+
+.featured-card-stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+}
+
+/* Primary stat (the impressive result): larger */
+.featured-card-stat--primary .featured-card-stat-value {
+  font-size: 36px;
+}
+
+/* Secondary stat (the context): smaller, subordinate */
+.featured-card-stat--secondary .featured-card-stat-value {
+  font-size: 20px;
+  opacity: 0.65;
+}
+
+.featured-card-stat--secondary .featured-card-stat-label {
+  opacity: 0.7;
+}
+
+/* Privacy card: use pink for stat values instead of purple */
+.featured-card--privacy .featured-card-stat-value {
+  color: rgba(212, 106, 146, 0.9);
+}
+
+.featured-card-cta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s;
+}
+
+.featured-card:hover .featured-card-cta {
+  color: var(--accent);
+}
+
+.featured-card-cta span {
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+
+.featured-card:hover .featured-card-cta span {
+  transform: translateX(3px);
+}
+
+/* ─── DECLASSIFIED 3-COL GRID ─── */
+.declass-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.declass-card {
+  background: var(--bg);
+  padding: 20px 22px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.declass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.declass-card:hover {
+  background: var(--surface);
+}
+
+/* Persistent category accent at rest */
+.declass-card.cat-security::before { background: rgba(45, 212, 191, 0.35); }
+.declass-card.cat-access::before  { background: rgba(96, 165, 250, 0.35); }
+.declass-card.cat-hack::before    { background: rgba(251, 191, 36, 0.35); }
+.declass-card.cat-sys::before     { background: rgba(148, 163, 184, 0.2); }
+
+/* Full intensity on hover */
+.declass-card.cat-security:hover::before { background: var(--cat-security); }
+.declass-card.cat-access:hover::before  { background: var(--cat-access); }
+.declass-card.cat-hack:hover::before    { background: var(--cat-hack); }
+.declass-card.cat-sys:hover::before     { background: var(--cat-sys); }
+
+.declass-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.declass-card-domain {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Domain color by category */
+.declass-card.cat-security .declass-card-domain { color: var(--cat-security); }
+.declass-card.cat-access .declass-card-domain  { color: var(--cat-access); }
+.declass-card.cat-hack .declass-card-domain    { color: var(--cat-hack); }
+.declass-card.cat-sys .declass-card-domain     { color: var(--cat-sys); }
+
+.declass-card-arrow {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
+}
+
+.declass-card:hover .declass-card-arrow {
+  color: var(--accent-bright);
+  transform: translateX(3px);
+}
+
+.declass-card-name {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+}
+
+.declass-card:hover .declass-card-name {
+  color: var(--accent-bright);
+}
+
+.declass-card-desc {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Source-available / demo-available indicators (card face) */
+.source-indicator,
+.demo-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--cat-security);
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.source-indicator + .demo-indicator { margin-left: 0; }
+
+.declass-card:hover .source-indicator,
+.declass-card:hover .demo-indicator,
+.featured-card:hover .source-indicator,
+.featured-card:hover .demo-indicator {
+  opacity: 1;
+}
+
+.declass-card.cat-security:hover .source-indicator,
+.declass-card.cat-security:hover .demo-indicator { color: var(--cat-security); }
+.declass-card.cat-access:hover .source-indicator,
+.declass-card.cat-access:hover .demo-indicator   { color: var(--cat-access); }
+.declass-card.cat-hack:hover .source-indicator,
+.declass-card.cat-hack:hover .demo-indicator      { color: var(--cat-hack); }
+.declass-card.cat-sys:hover .source-indicator,
+.declass-card.cat-sys:hover .demo-indicator        { color: var(--cat-sys); }
+.featured-card:hover .source-indicator,
+.featured-card:hover .demo-indicator               { color: var(--accent); }
+
+/* Earlier / high-school: visually subordinate */
+.declass-grid--muted {
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.declass-card--muted {
+  opacity: 0.7;
+}
+
+.declass-card--muted .declass-card-name {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.declass-card--muted .declass-card-desc {
+  font-size: 12px;
+}
+
+/* dossier-card-open highlight */
+.featured-card.dossier-card-open {
+  background: var(--surface2);
+}
+
+.featured-card--security.dossier-card-open {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.featured-card--security.dossier-card-open::before {
+  background: var(--accent-bright);
+}
+
+.featured-card--privacy.dossier-card-open {
+  border-color: rgba(212, 106, 146, 0.4);
+}
+
+.featured-card--privacy.dossier-card-open::before {
+  background: #d46a92;
+}
+
+.declass-card.dossier-card-open {
+  background: rgba(167, 139, 250, 0.05);
+}
+
+.declass-card.dossier-card-open::before {
+  background: var(--accent) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   FILE FOLDER SYSTEM — Projects & Research
+   ═══════════════════════════════════════════════ */
+
+/* ─── Base file folder ─── */
+.file-folder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+/* ─── Featured: Security (PaleGuard — purple) ─── */
+.file-folder--security {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(124,58,237,0.12) 0%, transparent 60%),
+    linear-gradient(170deg, rgba(124,58,237,0.07) 0%, rgba(124,58,237,0.02) 35%, var(--surface) 70%);
+  border-color: rgba(124,58,237,0.25);
+}
+.file-folder--security:hover        { border-color: rgba(167,139,250,0.45); }
+.file-folder--security .folder-tab  { border-bottom-color: rgba(124,58,237,0.35); }
+.file-folder--security:hover .folder-tab { border-bottom-color: rgba(167,139,250,0.55); }
+
+/* ─── Featured: Privacy (NotBigBrother — pink) ─── */
+.file-folder--privacy {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(212,106,146,0.10) 0%, transparent 60%),
+    linear-gradient(170deg, rgba(212,106,146,0.06) 0%, rgba(212,106,146,0.02) 35%, var(--surface) 70%);
+  border-color: rgba(212,106,146,0.20);
+}
+.file-folder--privacy:hover        { border-color: rgba(212,106,146,0.42); }
+.file-folder--privacy .folder-tab  { border-bottom-color: rgba(212,106,146,0.30); }
+.file-folder--privacy:hover .folder-tab { border-bottom-color: rgba(212,106,146,0.55); }
+.file-folder--privacy .folder-stamp { border-color: #d46a92; color: #d46a92; }
+
+/* ─── Declass base ─── */
+.file-folder--declass { background: var(--bg); }
+.file-folder--declass:hover { background: var(--surface); }
+
+/* Declass category borders + tab accents */
+.file-folder--declass.cat-security { border-color: rgba(45,212,191,0.18); }
+.file-folder--declass.cat-security:hover { border-color: rgba(45,212,191,0.45); }
+.file-folder--declass.cat-security .folder-tab { border-bottom-color: rgba(45,212,191,0.28); }
+.file-folder--declass.cat-security:hover .folder-tab { border-bottom-color: rgba(45,212,191,0.55); }
+
+.file-folder--declass.cat-access { border-color: rgba(96,165,250,0.18); }
+.file-folder--declass.cat-access:hover { border-color: rgba(96,165,250,0.45); }
+.file-folder--declass.cat-access .folder-tab { border-bottom-color: rgba(96,165,250,0.28); }
+.file-folder--declass.cat-access:hover .folder-tab { border-bottom-color: rgba(96,165,250,0.55); }
+
+.file-folder--declass.cat-hack { border-color: rgba(251,191,36,0.15); }
+.file-folder--declass.cat-hack:hover { border-color: rgba(251,191,36,0.40); }
+.file-folder--declass.cat-hack .folder-tab { border-bottom-color: rgba(251,191,36,0.25); }
+.file-folder--declass.cat-hack:hover .folder-tab { border-bottom-color: rgba(251,191,36,0.50); }
+
+.file-folder--declass.cat-sys { border-color: rgba(148,163,184,0.15); }
+.file-folder--declass.cat-sys:hover { border-color: rgba(148,163,184,0.38); }
+.file-folder--declass.cat-sys .folder-tab { border-bottom-color: rgba(148,163,184,0.22); }
+.file-folder--declass.cat-sys:hover .folder-tab { border-bottom-color: rgba(148,163,184,0.45); }
+
+/* ─── Domain colors ─── */
+.file-folder--declass.cat-security .declass-card-domain { color: var(--cat-security); }
+.file-folder--declass.cat-access .declass-card-domain   { color: var(--cat-access); }
+.file-folder--declass.cat-hack .declass-card-domain     { color: var(--cat-hack); }
+.file-folder--declass.cat-sys .declass-card-domain      { color: var(--cat-sys); }
+
+/* ─── FEATURED CARD STAT HERO ─── */
+.folder-stat-hero {
+  padding: 24px 0 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-hero-number {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(52px, 7vw, 76px);
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  color: var(--accent);
+  text-shadow: 0 0 48px rgba(124, 58, 237, 0.4), 0 0 80px rgba(124, 58, 237, 0.15);
+  transition: text-shadow 0.3s;
+}
+
+.file-folder--featured:hover .stat-hero-number {
+  text-shadow: 0 0 48px rgba(124, 58, 237, 0.6), 0 0 100px rgba(124, 58, 237, 0.25);
+}
+
+/* Privacy variant: pink glow */
+.file-folder--privacy .stat-hero-number {
+  color: #d46a92;
+  text-shadow: 0 0 48px rgba(212, 106, 146, 0.4), 0 0 80px rgba(212, 106, 146, 0.15);
+}
+.file-folder--privacy:hover .stat-hero-number {
+  text-shadow: 0 0 48px rgba(212, 106, 146, 0.6), 0 0 100px rgba(212, 106, 146, 0.25);
+}
+
+/* Text-only stat (no count-up) — slightly smaller to prevent overflow */
+.stat-hero-number--text {
+  font-size: clamp(36px, 5vw, 54px);
+  letter-spacing: -1.5px;
+}
+
+.stat-hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.stat-hero-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-top: 3px;
+}
+
+/* ─── FEATURED CARD TAGLINE ─── */
+.featured-card-tagline {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding-top: 4px;
+  padding-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── FEATURED CARD 3D TILT ─── */
+.file-folder--featured {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease, border-color 0.25s, background 0.25s;
+}
+
+/* ─── DECLASSIFIED CARD NAME+STAT ROW ─── */
+.declass-name-stat {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.declass-stat-val {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  flex-shrink: 0;
+  /* Category color overrides below */
+}
+
+.declass-stat-val--text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  padding-top: 2px;
+}
+
+.declass-stat-sublabel {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+/* Stat color by category */
+.file-folder--declass.cat-security .declass-stat-val { color: var(--cat-security); }
+.file-folder--declass.cat-access .declass-stat-val   { color: var(--cat-access); }
+.file-folder--declass.cat-hack .declass-stat-val     { color: var(--cat-hack); }
+.file-folder--declass.cat-sys .declass-stat-val      { color: var(--cat-sys); }
+
+/* ─── DOSSIER METRICS STRIP ─── */
+.dossier-metrics-strip {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.dossier-metric {
+  flex: 1;
+  text-align: center;
+}
+
+.dossier-metric-val {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.dossier-metric-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+.dossier-metric-sep {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0 16px;
+}
+
+/* ─── Muted (earlier work) ─── */
+.file-folder--muted { opacity: 0.65; }
+.file-folder--muted .declass-card-name { font-size: 13px; color: var(--text-secondary); }
+.file-folder--muted .declass-card-desc { font-size: 12px; }
+
+/* ─── Dossier-open state ─── */
+.file-folder.dossier-card-open           { border-color: rgba(167,139,250,0.35); }
+.file-folder--security.dossier-card-open { border-color: rgba(167,139,250,0.5); background: var(--surface2); }
+.file-folder--privacy.dossier-card-open  { border-color: rgba(212,106,146,0.45); background: var(--surface2); }
+.file-folder--declass.dossier-card-open  { background: rgba(167,139,250,0.04); }
+
+/* ─── Source/demo indicator hover ─── */
+.file-folder--declass.cat-security:hover .source-indicator,
+.file-folder--declass.cat-security:hover .demo-indicator { color: var(--cat-security); }
+.file-folder--declass.cat-access:hover .source-indicator,
+.file-folder--declass.cat-access:hover .demo-indicator   { color: var(--cat-access); }
+.file-folder--declass.cat-hack:hover .source-indicator,
+.file-folder--declass.cat-hack:hover .demo-indicator     { color: var(--cat-hack); }
+.file-folder--declass.cat-sys:hover .source-indicator,
+.file-folder--declass.cat-sys:hover .demo-indicator      { color: var(--cat-sys); }
+.file-folder--featured:hover .source-indicator,
+.file-folder--featured:hover .demo-indicator              { color: var(--accent); }
+
+/* ─── Folder Tab ─── */
+.folder-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  /* Reset .featured-card-header and .declass-card-top overrides */
+  padding-top: 9px;
+  padding-bottom: 9px;
+  margin-bottom: 0;
+  position: static;
+  z-index: auto;
+}
+
+.folder-tab-filenum {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* File-number color by folder type */
+.file-folder--security .folder-tab-filenum { color: var(--accent); }
+.file-folder--privacy .folder-tab-filenum   { color: #d46a92; }
+.file-folder--declass.cat-security .folder-tab-filenum { color: var(--cat-security); }
+.file-folder--declass.cat-access .folder-tab-filenum   { color: var(--cat-access); }
+.file-folder--declass.cat-hack .folder-tab-filenum     { color: var(--cat-hack); }
+.file-folder--declass.cat-sys .folder-tab-filenum      { color: var(--cat-sys); }
+
+.folder-tab-sep {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+/* ─── Folder Body ─── */
+.folder-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+.file-folder--declass .folder-body { padding: 14px 18px 16px; }
+
+/* ─── Folder Stamp ─── */
+.folder-stamp {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.5;
+  text-align: center;
+  padding: 4px 8px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  transform: rotate(-8deg);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.25s;
+}
+.folder-stamp--declass {
+  border-color: var(--text-tertiary);
+  color: var(--text-tertiary);
+  opacity: 0.22;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+}
+.file-folder:hover .folder-stamp          { opacity: 0.80; }
+.file-folder--declass:hover .folder-stamp { opacity: 0.50; }
+
+/* ─── Folder Rule ─── */
+.folder-rule {
+  height: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0 -24px;
+}
+.file-folder--declass .folder-rule { margin: 0 -18px; }
+
+/* ─── Folder Field ─── */
+.folder-field {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+}
+
+.folder-key {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-top: 2px;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+/* ─── Folder Name Row ─── */
+.folder-name-row { padding: 14px 0 6px; }
+
+/* ─── Folder Footer ─── */
+.folder-footer {
+  padding-top: 12px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ─── Override sub-element styles in folder context ─── */
+
+/* Featured-card-header / declass-card-top: reset padding when used as folder-tab */
+.folder-tab.featured-card-header {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  position: static;
+  z-index: auto;
+}
+.folder-tab.declass-card-top { margin-bottom: 0; }
+
+/* featured-card-name: bigger, no subgrid alignment */
+.folder-name-row .featured-card-name {
+  font-size: 26px;
+  align-self: auto;
+  padding-bottom: 0;
+  position: static;
+  z-index: auto;
+}
+
+/* Reset sub-element padding when inside folder fields */
+.folder-field .featured-card-desc    { padding-bottom: 0; position: static; z-index: auto; }
+.folder-field--stack .featured-card-stack { padding-bottom: 0; position: static; z-index: auto; }
+.folder-field--result .featured-card-stats { padding-bottom: 0; align-self: auto; margin-top: 0; position: static; z-index: auto; }
+.folder-footer .featured-card-cta   { padding-bottom: 0; }
+
+/* ─── Hover color changes via file-folder ─── */
+.file-folder--security:hover .featured-card-name { color: var(--accent-bright); }
+.file-folder--privacy:hover .featured-card-name   { color: #eda5c0; }
+.file-folder--security:hover .featured-card-cta   { color: var(--accent); }
+.file-folder--privacy:hover .featured-card-cta    { color: #d46a92; }
+.file-folder--security:hover .featured-card-stack span { border-color: rgba(167,139,250,0.25); color: rgba(167,139,250,0.85); }
+.file-folder--privacy:hover .featured-card-stack span  { border-color: rgba(212,106,146,0.25); color: rgba(212,106,146,0.85); }
+
+.file-folder--declass:hover .declass-card-name  { color: var(--accent-bright); }
+.file-folder--declass:hover .declass-card-arrow { color: var(--accent-bright); transform: translateX(3px); }
+
+/* ─── Updated grid layouts ─── */
+.featured-projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  margin-bottom: 8px;
+  align-items: start;
+  grid-template-rows: auto;
+  row-gap: 0;
+}
+
+.declass-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background: none;
+  border: none;
+}
+.declass-grid--muted {
+  background: none;
+  border: none;
+  margin-top: 4px;
+}
+
+/* Status dot: shared */
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: var(--cat-security);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+
+.status-dot.complete {
+  background: var(--text-tertiary);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* ─── EARLIER WORK DECLASSIFY TOGGLE ─── */
+.earlier-work-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 20px 0 4px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(167, 139, 250, 0.08);
+  transition: opacity 0.2s;
+}
+
+.earlier-work-toggle:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.earlier-work-toggle-line {
+  height: 1px;
+  background: var(--border);
+  display: block;
+  transition: background 0.3s;
+}
+
+.earlier-work-toggle.is-loading .earlier-work-toggle-line {
+  background: rgba(167, 139, 250, 0.25);
+}
+
+.earlier-work-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  transition: color 0.2s;
+  min-width: 0;
+  justify-content: center;
+}
+
+.earlier-work-toggle:hover:not(.is-loading):not([aria-expanded="true"]) .earlier-work-toggle-label {
+  color: var(--accent);
+}
+
+.earlier-work-toggle-icon {
+  transition: transform 0.25s ease, color 0.2s;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.earlier-work-toggle:hover:not(.is-loading) .earlier-work-toggle-icon {
+  color: var(--accent);
+}
+
+.earlier-work-toggle[aria-expanded="true"] .earlier-work-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.earlier-work-toggle-count {
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+

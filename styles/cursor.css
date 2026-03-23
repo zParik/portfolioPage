@@ -1,0 +1,58 @@
+/* ─── CUSTOM CURSOR ─── */
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.85);
+  transition: opacity 0.2s, color 0.15s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+body.cursor-ready #cursor-dot,
+body.cursor-ready #cursor-trail {
+  opacity: 1;
+}
+
+/* Hover: accent color + slight scale */
+body.cursor-hover #cursor-dot {
+  color: rgba(196, 181, 253, 0.95);
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+/* Click: snap compress */
+body.cursor-click #cursor-dot {
+  color: #c4b5fd;
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Mono is reserved for labels, eyebrows, terminal, buttons, metadata */
+.mono {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+}
+

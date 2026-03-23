@@ -1,0 +1,446 @@
+/* ─── RETRO PROGRESS BAR WRAPPER ─── */
+.ewt-progress-wrap {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.earlier-work-toggle.is-loading .ewt-progress-wrap {
+  display: flex;
+}
+
+.earlier-work-toggle.is-loading .ewt-static {
+  display: none;
+}
+
+.ewt-static {
+  display: contents;
+  /* visible by default */
+}
+
+/* Status line above bar */
+.ewt-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  text-align: center;
+  min-height: 14px;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+/* The block progress bar */
+.ewt-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.ewt-bar-label-l,
+.ewt-bar-label-r {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-tertiary);
+  opacity: 0.6;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ewt-bar {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.ewt-block {
+  display: inline-block;
+  width: 9px;
+  height: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--border);
+  transition: color 0.04s, text-shadow 0.1s;
+  user-select: none;
+}
+
+.ewt-block.filled {
+  color: var(--accent);
+  text-shadow: 0 0 6px rgba(167, 139, 250, 0.7);
+  animation: ewt-block-pop 0.12s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ewt-block.filled-full {
+  color: var(--cat-security);
+  text-shadow: 0 0 8px rgba(45, 212, 191, 0.8);
+}
+
+@keyframes ewt-block-pop {
+  0% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+
+  60% {
+    transform: scaleY(1.15);
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.ewt-pct {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  min-width: 34px;
+  text-align: right;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.ewt-pct.complete {
+  color: var(--cat-security);
+}
+
+/* Collapsible rows container */
+.earlier-work-rows {
+  overflow: hidden;
+}
+
+.earlier-work-rows[hidden] {
+  display: none;
+}
+
+/* Row reveal animation */
+.earlier-work-rows:not([hidden]) .manifest-list .manifest-row {
+  animation: ewt-row-slide-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.earlier-work-rows:not([hidden]) .manifest-list .manifest-row:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+@keyframes ewt-row-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dossier hint (now a hover row label, not separate) */
+.dossier-hint {
+  display: none;
+}
+
+/* ─── CAPABILITIES SPEC GRID ─── */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.spec-cell {
+  padding: 20px 22px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  transition: background 0.2s;
+}
+
+/* Remove right border on last column */
+.spec-cell:nth-child(3n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row */
+.spec-cell:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+/* Depth-keyed left accent bar */
+.spec-cell::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.spec-cell--primary::before {
+  background: linear-gradient(to bottom, var(--accent-deep), var(--accent-bright));
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.35);
+}
+
+.spec-cell--proficient::before {
+  background: linear-gradient(to bottom, rgba(45, 212, 191, 0.5), var(--cat-security));
+}
+
+.spec-cell--applied::before {
+  background: var(--cat-sys);
+  opacity: 0.5;
+}
+
+.spec-cell:hover {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.spec-cell--primary:hover {
+  background: var(--accent-dim);
+}
+
+.spec-cell--proficient:hover {
+  background: var(--cat-security-dim);
+}
+
+.spec-cell-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.spec-cell-domain {
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.spec-cell-depth {
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.spec-cell-depth.primary {
+  color: var(--accent-bright);
+}
+
+.spec-cell-depth.proficient {
+  color: var(--cat-security);
+}
+
+.spec-cell-depth.applied {
+  color: var(--cat-sys);
+}
+
+.spec-cell-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.spec-tag {
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3px 8px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.spec-cell--primary .spec-tag:hover {
+  color: var(--accent-bright);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.spec-cell--proficient .spec-tag:hover {
+  color: var(--cat-security);
+  border-color: var(--cat-security-border);
+}
+
+.spec-cell--applied .spec-tag:hover {
+  color: var(--cat-sys);
+  border-color: var(--cat-sys-border);
+}
+
+.spec-tag.arch-span {
+  cursor: default;
+}
+
+.spec-tag.arch-span:hover::after {
+  content: ' (arch btw)';
+  font-size: 9px;
+  color: var(--text-tertiary);
+}
+
+/* ─── HUMINT BLOCK (soft skills + languages) ─── */
+.humint-block {
+  margin-top: 2px;
+  border: 1px solid var(--border);
+  border-top: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.humint-block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-deep), transparent);
+  opacity: 0.6;
+}
+
+.humint-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 22px 0;
+}
+
+.humint-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  padding: 3px 8px;
+}
+
+.humint-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.humint-body {
+  display: flex;
+  align-items: stretch;
+  padding: 16px 22px 20px;
+  gap: 0;
+}
+
+.humint-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.humint-col-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.humint-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.humint-trait {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-bright);
+  padding: 4px 10px;
+}
+
+.humint-divider {
+  width: 1px;
+  background: var(--border);
+  margin: 0 28px;
+  flex-shrink: 0;
+}
+
+.humint-col--langs {
+  flex: 0 0 auto;
+  min-width: 140px;
+}
+
+.humint-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.humint-lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.humint-lang-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(167, 139, 250, 0.5);
+  flex-shrink: 0;
+}
+
+.humint-lang-level {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-left: auto;
+  padding-left: 10px;
+}
+
+/* Soft skills footer note - DEPRECATED, kept for safety */
+.spec-footnote {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+

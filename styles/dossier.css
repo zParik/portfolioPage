@@ -1,0 +1,475 @@
+/* ─── DOSSIER OVERLAY ─── */
+.dossier-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  display: none;
+}
+
+.dossier-overlay.active {
+  pointer-events: all;
+}
+
+.dossier-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.dossier-overlay.active::before {
+  opacity: 1;
+}
+
+/* ─── DOSSIER PANEL — right-side drawer ─── */
+.dossier-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1001;
+  width: clamp(360px, 42vw, 520px);
+  background: #07070d;
+  border-left: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  box-shadow: -24px 0 80px rgba(0, 0, 0, 0.7), -1px 0 0 rgba(167, 139, 250, 0.06);
+}
+
+.dossier-overlay.active .dossier-panel {
+  transform: translateX(0);
+}
+
+.dossier-folder-tab {
+  position: relative;
+  height: 32px;
+  padding: 0 20px;
+  background: rgba(167, 139, 250, 0.03);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.10);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dossier-folder-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-tertiary);
+}
+
+.dossier-folder-name {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+}
+
+.dossier-panel::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.6), rgba(45, 212, 191, 0.3), transparent);
+  flex-shrink: 0;
+}
+
+.dossier-inner {
+  padding: 24px 32px 28px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.45) transparent;
+}
+
+.dossier-inner::-webkit-scrollbar {
+  width: 2px;
+}
+
+.dossier-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dossier-inner::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.45);
+  border-radius: 0;
+}
+
+.dossier-inner::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.7);
+}
+
+.dossier-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dossier-stamps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dossier-stamp {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border: 2px solid;
+  padding: 3px 10px;
+  border-radius: 2px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+.dossier-stamp.clearance-active {
+  color: #ef4444;
+  border-color: #ef4444;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+.dossier-stamp.clearance-declassified {
+  color: #34d399;
+  border-color: #34d399;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+
+.dossier-status-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.dossier-status-badge.status-ongoing {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.dossier-status-badge.status-complete {
+  background: rgba(52, 211, 153, 0.08);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.22);
+}
+
+.dossier-close {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-tertiary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.dossier-close:hover {
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+
+.dossier-title-block {
+  margin-bottom: 20px;
+}
+
+.dossier-badge-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  border-radius: 2px;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.dossier-name {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.dossier-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dossier-meta-key {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.dossier-meta-val {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.dossier-separator {
+  color: var(--border-bright);
+  font-size: 11px;
+}
+
+.dossier-redact-bar {
+  height: 5px;
+  background: repeating-linear-gradient(90deg,
+      rgba(167, 139, 250, 0.12) 0px,
+      rgba(167, 139, 250, 0.12) 28px,
+      transparent 28px,
+      transparent 34px);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.dossier-section {
+  margin-bottom: 20px;
+}
+
+.dossier-section-label {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.dossier-section-body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  border-left: 1px solid rgba(167, 139, 250, 0.2);
+  padding-left: 14px;
+}
+
+/* ─── DOSSIER FIELD STRUCTURE ─── */
+.df-label {
+  font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.df-bullet {
+  display: block;
+  padding-left: 14px;
+  position: relative;
+  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.df-bullet::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: rgba(167, 139, 250, 0.5);
+}
+.dossier-section-body.redacted .df-bullet::before,
+.dossier-section-body.redacted .df-label {
+  color: transparent;
+}
+
+/* ─── REDACTED STATE ─── */
+.dossier-section-body.redacted {
+  color: transparent;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.dossier-section-body.redacted::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--surface3) 0px,
+    var(--surface3) 14px,
+    transparent 14px,
+    transparent 18px
+  );
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.dossier-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.dossier-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  border-radius: 2px;
+  padding: 5px 12px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.dossier-link:hover {
+  background: var(--accent-dim);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+.dossier-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.dossier-footer-text {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* ─── DOSSIER CONTENT STAGGER ─── */
+.dossier-scanning .dossier-section,
+.dossier-scanning .dossier-title-block,
+.dossier-scanning .dossier-header,
+.dossier-scanning .dossier-redact-bar,
+.dossier-scanning .dossier-metrics-strip,
+.dossier-scanning .dossier-links,
+.dossier-scanning .dossier-footer {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.dossier-revealed .dossier-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 0ms;
+}
+
+.dossier-revealed .dossier-title-block {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 60ms;
+}
+
+.dossier-revealed .dossier-redact-bar {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 100ms;
+}
+
+.dossier-revealed .dossier-metrics-strip {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 115ms;
+}
+
+.dossier-revealed .dossier-section:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 130ms;
+}
+
+.dossier-revealed .dossier-section:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 185ms;
+}
+
+.dossier-revealed .dossier-section:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 240ms;
+}
+
+.dossier-revealed .dossier-section:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 295ms;
+}
+
+.dossier-revealed .dossier-links,
+.dossier-revealed .dossier-footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 340ms;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .dossier-scanning .dossier-section,
+  .dossier-scanning .dossier-title-block,
+  .dossier-scanning .dossier-header,
+  .dossier-scanning .dossier-redact-bar,
+  .dossier-scanning .dossier-metrics-strip,
+  .dossier-scanning .dossier-links,
+  .dossier-scanning .dossier-footer {
+    opacity: 1;
+    transform: none;
+  }
+}
+

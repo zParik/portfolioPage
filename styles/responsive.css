@@ -1,0 +1,268 @@
+/* ─── RESPONSIVE ─── */
+
+/* Tablet: 4-col manifest → 2×2, declass 3-col → 2-col */
+@media (max-width: 900px) {
+  .declass-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .manifest-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .manifest-col {
+    padding: 14px 14px 14px 0;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .manifest-col:not(:first-child) {
+    padding-left: 14px;
+  }
+
+  .manifest-col:nth-child(1),
+  .manifest-col:nth-child(3) {
+    border-right: 1px solid var(--border) !important;
+  }
+
+  .manifest-col:nth-child(3),
+  .manifest-col:nth-child(4) {
+    border-bottom: none;
+  }
+
+  /* Featured folders: stay 2-col on tablet */
+
+  .folder-name-row .featured-card-name {
+    font-size: 20px;
+  }
+
+  .featured-card-name {
+    font-size: 19px;
+  }
+
+  .featured-card-stat-value {
+    font-size: 24px;
+  }
+
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 30px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 18px; }
+
+/* Spec grid: 2-col on tablet */
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* HUMINT block: stack on tablet */
+  .humint-body {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .humint-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+
+  .humint-col--langs {
+    min-width: unset;
+  }
+
+  .humint-langs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+
+  .spec-cell:nth-child(3n) {
+    border-right: 1px solid var(--border);
+  }
+
+  .spec-cell:nth-child(2n) {
+    border-right: none;
+  }
+
+  .spec-cell:nth-last-child(-n+3) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .spec-cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+/* Mobile: hamburger, single-column layouts */
+@media (max-width: 768px) {
+  body > nav {
+    padding: 0 20px;
+  }
+
+  .nav-links,
+  .nav-contact {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero {
+    padding: 88px 20px 48px;
+    min-height: auto;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-inner::before {
+    display: none;
+  }
+
+  .terminal-section {
+    padding: 0 20px 56px;
+  }
+
+  .section-shell {
+    padding: 56px 20px;
+  }
+
+  .section-header {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .index-separator {
+    margin: 24px 0 16px;
+  }
+
+  /* Hero eyebrow: allow wrapping, hide cursor on wrap to prevent orphaned _ */
+  .hero-eyebrow {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Hero impact: tighten on mobile */
+  .hero-impact {
+    font-size: 17px;
+    margin-top: 16px;
+  }
+
+  /* Hero bottom row: stack vertically on mobile */
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Hero abstract: collapse label above text for readability */
+  .hero-abstract {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .abstract-marker {
+    padding-top: 0;
+  }
+
+  /* Featured folders: stack on mobile */
+  .featured-projects {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .folder-name-row .featured-card-name {
+    font-size: 18px;
+  }
+
+  .featured-card-name {
+    font-size: 18px;
+  }
+
+  .featured-card-desc {
+    font-size: 13px;
+  }
+
+  .featured-card-stat-value {
+    font-size: 22px;
+  }
+
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 28px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 16px; }
+
+  /* Declass grid: 2-col on mobile */
+  .declass-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .folder-body { padding: 14px 16px; }
+  .file-folder--declass .folder-body { padding: 12px 14px 14px; }
+  .folder-rule { margin: 0 -16px; }
+  .file-folder--declass .folder-rule { margin: 0 -14px; }
+
+  /* Hero social icons: 44px touch targets */
+  .hero-social {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Buttons: comfortable touch height */
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px;
+  }
+
+  .edu-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .edu-abbr {
+    font-size: 32px;
+  }
+
+  footer {
+    padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Ghost "CLASSIFIED" watermark: scale down on mobile */
+  .footer-classified {
+    font-size: 28px;
+    letter-spacing: 6px;
+  }
+
+
+  /* Dossier: bottom-sheet on mobile */
+  .dossier-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    max-height: 88vh;
+    transform: translateY(100%);
+    border-left: none;
+    border-top: 1px solid rgba(167, 139, 250, 0.18);
+    border-radius: 12px 12px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.7);
+  }
+
+  .dossier-overlay.active .dossier-panel {
+    transform: translateY(0);
+  }
+
+  .dossier-inner {
+    padding: 18px 18px calc(22px + env(safe-area-inset-bottom));
+  }
+
+  /* Dossier close button: larger touch area */
+  .dossier-close {
+    padding: 10px 14px;
+  }
+}
+

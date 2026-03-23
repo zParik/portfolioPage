@@ -1,0 +1,423 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   INTEL RADAR
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* .manifest-data-store no longer exists — manifest is always in the DOM */
+
+/* ── radar-section: hidden until shatter ── */
+.radar-section[hidden] { display: none !important; }
+.radar-section:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Radar teaser + reveal row ── */
+.radar-reveal-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 40px auto 0;
+  justify-content: center;
+}
+.radar-teaser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+.radar-teaser-canvas {
+  display: block;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 139, 250, 0.18);
+}
+.radar-teaser-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* ── "Wanna see the cool version?" button ── */
+.radar-reveal-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  /* fixed width prevents layout shift during decode animation */
+  min-width: max-content;
+}
+.radar-reveal-btn:hover {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+/* decoded state: accent color while plaintext is visible */
+.radar-reveal-btn.rrb-decoded {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+.rrb-icon {
+  color: var(--accent);
+  transition: transform 0.3s;
+}
+.radar-reveal-btn:hover .rrb-icon {
+  transform: translateY(-2px) scale(1.15);
+}
+
+/* ── "← back to boring version" button ── */
+.radar-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px auto 0;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0.55;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.radar-back-btn:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-bright);
+  opacity: 1;
+}
+
+.radar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 8px;
+  position: relative;
+  width: 100%;
+}
+
+.radar-canvas-wrap {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── CRT vignette: dark at edges, fades toward centre ── */
+.radar-canvas-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 86% 86% at 50% 50%,
+    transparent 50%,
+    rgba(3, 3, 8, 0.62) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── CRT scan lines ── */
+.radar-canvas-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.09) 2px,
+    rgba(0, 0, 0, 0.09) 3px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── CRT boot: phosphor warm-up when radar first appears ── */
+@keyframes crt-boot {
+  0%   { opacity: 0; }
+  6%   { opacity: 0.10; }
+  10%  { opacity: 0.02; }
+  20%  { opacity: 0.28; }
+  27%  { opacity: 0.14; }
+  40%  { opacity: 0.52; }
+  48%  { opacity: 0.38; }
+  62%  { opacity: 0.76; }
+  70%  { opacity: 0.60; }
+  80%  { opacity: 0.88; }
+  87%  { opacity: 0.74; }
+  94%  { opacity: 0.97; }
+  97%  { opacity: 0.84; }
+  100% { opacity: 1; }
+}
+
+#intel-radar.crt-boot {
+  animation: crt-boot 1.9s linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #intel-radar.crt-boot { animation: none; }
+  .radar-canvas-wrap::before,
+  .radar-canvas-wrap::after { display: none; }
+}
+
+/* ── CRT boot text: SCP-flavored classified overlay ── */
+.crt-boot-text {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 18%;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.55s ease-in;
+}
+
+.crt-boot-text--out {
+  opacity: 0;
+}
+
+.crt-boot-text span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 1.4vw, 11px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-shadow:
+    0 0 6px rgba(167, 139, 250, 0.55),
+    0 0 14px rgba(167, 139, 250, 0.2);
+}
+
+/* first line gets a slightly brighter classification stamp treatment */
+.crt-boot-text span:first-child {
+  color: var(--accent-bright);
+  text-shadow:
+    0 0 8px rgba(196, 181, 253, 0.7),
+    0 0 20px rgba(196, 181, 253, 0.3);
+  margin-bottom: 4px;
+}
+
+/* [WARN] line gets amber tint to match category color system */
+.crt-boot-text span:last-child {
+  color: #fbbf24;
+  text-shadow:
+    0 0 6px rgba(251, 191, 36, 0.5),
+    0 0 14px rgba(251, 191, 36, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-boot-text { display: none; }
+}
+
+.ouroboros-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  transform: translate(-50%, -52%);
+  opacity: 0; /* starts hidden; radar-active class triggers entrance */
+  /* black SVG paths → purple seal */
+  filter:
+    invert(1)
+    sepia(1)
+    saturate(5)
+    hue-rotate(215deg)
+    drop-shadow(0 0 18px rgb(124, 58, 237))
+    drop-shadow(0 0 5px rgb(167, 139, 250));
+}
+
+/* Animatable custom property for the flowing mask angle */
+@property --ouroboros-flow {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes ouroboros-awaken {
+  from { opacity: 0; }
+  to   { opacity: 0.42; }
+}
+
+@keyframes ouroboros-flow {
+  to { --ouroboros-flow: -360deg; }
+}
+
+/* Entrance fade → perpetual color flow around the ring */
+@media (prefers-reduced-motion: no-preference) {
+  .ouroboros-ring.radar-active {
+    mask-image: conic-gradient(
+      from var(--ouroboros-flow) at center,
+      rgba(255,255,255,0.52) 0deg,
+      rgba(255,255,255,1)    60deg,
+      rgba(255,255,255,0.6)  130deg,
+      rgba(255,255,255,0.52) 180deg,
+      rgba(255,255,255,0.75) 260deg,
+      rgba(255,255,255,1)    310deg,
+      rgba(255,255,255,0.52) 360deg
+    );
+    animation:
+      ouroboros-awaken 2s ease-out both,
+      ouroboros-flow 14s linear 2s infinite;
+  }
+}
+
+/* Reduced-motion: just fade in */
+@media (prefers-reduced-motion: reduce) {
+  .ouroboros-ring.radar-active {
+    opacity: 0.42;
+    transition: opacity 0.8s ease;
+  }
+}
+
+#intel-radar {
+  display: block;
+  position: relative;
+  z-index: 1;
+  /* dimensions set by JS */
+}
+
+/* Legend */
+.radar-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.rl-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rl-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.rl-dot--active {
+  background: var(--accent) !important;
+  box-shadow: 0 0 6px rgba(167, 139, 250, 0.7);
+  animation: pulse-active-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rl-dot--active { animation: none; }
+}
+
+/* Instruction text */
+.radar-instruction {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0.55;
+  text-align: center;
+  margin: 6px 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.radar-instruction--dismissed {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translateY(-4px);
+}
+
+.ri-tag {
+  color: var(--accent);
+  opacity: 0.8;
+  margin-right: 2px;
+}
+
+.ri-label {
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  margin-right: 4px;
+}
+
+.ri-sep {
+  color: var(--text-tertiary);
+  opacity: 0.4;
+}
+
+.ri-cmd {
+  color: var(--accent-bright);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 2px;
+  padding: 0 4px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar-instruction { transition: opacity 0.1s linear; }
+}
+
+/* Tooltip */
+.radar-tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 300;
+  background: var(--surface2);
+  border: 1px solid var(--border-bright);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  border-radius: 2px;
+  max-width: 240px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.rt-id     { color: var(--text-tertiary); }
+.rt-name   { color: var(--text); font-weight: 600; margin-left: 4px; }
+.rt-metric { color: var(--accent); font-weight: 700; }
+

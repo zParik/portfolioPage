@@ -1,0 +1,152 @@
+/* ─── BACKGROUND SECTION ─── */
+.bg-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Education */
+.edu-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.edu-abbr {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: transparent;
+  line-height: 1;
+  -webkit-text-stroke: 1px rgba(167, 139, 250, 0.3);
+  user-select: none;
+}
+
+.edu-degree {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.edu-institution {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+.edu-year {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.edu-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.edu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 2px;
+  padding: 3px 8px;
+}
+
+a.edu-badge--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+a.edu-badge--link:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.edu-badge-label {
+  color: var(--accent-bright);
+  letter-spacing: 1.5px;
+}
+
+.edu-badge-sep {
+  color: var(--text-tertiary);
+  margin: 0 1px;
+  opacity: 0.6;
+}
+
+.edu-badge-val {
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+/* Certifications */
+.certs-sub-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.certs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cert-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.cert-item:hover {
+  opacity: 0.75;
+}
+
+.cert-item-name {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.cert-item:hover .cert-item-name {
+  color: var(--text);
+}
+
+.cert-item-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  letter-spacing: 0.5px;
+}
+

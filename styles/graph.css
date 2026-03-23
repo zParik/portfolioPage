@@ -1,0 +1,42 @@
+/* ─── GRAPH SECTION STRIP (below hero) ─── */
+/* Graph section now lives inside section-shell (section 02) */
+.graph-section {
+  margin-bottom: 0;
+}
+
+.graph-section .threat-map-wrap {
+  border-radius: 2px;
+  /* tighten bottom margin — bridge element follows */
+  margin-bottom: 0;
+}
+
+/* ─── CAPABILITY BRIDGE — connector between graph (macro) and spec grid (micro) ─── */
+.cap-bridge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0 20px;
+}
+
+.cap-bridge-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-bright), transparent);
+}
+
+.cap-bridge-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .cap-bridge {
+    margin: 22px 0 16px;
+  }
+}
+

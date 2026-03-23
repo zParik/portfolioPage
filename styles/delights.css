@@ -1,0 +1,269 @@
+/* ─── DELIGHT: HERO NAME SCAN-LINE ─── */
+.hero-name {
+  position: relative;
+}
+
+.hero-name::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(167, 139, 250, 0.05) 30%,
+      rgba(196, 181, 253, 0.10) 50%,
+      rgba(167, 139, 250, 0.05) 70%,
+      transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  /* opacity is driven by the animation keyframes */
+}
+
+.hero-name:hover::after {
+  animation: name-scan 1.6s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+
+@keyframes name-scan {
+  0% {
+    left: -40%;
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
+
+
+/* ─── DELIGHT: STATUS DOT RADAR PING ─── */
+.status-dot.active {
+  box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5);
+  animation: pulse-dot 1.8s ease-in-out infinite, radar-ping 2.4s ease-out infinite;
+}
+
+@keyframes radar-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5);
+  }
+
+  60% {
+    box-shadow: 0 0 0 7px rgba(45, 212, 191, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0);
+  }
+}
+
+/* ─── DELIGHT: CLIPBOARD TOAST ─── */
+#copy-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--surface2);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  color: var(--accent-bright);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── DELIGHT: NAV LOGO HOVER ─── */
+.nav-logo {
+  position: relative;
+  transition: color 0.2s, letter-spacing 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-logo:hover {
+  letter-spacing: 3px;
+  color: var(--accent-bright);
+}
+
+/* ─── DELIGHT: TERMINAL DOT HOVER STATES ─── */
+.terminal-dot {
+  cursor: default;
+  transition: filter 0.15s, transform 0.15s;
+}
+
+/* Only the red dot is interactive: amber/green are decorative */
+.terminal-dot.red {
+  cursor: pointer;
+}
+
+.terminal-dot.red:hover {
+  filter: brightness(1.5);
+  transform: scale(1.25);
+}
+
+/* Small mobile: manifest → single column, tight everything */
+@media (max-width: 480px) {
+  /* Hero name: tighter letter-spacing and a lower minimum for 320px devices */
+  .hero-name {
+    letter-spacing: -1px;
+    font-size: clamp(40px, 12vw, 72px);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .terminal-body {
+    height: 240px;
+    font-size: 11px;
+  }
+
+  /* manifest single column, left-aligned */
+  .manifest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manifest-col {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0 !important;
+  }
+
+  .manifest-col:not(:first-child) {
+    padding-left: 0 !important;
+  }
+
+  .manifest-col:last-child {
+    border-bottom: none;
+  }
+
+  /* abstract already collapsed at 768px, just tune sizes */
+  .abstract-marker {
+    font-size: 10px;
+  }
+
+  .abstract-body {
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  /* spec table scrolls horizontally at min-width: 480px */
+
+  /* Featured folders tighter on small screens */
+  .folder-name-row .featured-card-name {
+    font-size: 17px;
+  }
+
+  .featured-card-name {
+    font-size: 17px;
+  }
+
+  .featured-card-stack span {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .featured-card-stat-value {
+    font-size: 20px;
+  }
+
+  .featured-card-stat--primary .featured-card-stat-value { font-size: 26px; }
+  .featured-card-stat--secondary .featured-card-stat-value { font-size: 15px; }
+
+  /* Declass grid: single column on very small screens */
+  .declass-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .declass-card-name {
+    font-size: 14px;
+  }
+
+  .declass-card-desc {
+    font-size: 12px;
+  }
+
+  /* section/separator headers tighter */
+  .section-header {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .index-separator {
+    margin: 20px 0 12px;
+  }
+
+  .section-num {
+    font-size: 11px;
+  }
+
+  /* Footer: hide overflow ghost text entirely on very small screens */
+  .footer-classified {
+    display: none;
+  }
+
+  footer {
+    gap: 6px;
+  }
+}
+
+/* Dossier drag handle: hidden on desktop, shown as pill on mobile bottom sheet */
+.dossier-drag-handle {
+  display: none;
+}
+
+/* Mobile dossier: hide the folder tab since it floats above the sheet edge */
+@media (max-width: 768px) {
+  .dossier-folder-tab {
+    display: none;
+  }
+
+  .dossier-panel {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .dossier-drag-handle {
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+}
+
+/* ─── FOCUS-VISIBLE (keyboard navigation) ─── */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Dossier-trigger rows need a contained focus ring */
+.dossier-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
