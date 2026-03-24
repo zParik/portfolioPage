@@ -27,10 +27,10 @@ if (!prefersReducedMotion) {
       const nameEl = document.querySelector('.hero-name');
       if (nameEl) {
         nameEl.classList.add('boot-visible');
-        await sleep(380); // let the fade-up settle
+        await sleep(200); // let the fade-up settle
         nameEl.classList.add('boot-shimmer');
-        await sleep(820); // shimmer sweep duration + grace
-        nameEl.classList.remove('boot-shimmer');
+        // Fire-and-forget: shimmer plays in background without blocking subsequent reveals
+        sleep(820).then(() => nameEl.classList.remove('boot-shimmer'));
       }
       await sleep(60);
 

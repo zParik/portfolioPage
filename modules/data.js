@@ -3,6 +3,23 @@ import { prefersReducedMotion } from './utils.js';
 
 const PROJECTS = [
   {
+    id: 'FILE-000', active: true, cat: 'sys',
+    ariaLabel: 'FIELDSTATION ZERO: This site. Experimental zero-dependency portfolio. Press Enter to view details.',
+    codename: 'FIELDSTATION ZERO', domain: 'Design · Systems', metric: '0 dependencies',
+    dossier: {
+      clearance: 'ACTIVE RESEARCH', name: 'FIELDSTATION ZERO',
+      badge: 'Active, Present | Design Engineering · Systems',
+      role: 'Sole Designer & Engineer', status: 'ONGOING', unredacted: true,
+      overview: 'This site. Zero dependencies: pure HTML, CSS Custom Properties, Vanilla JS. No bundler. No framework. Ships as plain files.||The design thesis: a classified-file / dossier aesthetic built to feel like a discovered artifact rather than a template. CRT radar, WebGL voxels, dossier FLIP, boot sequence; each effect engineered from first principles because it had to exist, not because a library made it easy.||The most experimental design project in this archive.',
+      architecture: 'Stack: HTML · CSS Custom Properties · Vanilla JS · WebGL · Canvas 2D · View Transitions API||12+ ES modules: dossier panel (FLIP + View Transitions morph), CRT radar (phosphor ring-buffer, noise frames, hit-tested blips), WebGL voxel background (fragment shader, no Three.js), boot sequence (staged CRT reveal), shatter-to-radar transition, cursor trail, ambient particles, scroll reveals, count-up timers, nav drawer, custom scrollbar.||Zero build step. No tree-shaking needed when there are no dependencies to shake.',
+      contribution: 'Sole designer and engineer. Conceived every layer: the classified aesthetic, the CRT radar as project index, the dossier as a file detail view, the shatter animation as a mode switch.||Key bets: View Transitions API for zero-jank FLIP between manifest row and detail panel; WebGL voxel field in the hero without Three.js; phosphor persistence via ring buffer of past sweep angles; shatter glass physics as an interaction metaphor rather than pure decoration.',
+      outcome: 'The most technically ambitious static site in this archive. Zero production dependencies. Awarded itself Best UI/UX (contested).',
+      stat: '0', statLabel: 'production dependencies', statCount: '0', statSuffix: ' deps',
+      stat2: '12+', stat2Label: 'ES modules',
+      github: 'https://github.com/zParik/portfolioPage',
+    },
+  },
+  {
     id: 'FILE-001', active: true, cat: 'security',
     ariaLabel: 'PaleGuard: Vision-based EDR, active research. Press Enter to view details.',
     codename: 'PaleGuard', domain: 'CyberSec · CV', metric: '88% detection',
