@@ -36,13 +36,30 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-002', active: true, cat: 'security',
-    ariaLabel: 'NotBigBrother: Privacy-preserving age verification, active research. Press Enter to view details.',
+    id: 'FILE-002', active: true, cat: 'sys',
+    ariaLabel: 'Quire: Free offline open-source PDF toolkit, alpha released. Press Enter to view details.',
+    codename: 'Quire', domain: 'Systems · Tools', metric: 'Alpha Released',
+    dossier: {
+      clearance: 'ACTIVE RESEARCH', name: 'Quire',
+      badge: 'Active — Present | Systems · Developer Tools',
+      role: 'Sole Developer', status: 'ONGOING', unredacted: true,
+      overview: 'Free, offline, open-source PDF Swiss Army Knife — desktop-native, no cloud, no subscriptions.||Alpha shipped for Windows (.msi/.exe) and Linux (.deb/.rpm/.AppImage). Linux AppImage pre-patched for Wayland/Hyprland with DMA-buf renderer disabled — zero env-var workarounds required.||Built with Tauri v2 + React 19 + TypeScript: Rust backend for PDF operations, React frontend for drag-and-drop document management.',
+      architecture: 'Stack: Tauri v2 (Rust) + React 19 + TypeScript + Vite + Tailwind CSS v4||Rust backend handles PDF manipulation via Tauri invoke commands. Frontend: React Router v7, Zustand state, @dnd-kit for drag-and-drop page reordering.||Freeform annotation mode in spec: pressure-sensitive stylus via Pointer Events API, perfect-freehand stroke smoothing, palm rejection — sidecar .notes persistence (Phase A) → lopdf PDF ink annotation embedding (Phase B).',
+      contribution: 'Sole developer. Designed the full architecture — Rust/Tauri backend, React frontend, CI/CD pipeline for multi-platform binary releases.||Authored the Freeform Sketch Mode specification: Xournal++/GoodNotes-style annotation layer with pressure sensitivity, palm rejection, lasso tool, and SVG stroke rendering.',
+      outcome: 'Alpha release live on GitHub with Windows and Linux binaries. Wayland compatibility solved without user-side workarounds — AppImage self-patches the DMA-buf renderer at runtime.',
+      stat: 'Alpha', statLabel: 'shipped — open source',
+      stat2: 'Win + Linux', stat2Label: 'native binaries',
+      github: 'https://github.com/zParik/Quire',
+    },
+  },
+  {
+    id: 'FILE-003', cat: 'security',
+    ariaLabel: 'NotBigBrother: Privacy-preserving age verification. Press Enter to view details.',
     codename: 'NotBigBrother', domain: 'Privacy · Crypto', metric: 'Zero PII',
     dossier: {
-      clearance: 'ACTIVE RESEARCH', name: 'NotBigBrother',
-      badge: 'Active — Present | Privacy — Cryptography',
-      role: 'Sole Designer & Implementer', status: 'ONGOING', unredacted: true,
+      clearance: 'DECLASSIFIED', name: 'NotBigBrother',
+      badge: 'Privacy — Cryptography',
+      role: 'Sole Designer & Implementer', status: 'COMPLETE', unredacted: true,
       overview: 'PoC: privacy-preserving age verification using RSA blind signatures (Chaum scheme).||The verifier never knows where a token is used; the website never learns who the user is.||Zero server callbacks. Zero PII stored.',
       architecture: 'Stack: Node/Express + InsightFace (SCRFD, ONNX) + RSA blind signatures||Three-party flow: Issuer analyzes face and issues blinded token -> User blinds token before submission -> Issuer signs without seeing final form.||Website verifies locally against issuer public key — no round-trip required.',
       contribution: 'Designed the full cryptographic protocol (blind signature flow end-to-end).||Integrated InsightFace/SCRFD via ONNX for age estimation.||Built the Node/Express issuer service.',
@@ -53,7 +70,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-003', cat: 'security',
+    id: 'FILE-004', cat: 'security',
     ariaLabel: 'ARCHON — Anonymous distributed messaging system. Press Enter to view details.',
     codename: 'ARCHON', domain: 'Privacy', metric: 'AES-256',
     dossier: {
@@ -69,7 +86,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-004', cat: 'access',
+    id: 'FILE-005', cat: 'access',
     ariaLabel: 'VisionAid - YOLOv8x + Depth Anything V2 indoor navigation for visually impaired users. Press Enter to view details.',
     codename: 'VisionAid', domain: 'Accessibility · CV', metric: '16 FPS GPU',
     dossier: {
@@ -85,7 +102,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-005', cat: 'access',
+    id: 'FILE-006', cat: 'access',
     ariaLabel: 'ASL Transcription System: Real-time sign language recognition. Press Enter to view details.',
     codename: 'ASL Transcription', domain: 'Accessibility · CV', metric: '96% mAP',
     dossier: {
@@ -100,7 +117,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-006', cat: 'hack',
+    id: 'FILE-007', cat: 'hack',
     ariaLabel: 'Plant Disease and Pest Detection: YOLOv8-seg and YOLO11n with TabNet fusion. Press Enter to view details.',
     codename: 'Plant Disease Detection', domain: 'Hackathon · CV', metric: '99.97%',
     dossier: {
@@ -116,7 +133,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-007', cat: 'hack',
+    id: 'FILE-008', cat: 'hack',
     ariaLabel: 'Uni P2P Rental Marketplace: React + Supabase rental platform, awarded Best UI/UX. Press Enter to view details.',
     codename: 'P2P Rental Marketplace', domain: 'Hackathon', metric: 'Best UI/UX',
     dossier: {
@@ -132,7 +149,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-008', cat: 'sys',
+    id: 'FILE-009', cat: 'sys',
     ariaLabel: 'Tic-Tac-Toe Minimax AI: Unbeatable AI via plain Minimax. Press Enter to view details.',
     codename: 'Minimax AI', domain: 'AI · Web', metric: '255K nodes',
     dossier: {
@@ -148,7 +165,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-009', cat: 'sys',
+    id: 'FILE-010', cat: 'sys',
     ariaLabel: 'Ashram Management Portal: PHP/MySQL portal with room bookings, course enrollment, and staff dashboard. Press Enter to view details.',
     codename: 'Ashram Management', domain: 'Web', metric: '3 Roles',
     dossier: {
@@ -164,7 +181,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-010', cat: 'hack',
+    id: 'FILE-011', cat: 'hack',
     ariaLabel: 'GapEdit: C terminal gap-buffer editor. Press Enter to view details.',
     codename: 'GapEdit', domain: 'Codeathon · C', metric: '8 hrs build',
     dossier: {
@@ -179,7 +196,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-011', cat: 'hack',
+    id: 'FILE-012', cat: 'hack',
     ariaLabel: 'SWITCHBOARD: Networking hackathon: Cisco Packet Tracer topology and concurrent Java socket server. Press Enter to view details.',
     codename: 'SWITCHBOARD', domain: 'Hackathon', metric: 'Top 3',
     dossier: {
@@ -195,7 +212,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-012', cat: 'sys',
+    id: 'FILE-013', cat: 'sys',
     ariaLabel: 'Linux Tutorial Blog: AI-assisted technical blog on Linux fundamentals. Press Enter to view details.',
     codename: 'Linux Tutorial Blog', domain: 'Technical Writing', metric: 'Published',
     dossier: {
@@ -211,7 +228,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-013', cat: 'sys', earlier: true,
+    id: 'FILE-014', cat: 'sys', earlier: true,
     ariaLabel: 'Python Practice Launcher: Tkinter app with 29 exercises. Press Enter to view details.',
     codename: 'Python Practice Launcher', domain: 'High School', metric: '29 exercises',
     dossier: {
@@ -226,7 +243,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'FILE-014', cat: 'sys', earlier: true,
+    id: 'FILE-015', cat: 'sys', earlier: true,
     ariaLabel: 'Faculty Substitution Manager: Django web app automating sub assignment. Press Enter to view details.',
     codename: 'Faculty Substitution Manager', domain: 'High School', metric: 'Deployed',
     dossier: {
