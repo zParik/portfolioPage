@@ -1,5 +1,5 @@
 /* ─── PROJECT DATA ─── */
-import { prefersReducedMotion } from './utils.js';
+import { prefersReducedMotion, escHtml } from './utils.js';
 
 const PROJECTS = [
   {
@@ -297,18 +297,18 @@ function renderManifest() {
     if (p.active) {
       el.innerHTML =
         `<span class="manifest-active-dot" aria-hidden="true"></span>` +
-        `<span class="manifest-filenum">${p.id}</span>` +
-        `<span class="manifest-codename">${p.codename}</span>` +
-        `<span class="manifest-domain">${p.domain}</span>` +
-        `<span class="manifest-metric">${p.metric}</span>` +
+        `<span class="manifest-filenum">${escHtml(p.id)}</span>` +
+        `<span class="manifest-codename">${escHtml(p.codename)}</span>` +
+        `<span class="manifest-domain">${escHtml(p.domain)}</span>` +
+        `<span class="manifest-metric">${escHtml(p.metric)}</span>` +
         `<span class="manifest-status-tag manifest-status-tag--active">ACTIVE</span>`;
     } else {
       el.innerHTML =
         `<span class="manifest-arrow" aria-hidden="true">▶</span>` +
-        `<span class="manifest-filenum">${p.id}</span>` +
-        `<span class="manifest-codename">${p.codename}</span>` +
-        `<span class="manifest-domain">${p.domain}</span>` +
-        `<span class="manifest-metric">${p.metric}</span>` +
+        `<span class="manifest-filenum">${escHtml(p.id)}</span>` +
+        `<span class="manifest-codename">${escHtml(p.codename)}</span>` +
+        `<span class="manifest-domain">${escHtml(p.domain)}</span>` +
+        `<span class="manifest-metric">${escHtml(p.metric)}</span>` +
         `<span class="manifest-status-tag">COMPLETE</span>`;
     }
 

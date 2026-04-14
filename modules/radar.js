@@ -1,5 +1,6 @@
 /* ─── INTEL RADAR ─── */
 'use strict';
+import { escHtml } from './utils.js';
 
 // startRadar / pauseRadar are exported so shatter.js can call them
 // They're populated lazily once the canvas is confirmed available
@@ -41,19 +42,20 @@ if (canvas) {
     const PROJECTS = [
       { id: 'FILE-000', name: 'FIELDSTATION ZERO', metric: '0 deps', domain: 'Design · Systems', cat: 'sys', active: true, r: 0.16, angle: -2.42 },
       { id: 'FILE-001', name: 'PaleGuard', metric: '88%', domain: 'CyberSec · CV', cat: 'security', active: true, r: 0.28, angle: -1.35 },
-      { id: 'FILE-002', name: 'NotBigBrother', metric: 'Zero PII', domain: 'Privacy · Crypto', cat: 'security', active: true, r: 0.32, angle: -0.30 },
-      { id: 'FILE-003', name: 'ARCHON', metric: 'AES-256', domain: 'Privacy', cat: 'security', active: false, r: 0.54, angle: -0.85 },
-      { id: 'FILE-004', name: 'VisionAid', metric: '16 FPS GPU', domain: 'Accessibility · CV', cat: 'access', active: false, r: 0.51, angle: 0.34 },
-      { id: 'FILE-005', name: 'ASL Transcription', metric: '96% mAP', domain: 'Accessibility · CV', cat: 'access', active: false, r: 0.56, angle: 0.62 },
-      { id: 'FILE-006', name: 'Plant Disease', metric: '99.97%', domain: 'Hackathon · CV', cat: 'hack', active: false, r: 0.47, angle: 1.68 },
-      { id: 'FILE-011', name: 'SWITCHBOARD', metric: 'Top 3', domain: 'Hackathon', cat: 'hack', active: false, r: 0.60, angle: 2.05 },
-      { id: 'FILE-007', name: 'P2P Rental', metric: 'Best UI/UX', domain: 'Hackathon', cat: 'hack', active: false, r: 0.67, angle: 2.44 },
-      { id: 'FILE-010', name: 'GapEdit', metric: '8 hrs build', domain: 'Codeathon · C', cat: 'hack', active: false, r: 0.76, angle: 2.78 },
-      { id: 'FILE-012', name: 'Linux Blog', metric: 'Published', domain: 'Technical Writing', cat: 'sys', active: false, r: 0.61, angle: -1.78 },
-      { id: 'FILE-008', name: 'Minimax AI', metric: '255K nodes', domain: 'AI · Web', cat: 'sys', active: false, r: 0.51, angle: -2.12 },
-      { id: 'FILE-009', name: 'Ashram Mgmt', metric: '3 Roles', domain: 'Web', cat: 'sys', active: false, r: 0.67, angle: -2.57 },
-      { id: 'FILE-013', name: 'Python Launcher', metric: '29 exercises', domain: 'High School', cat: 'sys', active: false, r: 0.84, angle: -2.90, dim: true },
-      { id: 'FILE-014', name: 'Faculty Mgmt', metric: 'Deployed', domain: 'High School', cat: 'sys', active: false, r: 0.88, angle: 3.00, dim: true },
+      { id: 'FILE-002', name: 'Quire', metric: 'Alpha', domain: 'Systems · Tools', cat: 'sys', active: true, r: 0.22, angle: -1.90 },
+      { id: 'FILE-003', name: 'NotBigBrother', metric: 'Zero PII', domain: 'Privacy · Crypto', cat: 'security', active: false, r: 0.32, angle: -0.30 },
+      { id: 'FILE-004', name: 'ARCHON', metric: 'AES-256', domain: 'Privacy', cat: 'security', active: false, r: 0.54, angle: -0.85 },
+      { id: 'FILE-005', name: 'VisionAid', metric: '16 FPS GPU', domain: 'Accessibility · CV', cat: 'access', active: false, r: 0.51, angle: 0.34 },
+      { id: 'FILE-006', name: 'ASL Transcription', metric: '96% mAP', domain: 'Accessibility · CV', cat: 'access', active: false, r: 0.56, angle: 0.62 },
+      { id: 'FILE-007', name: 'Plant Disease', metric: '99.97%', domain: 'Hackathon · CV', cat: 'hack', active: false, r: 0.47, angle: 1.68 },
+      { id: 'FILE-008', name: 'P2P Rental', metric: 'Best UI/UX', domain: 'Hackathon', cat: 'hack', active: false, r: 0.67, angle: 2.44 },
+      { id: 'FILE-009', name: 'Minimax AI', metric: '255K nodes', domain: 'AI · Web', cat: 'sys', active: false, r: 0.51, angle: -2.12 },
+      { id: 'FILE-010', name: 'Ashram Mgmt', metric: '3 Roles', domain: 'Web', cat: 'sys', active: false, r: 0.67, angle: -2.57 },
+      { id: 'FILE-011', name: 'GapEdit', metric: '8 hrs build', domain: 'Codeathon · C', cat: 'hack', active: false, r: 0.76, angle: 2.78 },
+      { id: 'FILE-012', name: 'SWITCHBOARD', metric: 'Top 3', domain: 'Hackathon', cat: 'hack', active: false, r: 0.60, angle: 2.05 },
+      { id: 'FILE-013', name: 'Linux Blog', metric: 'Published', domain: 'Technical Writing', cat: 'sys', active: false, r: 0.61, angle: -1.78 },
+      { id: 'FILE-014', name: 'Python Launcher', metric: '29 exercises', domain: 'High School', cat: 'sys', active: false, r: 0.84, angle: -2.90, dim: true },
+      { id: 'FILE-015', name: 'Faculty Mgmt', metric: 'Deployed', domain: 'High School', cat: 'sys', active: false, r: 0.88, angle: 3.00, dim: true },
     ];
 
     /* Link DOM elements from the hidden data store */
@@ -486,11 +488,11 @@ if (canvas) {
     function showTip(p, ex, ey) {
       if (!p || !tip) return;
       tip.innerHTML =
-        `<span class="rt-id">${p.id}</span>` +
-        `<span class="rt-name">${p.name}</span><br>` +
-        `<span class="rt-metric">${p.metric}</span>` +
+        `<span class="rt-id">${escHtml(p.id)}</span>` +
+        `<span class="rt-name">${escHtml(p.name)}</span><br>` +
+        `<span class="rt-metric">${escHtml(p.metric)}</span>` +
         `<span class="rt-sep">·</span>` +
-        `<span class="rt-domain">${p.domain}</span>`;
+        `<span class="rt-domain">${escHtml(p.domain)}</span>`;
       tip.hidden = false;
       const tw = 250, th = 48;
       let tx = ex + 20, ty = ey - 10;

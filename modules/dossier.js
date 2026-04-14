@@ -1,5 +1,5 @@
 /* ─── DOSSIER SYSTEM ─── */
-import { prefersReducedMotion } from './utils.js';
+import { prefersReducedMotion, escHtml } from './utils.js';
 import { observeCountUps } from './count-up.js';
 
 const overlay = document.getElementById('dossier-overlay');
@@ -25,9 +25,6 @@ const fields = {
 let isOpen = false;
 let currentCard = null;
 
-function escHtml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
 
 function setDossierField(el, text) {
   const parts = text.split('||').map(s => s.trim()).filter(Boolean);
