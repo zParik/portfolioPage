@@ -21,18 +21,19 @@ export const PROJECTS = [
   },
   {
     id: 'FILE-001', cat: 'security',
-    ariaLabel: 'PaleGuard: Vision-based EDR, paper accepted at Scientific Reports. Press Enter to view details.',
+    ariaLabel: 'PaleGuard: Vision-based EDR, paper published in Scientific Reports. Press Enter to view details.',
     codename: 'PaleGuard', domain: 'CyberSec · CV', metric: '88% detection',
     dossier: {
       clearance: 'DECLASSIFIED', name: 'PaleGuard',
       badge: 'CyberSecurity · Computer Vision',
       role: 'Sole Architect & Researcher', status: 'COMPLETE', unredacted: true,
-      overview: 'Proactive malware detection: PE binaries mapped into 6-channel 3D volumetric tensors, classified by a 3D ResNet-18.||Trained on ~58,000 samples (VirusShare + clean Windows PEs). Paper accepted at Scientific Reports, pending publication.||Inference: 3.3ms per sample.',
+      overview: 'Proactive malware detection: PE binaries mapped into 6-channel 3D volumetric tensors, classified by a 3D ResNet-18.||Trained on ~58,000 samples (VirusShare + clean Windows PEs). Paper published in Scientific Reports.||Inference: 3.3ms per sample.',
       architecture: 'Stack: 3D ResNet-18 + SE attention + Morton Z-order encoding||6 PE sections (.text, .code, .rdata, .idata, .data, .edata) mapped into a 64³ voxel grid via Morton Z-curve for locality preservation.||Each voxel: 6 channels — raw byte value, local entropy, code mask, import density, string density, data-presence mask.||Masked global average pooling + SE attention resolves density shortcut-learning.',
       contribution: 'Conceived the research hypothesis and designed the Morton-curve volumetric encoding scheme.||Identified and resolved density shortcut-learning via masking + SE attention — the key technical insight.||Ran all experiments and drafted the manuscript.',
-      outcome: '88% accuracy on family-disjoint held-out evaluation (TheZoo vs VirusShare) with 11% FNR — designed to test generalization to unseen malware families. 99% accuracy / 0.9971 ROC-AUC on random split for comparison.||Accepted at Scientific Reports; in press.',
+      outcome: '88% accuracy on family-disjoint held-out evaluation (TheZoo vs VirusShare) with 11% FNR — designed to test generalization to unseen malware families. 99% accuracy / 0.9971 ROC-AUC on random split for comparison.||Published in Scientific Reports (2026). DOI: 10.1038/s41598-026-65582-6.',
       stat: '88%', statLabel: 'new family detection', statCount: '88', statSuffix: '%',
       stat2: '3.3ms', stat2Label: 'inference time',
+      paper: 'https://doi.org/10.1038/s41598-026-65582-6',
     },
   },
   {
@@ -371,6 +372,7 @@ function renderManifest() {
     if (d.stat2Label) el.dataset.dossierStat2Label = d.stat2Label;
     if (d.github) el.dataset.dossierGithub = d.github;
     if (d.link) el.dataset.dossierLink = d.link;
+    if (d.paper) el.dataset.dossierPaper = d.paper;
     if (d.demo) el.dataset.dossierDemo = d.demo;
 
     if (p.active) {

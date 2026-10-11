@@ -229,6 +229,18 @@
   letter-spacing: -0.2px;
 }
 
+.hero-impact a {
+  color: var(--accent-bright);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-glow);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.hero-impact a:hover {
+  text-decoration-color: var(--accent);
+}
+
 /* ─── HERO BOTTOM ROW (socials + actions side by side) ─── */
 .hero-bottom-row {
   display: flex;
